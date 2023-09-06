@@ -1,0 +1,1427 @@
+Dependencies for Project 'stm32f103xb_bl', Target 'stm32f103xb_bl': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (..\..\..\source\board\stm32f103xb_bl.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f103xb_bl.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f103xb_bl.crf --depend .\build\stm32f103xb_bl.d)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\daplink\circ_buf.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\circ_buf.o --list_dir ".\\build\\" --list --omf_browse .\build\circ_buf.crf --depend .\build\circ_buf.d)
+I (..\..\..\source\daplink\circ_buf.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+F (..\..\..\source\daplink\cortex_m.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\cortex_m.o --list_dir ".\\build\\" --list --omf_browse .\build\cortex_m.crf --depend .\build\cortex_m.d)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+F (..\..\..\source\daplink\crc16.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\crc16.o --list_dir ".\\build\\" --list --omf_browse .\build\crc16.crf --depend .\build\crc16.d)
+I (..\..\..\source\daplink\crc.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+F (..\..\..\source\daplink\crc32.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\crc32.o --list_dir ".\\build\\" --list --omf_browse .\build\crc32.crf --depend .\build\crc32.d)
+I (..\..\..\source\daplink\crc.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+F (..\..\..\source\daplink\bootloader\daplink.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\daplink.o --list_dir ".\\build\\" --list --omf_browse .\build\daplink.crf --depend .\build\daplink.d)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\daplink\error.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\error.o --list_dir ".\\build\\" --list --omf_browse .\build\error.crf --depend .\build\error.d)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+F (..\..\..\source\daplink\flash_hal.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\flash_hal.o --list_dir ".\\build\\" --list --omf_browse .\build\flash_hal.crf --depend .\build\flash_hal.d)
+I (..\..\..\source\hic_hal\flash_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\FlashPrg.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+F (..\..\..\source\daplink\HardFault_Handler.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\hardfault_handler.o --list_dir ".\\build\\" --list --omf_browse .\build\hardfault_handler.crf --depend .\build\hardfault_handler.d)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+F (..\..\..\source\daplink\info.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\info.o --list_dir ".\\build\\" --list --omf_browse .\build\info.crf --depend .\build\info.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\bootloader\main.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\hic_hal\read_uid.h)(0x6089047D)
+I (..\..\..\source\daplink\crc.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\daplink\bootloader\main.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\main.o --list_dir ".\\build\\" --list --omf_browse .\build\main.crf --depend .\build\main.d)
+I (..\..\..\source\daplink\bootloader\main.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\hic_hal\gpio.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\validation.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\vfs_manager.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (..\..\..\source\hic_hal\sdk.h)(0x6089047D)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+F (..\..\..\source\daplink\sdk_stub.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\sdk_stub.o --list_dir ".\\build\\" --list --omf_browse .\build\sdk_stub.crf --depend .\build\sdk_stub.d)
+F (..\..\..\source\daplink\bootloader\SVC_Table.s)(0x6089047C)(--cpu Cortex-M3 -g --apcs=interwork --cpreproc --cpreproc_opts=-DDAPLINK_VERSION=256,-DMSC_ENDPOINT,-DDAPLINK_BL,-DDAPLINK_BUILD_KEY=0x9B939D93,-DDRAG_N_DROP_SUPPORT,-DOS_TICK=10000,-DINTERFACE_STM32F103XB,-DUSE_HAL_DRIVER,-DSTM32F103xB,-DDAPLINK_HIC_ID=0x97969908,-D__packed=__packed,-DDAPLINK_NO_ASSERT_FILENAMES,-DOS_CLOCK=72000000 --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 538" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list .\build\svc_table.lst --xref -o .\build\svc_table.o --depend .\build\svc_table.d)
+F (..\..\..\source\daplink\util.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\util.o --list_dir ".\\build\\" --list --omf_browse .\build\util.crf --depend .\build\util.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+F (..\..\..\source\daplink\validation.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\validation.o --list_dir ".\\build\\" --list --omf_browse .\build\validation.crf --depend .\build\validation.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\validation.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\daplink\bootloader.h)(0x6089047C)()
+F (..\..\..\source\daplink\circ_buf.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\cmsis_armclang.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\cmsis_armclang_ltm.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\cmsis_gcc.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\cmsis_iccarm.h)(0x6089047C)()
+F (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)()
+F (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)()
+F (..\..\..\source\daplink\compiler.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_armv81mml.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_armv8mbl.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_armv8mml.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm0.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm0plus.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm1.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm23.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm33.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm35p.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm4.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_cm7.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_sc000.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\core_sc300.h)(0x6089047C)()
+F (..\..\..\source\daplink\cortex_m.h)(0x6089047C)()
+F (..\..\..\source\daplink\crc.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\DAP_config.h)(0x6089047D)()
+F (..\..\..\source\daplink\daplink.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)()
+F (..\..\..\source\daplink\daplink_debug.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\device.h)(0x6089047D)()
+F (..\..\..\source\daplink\error.h)(0x6089047C)()
+F (..\..\..\source\daplink\drag-n-drop\file_stream.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)()
+F (..\..\..\source\daplink\drag-n-drop\flash_decoder.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\flash_hal.h)(0x6089047D)()
+F (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)()
+F (..\..\..\source\daplink\drag-n-drop\flash_manager.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\FlashOS.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\FlashPrg.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\gpio.h)(0x6089047D)()
+F (..\..\..\source\daplink\info.h)(0x6089047C)()
+F (..\..\..\source\daplink\drag-n-drop\intelhex.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)()
+F (..\..\..\source\daplink\bootloader\main.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\mpu_armv7.h)(0x6089047C)()
+F (..\..\..\source\cmsis-core\mpu_armv8.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\read_uid.h)(0x6089047D)()
+F (..\..\..\source\usb\rl_usb.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\sdk.h)(0x6089047D)()
+F (..\..\..\source\daplink\settings\settings.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)()
+F (..\..\..\source\rtos_none\SysTick_Handler.h)(0x6089047D)()
+F (..\..\..\source\target\target_board.h)(0x6089047D)()
+F (..\..\..\source\target\target_config.h)(0x6089047D)()
+F (..\..\..\source\target\target_family.h)(0x6089047D)()
+F (..\..\..\source\cmsis-core\tz_context.h)(0x6089047C)()
+F (..\..\..\source\hic_hal\uart.h)(0x6089047D)()
+F (..\..\..\source\usb\usb.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\usb_buf.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_bulk.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_cdc.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_def.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_for_lib.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_hid.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_lib.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_msc.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_webusb.h)(0x6089047D)()
+F (..\..\..\source\usb\usb_winusb.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_cdc.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_core.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_desc.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_event.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_hid.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_hw.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_lib_cdc.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_lib_hid.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_lib_msc.h)(0x6089047D)()
+F (..\..\..\source\usb\usbd_msc.h)(0x6089047D)()
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\usbreg.h)(0x6089047D)()
+F (..\..\..\source\daplink\util.h)(0x6089047C)()
+F (..\..\..\source\daplink\validation.h)(0x6089047C)()
+F (..\..\..\source\daplink\version_git.h)(0x64F830AC)()
+F (..\..\..\source\daplink\drag-n-drop\vfs_manager.h)(0x6089047C)()
+F (..\..\..\source\daplink\drag-n-drop\vfs_user.h)(0x6089047C)()
+F (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)()
+F (..\..\..\source\daplink\drag-n-drop\file_stream.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\file_stream.o --list_dir ".\\build\\" --list --omf_browse .\build\file_stream.crf --depend .\build\file_stream.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\file_stream.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\daplink\drag-n-drop\intelhex.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\flash_decoder.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\validation.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\flash_decoder.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\flash_decoder.o --list_dir ".\\build\\" --list --omf_browse .\build\flash_decoder.crf --depend .\build\flash_decoder.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\flash_decoder.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\flash_manager.h)(0x6089047C)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\daplink\validation.h)(0x6089047C)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\flash_intf.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\flash_intf.o --list_dir ".\\build\\" --list --omf_browse .\build\flash_intf.crf --depend .\build\flash_intf.d)
+I (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\flash_manager.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\flash_manager.o --list_dir ".\\build\\" --list --omf_browse .\build\flash_manager.crf --depend .\build\flash_manager.d)
+I (..\..\..\source\daplink\drag-n-drop\flash_manager.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\iap_flash_intf.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\iap_flash_intf.o --list_dir ".\\build\\" --list --omf_browse .\build\iap_flash_intf.crf --depend .\build\iap_flash_intf.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\hic_hal\flash_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\FlashPrg.h)(0x6089047D)
+I (..\..\..\source\daplink\crc.h)(0x6089047C)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\intelhex.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\intelhex.o --list_dir ".\\build\\" --list --omf_browse .\build\intelhex.crf --depend .\build\intelhex.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\intelhex.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+F (..\..\..\source\daplink\drag-n-drop\vfs_manager.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\vfs_manager.o --list_dir ".\\build\\" --list --omf_browse .\build\vfs_manager.crf --depend .\build\vfs_manager.d)
+I (C:\Keil_v535\ARM\ARMCC\include\ctype.h)(0x602569C6)
+I (..\..\..\source\daplink\bootloader\main.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\vfs_manager.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink_debug.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdarg.h)(0x602569C6)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\version_git.h)(0x64F830AC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\file_stream.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\vfs_user.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\vfs_user.o --list_dir ".\\build\\" --list --omf_browse .\build\vfs_user.crf --depend .\build\vfs_user.d)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\ctype.h)(0x602569C6)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\vfs_user.h)(0x6089047C)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\vfs_manager.h)(0x6089047C)
+I (..\..\..\source\daplink\error.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\version_git.h)(0x64F830AC)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+I (..\..\..\source\hic_hal\gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\flash_intf.h)(0x6089047C)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\flash_manager.h)(0x6089047C)
+F (..\..\..\source\daplink\drag-n-drop\virtual_fs.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\virtual_fs.o --list_dir ".\\build\\" --list --omf_browse .\build\virtual_fs.crf --depend .\build\virtual_fs.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\flash.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\flash.o --list_dir ".\\build\\" --list --omf_browse .\build\flash.crf --depend .\build\flash.d)
+I (..\..\..\source\hic_hal\flash_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\FlashPrg.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\gpio.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\gpio.o --list_dir ".\\build\\" --list --omf_browse .\build\gpio.crf --depend .\build\gpio.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\DAP_config.h)(0x6089047D)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\hic_hal\uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\gpio.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\read_uid.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\read_uid.o --list_dir ".\\build\\" --list --omf_browse .\build\read_uid.crf --depend .\build\read_uid.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\read_uid.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\sdk.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\sdk.o --list_dir ".\\build\\" --list --omf_browse .\build\sdk.crf --depend .\build\sdk.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\DAP_config.h)(0x6089047D)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\hic_hal\uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\gpio.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\armcc\startup_stm32f103xb.S)(0x6089047D)(--cpu Cortex-M3 -g --apcs=interwork --cpreproc --cpreproc_opts=-DDAPLINK_VERSION=256,-DMSC_ENDPOINT,-DDAPLINK_BL,-DDAPLINK_BUILD_KEY=0x9B939D93,-DDRAG_N_DROP_SUPPORT,-DOS_TICK=10000,-DINTERFACE_STM32F103XB,-DUSE_HAL_DRIVER,-DSTM32F103xB,-DDAPLINK_HIC_ID=0x97969908,-D__packed=__packed,-DDAPLINK_NO_ASSERT_FILENAMES,-DOS_CLOCK=72000000 --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 538" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list .\build\startup_stm32f103xb.lst --xref -o .\build\startup_stm32f103xb.o --depend .\build\startup_stm32f103xb.d)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal.crf --depend .\build\stm32f1xx_hal.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_cortex.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_cortex.crf --depend .\build\stm32f1xx_hal_cortex.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_dma.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_dma.crf --depend .\build\stm32f1xx_hal_dma.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_flash.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_flash.crf --depend .\build\stm32f1xx_hal_flash.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_flash_ex.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_flash_ex.crf --depend .\build\stm32f1xx_hal_flash_ex.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_gpio.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_gpio.crf --depend .\build\stm32f1xx_hal_gpio.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_gpio_ex.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_gpio_ex.crf --depend .\build\stm32f1xx_hal_gpio_ex.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_rcc.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_rcc.crf --depend .\build\stm32f1xx_hal_rcc.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_rcc_ex.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_rcc_ex.crf --depend .\build\stm32f1xx_hal_rcc_ex.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_tim.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_tim.crf --depend .\build\stm32f1xx_hal_tim.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_tim_ex.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_tim_ex.crf --depend .\build\stm32f1xx_hal_tim_ex.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_uart.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_uart.crf --depend .\build\stm32f1xx_hal_uart.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_usart.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\stm32f1xx_hal_usart.o --list_dir ".\\build\\" --list --omf_browse .\build\stm32f1xx_hal_usart.crf --depend .\build\stm32f1xx_hal_usart.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\system_stm32f1xx.o --list_dir ".\\build\\" --list --omf_browse .\build\system_stm32f1xx.crf --depend .\build\system_stm32f1xx.d)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\uart.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\uart.o --list_dir ".\\build\\" --list --omf_browse .\build\uart.crf --depend .\build\uart.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\uart.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\circ_buf.h)(0x6089047C)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\usb_config.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\usb_config.o --list_dir ".\\build\\" --list --omf_browse .\build\usb_config.crf --depend .\build\usb_config.d)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\usb\usb_lib.c)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+F (..\..\..\source\hic_hal\stm32\stm32f103xb\usbd_STM32F103.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\usbd_stm32f103.o --list_dir ".\\build\\" --list --omf_browse .\build\usbd_stm32f103.crf --depend .\build\usbd_stm32f103.d)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\usbreg.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\usb_config.c)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+F (..\..\..\source\rtos_none\cmsis_os2_port.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\cmsis_os2_port.o --list_dir ".\\build\\" --list --omf_browse .\build\cmsis_os2_port.crf --depend .\build\cmsis_os2_port.d)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\rtos_none\SysTick_Handler.h)(0x6089047D)
+F (..\..\..\source\rtos_none\SysTick_Handler.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\systick_handler.o --list_dir ".\\build\\" --list --omf_browse .\build\systick_handler.crf --depend .\build\systick_handler.d)
+I (..\..\..\source\rtos_none\SysTick_Handler.h)(0x6089047D)
+I (..\..\..\source\rtos_none\cmsis_os2.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\device.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+F (..\..\..\source\daplink\settings\settings.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\settings.o --list_dir ".\\build\\" --list --omf_browse .\build\settings.crf --depend .\build\settings.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (..\..\..\source\daplink\compiler.h)(0x6089047C)
+I (..\..\..\source\daplink\cortex_m.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\IO_Config.h)(0x61DD8B52)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\stm32f103xb.h)(0x6089047D)
+I (..\..\..\source\cmsis-core\core_cm3.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_version.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_compiler.h)(0x6089047C)
+I (..\..\..\source\cmsis-core\cmsis_armcc.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis\system_stm32f1xx.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\stm32f1xx_hal_conf.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdio.h)(0x602569C4)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x6089047D)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x6089047D)
+I (..\..\..\source\daplink\daplink.h)(0x6089047C)
+I (..\..\..\source\hic_hal\stm32\stm32f103xb\daplink_addr.h)(0x6089047D)
+F (..\..\..\source\daplink\settings\settings_rom_stub.c)(0x6089047C)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\settings_rom_stub.o --list_dir ".\\build\\" --list --omf_browse .\build\settings_rom_stub.crf --depend .\build\settings_rom_stub.d)
+I (..\..\..\source\daplink\settings\settings.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+F (..\..\..\source\target\target_board.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\target_board.o --list_dir ".\\build\\" --list --omf_browse .\build\target_board.crf --depend .\build\target_board.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\target\target_board.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\target\target_config.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\hic_hal\flash_blob.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+I (..\..\..\source\target\target_family.h)(0x6089047D)
+I (..\..\..\source\daplink\drag-n-drop\virtual_fs.h)(0x6089047C)
+F (..\..\..\source\usb\usbd_core.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\usbd_core.o --list_dir ".\\build\\" --list --omf_browse .\build\usbd_core.crf --depend .\build\usbd_core.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\usb\usb_for_lib.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_lib.h)(0x6089047D)
+I (..\..\..\source\daplink\info.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)
+F (..\..\..\source\usb\msc\usbd_core_msc.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\usbd_core_msc.o --list_dir ".\\build\\" --list --omf_browse .\build\usbd_core_msc.crf --depend .\build\usbd_core_msc.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\usb\usb_for_lib.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_lib.h)(0x6089047D)
+F (..\..\..\source\usb\msc\usbd_msc.c)(0x6089047D)(-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\build\\" -I ..\..\..\source\usb -I ..\..\..\source\daplink -I ..\..\..\source\daplink\bootloader -I ..\..\..\source\cmsis-core -I ..\..\..\source\hic_hal -I ..\..\..\source\daplink\drag-n-drop -I ..\..\..\source\daplink\settings -I ..\..\..\source\target -I ..\..\..\source\rtos_none -I ..\..\..\source\hic_hal\stm32\stm32f103xb -I ..\..\..\source\hic_hal\stm32\stm32f103xb\cmsis -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver -I ..\..\..\source\hic_hal\stm32\stm32f103xb\STM32F1xx_HAL_Driver\Inc --gnu --c99 --no_unaligned_access --no_unaligned_access-I.\RTE\_stm32f103xb_bl-IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DDAPLINK_VERSION="256" -DMSC_ENDPOINT -DDAPLINK_BL -DDAPLINK_BUILD_KEY="0x9B939D93" -DDRAG_N_DROP_SUPPORT -DOS_TICK="10000" -DINTERFACE_STM32F103XB -DUSE_HAL_DRIVER -DSTM32F103xB -DDAPLINK_HIC_ID="0x97969908" -D__packed="__packed" -DDAPLINK_NO_ASSERT_FILENAMES -DOS_CLOCK="72000000"-o .\build\usbd_msc.o --list_dir ".\\build\\" --list --omf_browse .\build\usbd_msc.crf --depend .\build\usbd_msc.d)
+I (C:\Keil_v535\ARM\ARMCC\include\string.h)(0x602569CE)
+I (..\..\..\source\usb\rl_usb.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stdint.h)(0x602569CE)
+I (..\..\..\source\usb\usb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_def.h)(0x6089047D)
+I (C:\Keil_v535\ARM\ARMCC\include\stddef.h)(0x602569CE)
+I (..\..\..\source\usb\usb_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usb_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_bulk.h)(0x6089047D)
+I (..\..\..\source\usb\usb_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usb_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_webusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_core_winusb.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_desc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_event.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_cdc_acm.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_hw.h)(0x6089047D)
+I (..\..\..\source\usb\usb_for_lib.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_cdc.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_hid.h)(0x6089047D)
+I (..\..\..\source\usb\usbd_lib_msc.h)(0x6089047D)
+I (..\..\..\source\usb\usb_lib.h)(0x6089047D)
+I (..\..\..\source\daplink\util.h)(0x6089047C)
+I (C:\Keil_v535\ARM\ARMCC\include\stdbool.h)(0x602569CC)

@@ -1,0 +1,4316 @@
+L 1 "..\..\..\source\family\wiznet\target_reset_wiznet.c"
+N/**
+N * @file    target_reset.c
+N * @brief   Target reset for the W7500
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2019, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#include "cmsis_os2.h"
+L 1 "..\..\..\source\rtos\cmsis_os2.h" 1
+N/*
+N * Copyright (c) 2013-2018 Arm Limited. All rights reserved.
+N *
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the License); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N *
+N * ----------------------------------------------------------------------
+N *
+N * $Date:        18. June 2018
+N * $Revision:    V2.1.3
+N *
+N * Project:      CMSIS-RTOS2 API
+N * Title:        cmsis_os2.h header file
+N *
+N * Version 2.1.3
+N *    Additional functions allowed to be called from Interrupt Service Routines:
+N *    - osThreadGetId
+N * Version 2.1.2
+N *    Additional functions allowed to be called from Interrupt Service Routines:
+N *    - osKernelGetInfo, osKernelGetState
+N * Version 2.1.1
+N *    Additional functions allowed to be called from Interrupt Service Routines:
+N *    - osKernelGetTickCount, osKernelGetTickFreq
+N *    Changed Kernel Tick type to uint32_t:
+N *    - updated: osKernelGetTickCount, osDelayUntil
+N * Version 2.1.0
+N *    Support for critical and uncritical sections (nesting safe):
+N *    - updated: osKernelLock, osKernelUnlock
+N *    - added: osKernelRestoreLock
+N *    Updated Thread and Event Flags:
+N *    - changed flags parameter and return type from int32_t to uint32_t
+N * Version 2.0.0
+N *    Initial Release
+N *---------------------------------------------------------------------------*/
+N 
+N#ifndef CMSIS_OS2_H_
+N#define CMSIS_OS2_H_
+N 
+N#ifndef __NO_RETURN
+N#if   defined(__CC_ARM)
+X#if   1L
+N#define __NO_RETURN __declspec(noreturn)
+N#elif defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+X#elif 1L && (5060960 >= 6010050)
+S#define __NO_RETURN __attribute__((__noreturn__))
+S#elif defined(__GNUC__)
+S#define __NO_RETURN __attribute__((__noreturn__))
+S#elif defined(__ICCARM__)
+S#define __NO_RETURN __noreturn
+S#else
+S#define __NO_RETURN
+N#endif
+N#endif
+N 
+N#include <stdint.h>
+L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stdint.h" 1
+N/* Copyright (C) ARM Ltd., 1999,2014 */
+N/* All rights reserved */
+N
+N/*
+N * RCS $Revision$
+N * Checkin $Date$
+N * Revising $Author: agrant $
+N */
+N
+N#ifndef __stdint_h
+N#define __stdint_h
+N#define __ARMCLIB_VERSION 5060044
+N
+N  #ifdef __INT64_TYPE__
+S    /* armclang predefines '__INT64_TYPE__' and '__INT64_C_SUFFIX__' */
+S    #define __INT64 __INT64_TYPE__
+N  #else
+N    /* armcc has builtin '__int64' which can be used in --strict mode */
+N    #define __INT64 __int64
+N    #define __INT64_C_SUFFIX__ ll
+N  #endif
+N  #define __PASTE2(x, y) x ## y
+N  #define __PASTE(x, y) __PASTE2(x, y)
+N  #define __INT64_C(x)  __ESCAPE__(__PASTE(x, __INT64_C_SUFFIX__))
+N  #define __UINT64_C(x)  __ESCAPE__(__PASTE(x ## u, __INT64_C_SUFFIX__))
+N  #if defined(__clang__) || (defined(__ARMCC_VERSION) && !defined(__STRICT_ANSI__))
+X  #if 0L || (1L && !0L)
+N    /* armclang and non-strict armcc allow 'long long' in system headers */
+N    #define __LONGLONG long long
+N  #else
+S    /* strict armcc has '__int64' */
+S    #define __LONGLONG __int64
+N  #endif
+N
+N  #ifndef __STDINT_DECLS
+N  #define __STDINT_DECLS
+N
+N    #undef __CLIBNS
+N
+N    #ifdef __cplusplus
+S      namespace std {
+S          #define __CLIBNS std::
+S          extern "C" {
+N    #else
+N      #define __CLIBNS
+N    #endif  /* __cplusplus */
+N
+N
+N/*
+N * 'signed' is redundant below, except for 'signed char' and if
+N * the typedef is used to declare a bitfield.
+N */
+N
+N    /* 7.18.1.1 */
+N
+N    /* exact-width signed integer types */
+Ntypedef   signed          char int8_t;
+Ntypedef   signed short     int int16_t;
+Ntypedef   signed           int int32_t;
+Ntypedef   signed       __INT64 int64_t;
+Xtypedef   signed       __int64 int64_t;
+N
+N    /* exact-width unsigned integer types */
+Ntypedef unsigned          char uint8_t;
+Ntypedef unsigned short     int uint16_t;
+Ntypedef unsigned           int uint32_t;
+Ntypedef unsigned       __INT64 uint64_t;
+Xtypedef unsigned       __int64 uint64_t;
+N
+N    /* 7.18.1.2 */
+N
+N    /* smallest type of at least n bits */
+N    /* minimum-width signed integer types */
+Ntypedef   signed          char int_least8_t;
+Ntypedef   signed short     int int_least16_t;
+Ntypedef   signed           int int_least32_t;
+Ntypedef   signed       __INT64 int_least64_t;
+Xtypedef   signed       __int64 int_least64_t;
+N
+N    /* minimum-width unsigned integer types */
+Ntypedef unsigned          char uint_least8_t;
+Ntypedef unsigned short     int uint_least16_t;
+Ntypedef unsigned           int uint_least32_t;
+Ntypedef unsigned       __INT64 uint_least64_t;
+Xtypedef unsigned       __int64 uint_least64_t;
+N
+N    /* 7.18.1.3 */
+N
+N    /* fastest minimum-width signed integer types */
+Ntypedef   signed           int int_fast8_t;
+Ntypedef   signed           int int_fast16_t;
+Ntypedef   signed           int int_fast32_t;
+Ntypedef   signed       __INT64 int_fast64_t;
+Xtypedef   signed       __int64 int_fast64_t;
+N
+N    /* fastest minimum-width unsigned integer types */
+Ntypedef unsigned           int uint_fast8_t;
+Ntypedef unsigned           int uint_fast16_t;
+Ntypedef unsigned           int uint_fast32_t;
+Ntypedef unsigned       __INT64 uint_fast64_t;
+Xtypedef unsigned       __int64 uint_fast64_t;
+N
+N    /* 7.18.1.4 integer types capable of holding object pointers */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+Stypedef   signed       __INT64 intptr_t;
+Stypedef unsigned       __INT64 uintptr_t;
+N#else
+Ntypedef   signed           int intptr_t;
+Ntypedef unsigned           int uintptr_t;
+N#endif
+N
+N    /* 7.18.1.5 greatest-width integer types */
+Ntypedef   signed     __LONGLONG intmax_t;
+Xtypedef   signed     long long intmax_t;
+Ntypedef unsigned     __LONGLONG uintmax_t;
+Xtypedef unsigned     long long uintmax_t;
+N
+N
+N#if !defined(__cplusplus) || defined(__STDC_LIMIT_MACROS)
+X#if !0L || 0L
+N
+N    /* 7.18.2.1 */
+N
+N    /* minimum values of exact-width signed integer types */
+N#define INT8_MIN                   -128
+N#define INT16_MIN                -32768
+N#define INT32_MIN          (~0x7fffffff)   /* -2147483648 is unsigned */
+N#define INT64_MIN  __INT64_C(~0x7fffffffffffffff) /* -9223372036854775808 is unsigned */
+N
+N    /* maximum values of exact-width signed integer types */
+N#define INT8_MAX                    127
+N#define INT16_MAX                 32767
+N#define INT32_MAX            2147483647
+N#define INT64_MAX  __INT64_C(9223372036854775807)
+N
+N    /* maximum values of exact-width unsigned integer types */
+N#define UINT8_MAX                   255
+N#define UINT16_MAX                65535
+N#define UINT32_MAX           4294967295u
+N#define UINT64_MAX __UINT64_C(18446744073709551615)
+N
+N    /* 7.18.2.2 */
+N
+N    /* minimum values of minimum-width signed integer types */
+N#define INT_LEAST8_MIN                   -128
+N#define INT_LEAST16_MIN                -32768
+N#define INT_LEAST32_MIN          (~0x7fffffff)
+N#define INT_LEAST64_MIN  __INT64_C(~0x7fffffffffffffff)
+N
+N    /* maximum values of minimum-width signed integer types */
+N#define INT_LEAST8_MAX                    127
+N#define INT_LEAST16_MAX                 32767
+N#define INT_LEAST32_MAX            2147483647
+N#define INT_LEAST64_MAX  __INT64_C(9223372036854775807)
+N
+N    /* maximum values of minimum-width unsigned integer types */
+N#define UINT_LEAST8_MAX                   255
+N#define UINT_LEAST16_MAX                65535
+N#define UINT_LEAST32_MAX           4294967295u
+N#define UINT_LEAST64_MAX __UINT64_C(18446744073709551615)
+N
+N    /* 7.18.2.3 */
+N
+N    /* minimum values of fastest minimum-width signed integer types */
+N#define INT_FAST8_MIN           (~0x7fffffff)
+N#define INT_FAST16_MIN          (~0x7fffffff)
+N#define INT_FAST32_MIN          (~0x7fffffff)
+N#define INT_FAST64_MIN  __INT64_C(~0x7fffffffffffffff)
+N
+N    /* maximum values of fastest minimum-width signed integer types */
+N#define INT_FAST8_MAX             2147483647
+N#define INT_FAST16_MAX            2147483647
+N#define INT_FAST32_MAX            2147483647
+N#define INT_FAST64_MAX  __INT64_C(9223372036854775807)
+N
+N    /* maximum values of fastest minimum-width unsigned integer types */
+N#define UINT_FAST8_MAX            4294967295u
+N#define UINT_FAST16_MAX           4294967295u
+N#define UINT_FAST32_MAX           4294967295u
+N#define UINT_FAST64_MAX __UINT64_C(18446744073709551615)
+N
+N    /* 7.18.2.4 */
+N
+N    /* minimum value of pointer-holding signed integer type */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define INTPTR_MIN INT64_MIN
+N#else
+N#define INTPTR_MIN INT32_MIN
+N#endif
+N
+N    /* maximum value of pointer-holding signed integer type */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define INTPTR_MAX INT64_MAX
+N#else
+N#define INTPTR_MAX INT32_MAX
+N#endif
+N
+N    /* maximum value of pointer-holding unsigned integer type */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define UINTPTR_MAX UINT64_MAX
+N#else
+N#define UINTPTR_MAX UINT32_MAX
+N#endif
+N
+N    /* 7.18.2.5 */
+N
+N    /* minimum value of greatest-width signed integer type */
+N#define INTMAX_MIN  __ESCAPE__(~0x7fffffffffffffffll)
+N
+N    /* maximum value of greatest-width signed integer type */
+N#define INTMAX_MAX  __ESCAPE__(9223372036854775807ll)
+N
+N    /* maximum value of greatest-width unsigned integer type */
+N#define UINTMAX_MAX __ESCAPE__(18446744073709551615ull)
+N
+N    /* 7.18.3 */
+N
+N    /* limits of ptrdiff_t */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define PTRDIFF_MIN INT64_MIN
+S#define PTRDIFF_MAX INT64_MAX
+N#else
+N#define PTRDIFF_MIN INT32_MIN
+N#define PTRDIFF_MAX INT32_MAX
+N#endif
+N
+N    /* limits of sig_atomic_t */
+N#define SIG_ATOMIC_MIN (~0x7fffffff)
+N#define SIG_ATOMIC_MAX   2147483647
+N
+N    /* limit of size_t */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define SIZE_MAX UINT64_MAX
+N#else
+N#define SIZE_MAX UINT32_MAX
+N#endif
+N
+N    /* limits of wchar_t */
+N    /* NB we have to undef and redef because they're defined in both
+N     * stdint.h and wchar.h */
+N#undef WCHAR_MIN
+N#undef WCHAR_MAX
+N
+N#if defined(__WCHAR32) || (defined(__ARM_SIZEOF_WCHAR_T) && __ARM_SIZEOF_WCHAR_T == 4)
+X#if 0L || (0L && __ARM_SIZEOF_WCHAR_T == 4)
+S  #define WCHAR_MIN   0
+S  #define WCHAR_MAX   0xffffffffU
+N#else
+N  #define WCHAR_MIN   0
+N  #define WCHAR_MAX   65535
+N#endif
+N
+N    /* limits of wint_t */
+N#define WINT_MIN (~0x7fffffff)
+N#define WINT_MAX 2147483647
+N
+N#endif /* __STDC_LIMIT_MACROS */
+N
+N#if !defined(__cplusplus) || defined(__STDC_CONSTANT_MACROS)
+X#if !0L || 0L
+N
+N    /* 7.18.4.1 macros for minimum-width integer constants */
+N#define INT8_C(x)   (x)
+N#define INT16_C(x)  (x)
+N#define INT32_C(x)  (x)
+N#define INT64_C(x)  __INT64_C(x)
+N
+N#define UINT8_C(x)  (x ## u)
+N#define UINT16_C(x) (x ## u)
+N#define UINT32_C(x) (x ## u)
+N#define UINT64_C(x) __UINT64_C(x)
+N
+N    /* 7.18.4.2 macros for greatest-width integer constants */
+N#define INTMAX_C(x)  __ESCAPE__(x ## ll)
+N#define UINTMAX_C(x) __ESCAPE__(x ## ull)
+N
+N#endif /* __STDC_CONSTANT_MACROS */
+N
+N    #ifdef __cplusplus
+S         }  /* extern "C" */
+S      }  /* namespace std */
+N    #endif /* __cplusplus */
+N  #endif /* __STDINT_DECLS */
+N
+N  #ifdef __cplusplus
+S    #ifndef __STDINT_NO_EXPORTS
+S      using ::std::int8_t;
+S      using ::std::int16_t;
+S      using ::std::int32_t;
+S      using ::std::int64_t;
+S      using ::std::uint8_t;
+S      using ::std::uint16_t;
+S      using ::std::uint32_t;
+S      using ::std::uint64_t;
+S      using ::std::int_least8_t;
+S      using ::std::int_least16_t;
+S      using ::std::int_least32_t;
+S      using ::std::int_least64_t;
+S      using ::std::uint_least8_t;
+S      using ::std::uint_least16_t;
+S      using ::std::uint_least32_t;
+S      using ::std::uint_least64_t;
+S      using ::std::int_fast8_t;
+S      using ::std::int_fast16_t;
+S      using ::std::int_fast32_t;
+S      using ::std::int_fast64_t;
+S      using ::std::uint_fast8_t;
+S      using ::std::uint_fast16_t;
+S      using ::std::uint_fast32_t;
+S      using ::std::uint_fast64_t;
+S      using ::std::intptr_t;
+S      using ::std::uintptr_t;
+S      using ::std::intmax_t;
+S      using ::std::uintmax_t;
+S    #endif
+N  #endif /* __cplusplus */
+N
+N#undef __INT64
+N#undef __LONGLONG
+N
+N#endif /* __stdint_h */
+N
+N/* end of stdint.h */
+L 65 "..\..\..\source\rtos\cmsis_os2.h" 2
+N#include <stddef.h>
+L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stddef.h" 1
+N/* stddef.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.1.4 */
+N
+N/* Copyright (C) ARM Ltd., 1999
+N * All rights reserved
+N * RCS $Revision$
+N * Checkin $Date$
+N * Revising $Author: agrant $
+N */
+N
+N/* Copyright (C) Codemist Ltd., 1988                            */
+N/* Copyright 1991 ARM Limited. All rights reserved.             */
+N/* version 0.05 */
+N
+N/*
+N * The following types and macros are defined in several headers referred to in
+N * the descriptions of the functions declared in that header. They are also
+N * defined in this header file.
+N */
+N
+N#ifndef __stddef_h
+N#define __stddef_h
+N#define __ARMCLIB_VERSION 5060044
+N
+N  #ifndef __STDDEF_DECLS
+N  #define __STDDEF_DECLS
+N    #undef __CLIBNS
+N    #ifdef __cplusplus
+S        namespace std {
+S        #define __CLIBNS ::std::
+S        extern "C" {
+N    #else
+N      #define __CLIBNS
+N    #endif  /* __cplusplus */
+N
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S  typedef signed long ptrdiff_t;
+N#else
+N  typedef signed int ptrdiff_t;
+N#endif
+N
+N#if defined(__cplusplus) || !defined(__STRICT_ANSI__)
+X#if 0L || !0L
+N /* unconditional in C++ and non-strict C for consistency of debug info */
+N  #if __sizeof_ptr == 8
+X  #if 4 == 8
+S    typedef unsigned long size_t;   /* see <stddef.h> */
+N  #else
+N    typedef unsigned int size_t;   /* see <stddef.h> */
+N  #endif
+N#elif !defined(__size_t)
+X#elif !0L
+S  #define __size_t 1
+S  #if __sizeof_ptr == 8
+S    typedef unsigned long size_t;   /* see <stddef.h> */
+S  #else
+S    typedef unsigned int size_t;   /* see <stddef.h> */
+S  #endif
+S   /* the unsigned integral type of the result of the sizeof operator. */
+N#endif
+N
+N#ifndef __cplusplus  /* wchar_t is a builtin type for C++ */
+N  #if !defined(__STRICT_ANSI__)
+X  #if !0L
+N  /* unconditional in non-strict C for consistency of debug info */
+N    #if defined(__WCHAR32) || (defined(__ARM_SIZEOF_WCHAR_T) && __ARM_SIZEOF_WCHAR_T == 4)
+X    #if 0L || (0L && __ARM_SIZEOF_WCHAR_T == 4)
+S      typedef unsigned int wchar_t; /* also in <stdlib.h> and <inttypes.h> */
+N    #else
+N      typedef unsigned short wchar_t; /* also in <stdlib.h> and <inttypes.h> */
+N    #endif
+N  #elif !defined(__wchar_t)
+X  #elif !0L
+S    #define __wchar_t 1
+S    #if defined(__WCHAR32) || (defined(__ARM_SIZEOF_WCHAR_T) && __ARM_SIZEOF_WCHAR_T == 4)
+S      typedef unsigned int wchar_t; /* also in <stdlib.h> and <inttypes.h> */
+S    #else
+S      typedef unsigned short wchar_t; /* also in <stdlib.h> and <inttypes.h> */
+S    #endif
+S   /*
+S    * An integral type whose range of values can represent distinct codes for
+S    * all members of the largest extended character set specified among the
+S    * supported locales; the null character shall have the code value zero and
+S    * each member of the basic character set shall have a code value when used
+S    * as the lone character in an integer character constant.
+S    */
+N  #endif
+N#endif
+N
+N#undef NULL  /* others (e.g. <stdio.h>) also define */
+N#define NULL 0
+N   /* null pointer constant. */
+N
+N#ifdef __clang__
+S  #define offsetof(t, d) __builtin_offsetof(t, d)
+N#else
+N  /* EDG uses __INTADDR__ to avoid errors when strict */
+N  #define offsetof(t, memb) ((__CLIBNS size_t)__INTADDR__(&(((t *)0)->memb)))
+N#endif
+N
+N#if !defined(__STRICT_ANSI__) || (defined(__STDC_VERSION__) && 201112L <= __STDC_VERSION__) || (defined(__cplusplus) && 201103L <= __cplusplus)
+X#if !0L || (1L && 201112L <= 199901L) || (0L && 201103L <= __cplusplus)
+N  typedef long double max_align_t;
+N#endif
+N
+N    #ifdef __cplusplus
+S         }  /* extern "C" */
+S      }  /* namespace std */
+N    #endif /* __cplusplus */
+N  #endif /* __STDDEF_DECLS */
+N
+N
+N  #ifdef __cplusplus
+S    #ifndef __STDDEF_NO_EXPORTS
+S      using ::std::size_t;
+S      using ::std::ptrdiff_t;
+S      #if !defined(__STRICT_ANSI__) || (defined(__cplusplus) && 201103L <= __cplusplus)
+S        using ::std::max_align_t;
+S      #endif
+S    #endif 
+N  #endif /* __cplusplus */
+N
+N#endif
+N
+N/* end of stddef.h */
+N
+L 66 "..\..\..\source\rtos\cmsis_os2.h" 2
+N 
+N#ifdef  __cplusplus
+Sextern "C"
+S{
+N#endif
+N 
+N 
+N//  ==== Enumerations, structures, defines ====
+N 
+N/// Version information.
+Ntypedef struct {
+N  uint32_t                       api;   ///< API version (major.minor.rev: mmnnnrrrr dec).
+N  uint32_t                    kernel;   ///< Kernel version (major.minor.rev: mmnnnrrrr dec).
+N} osVersion_t;
+N 
+N/// Kernel state.
+Ntypedef enum {
+N  osKernelInactive        =  0,         ///< Inactive.
+N  osKernelReady           =  1,         ///< Ready.
+N  osKernelRunning         =  2,         ///< Running.
+N  osKernelLocked          =  3,         ///< Locked.
+N  osKernelSuspended       =  4,         ///< Suspended.
+N  osKernelError           = -1,         ///< Error.
+N  osKernelReserved        = 0x7FFFFFFFU ///< Prevents enum down-size compiler optimization.
+N} osKernelState_t;
+N 
+N/// Thread state.
+Ntypedef enum {
+N  osThreadInactive        =  0,         ///< Inactive.
+N  osThreadReady           =  1,         ///< Ready.
+N  osThreadRunning         =  2,         ///< Running.
+N  osThreadBlocked         =  3,         ///< Blocked.
+N  osThreadTerminated      =  4,         ///< Terminated.
+N  osThreadError           = -1,         ///< Error.
+N  osThreadReserved        = 0x7FFFFFFF  ///< Prevents enum down-size compiler optimization.
+N} osThreadState_t;
+N 
+N/// Priority values.
+Ntypedef enum {
+N  osPriorityNone          =  0,         ///< No priority (not initialized).
+N  osPriorityIdle          =  1,         ///< Reserved for Idle thread.
+N  osPriorityLow           =  8,         ///< Priority: low
+N  osPriorityLow1          =  8+1,       ///< Priority: low + 1
+N  osPriorityLow2          =  8+2,       ///< Priority: low + 2
+N  osPriorityLow3          =  8+3,       ///< Priority: low + 3
+N  osPriorityLow4          =  8+4,       ///< Priority: low + 4
+N  osPriorityLow5          =  8+5,       ///< Priority: low + 5
+N  osPriorityLow6          =  8+6,       ///< Priority: low + 6
+N  osPriorityLow7          =  8+7,       ///< Priority: low + 7
+N  osPriorityBelowNormal   = 16,         ///< Priority: below normal
+N  osPriorityBelowNormal1  = 16+1,       ///< Priority: below normal + 1
+N  osPriorityBelowNormal2  = 16+2,       ///< Priority: below normal + 2
+N  osPriorityBelowNormal3  = 16+3,       ///< Priority: below normal + 3
+N  osPriorityBelowNormal4  = 16+4,       ///< Priority: below normal + 4
+N  osPriorityBelowNormal5  = 16+5,       ///< Priority: below normal + 5
+N  osPriorityBelowNormal6  = 16+6,       ///< Priority: below normal + 6
+N  osPriorityBelowNormal7  = 16+7,       ///< Priority: below normal + 7
+N  osPriorityNormal        = 24,         ///< Priority: normal
+N  osPriorityNormal1       = 24+1,       ///< Priority: normal + 1
+N  osPriorityNormal2       = 24+2,       ///< Priority: normal + 2
+N  osPriorityNormal3       = 24+3,       ///< Priority: normal + 3
+N  osPriorityNormal4       = 24+4,       ///< Priority: normal + 4
+N  osPriorityNormal5       = 24+5,       ///< Priority: normal + 5
+N  osPriorityNormal6       = 24+6,       ///< Priority: normal + 6
+N  osPriorityNormal7       = 24+7,       ///< Priority: normal + 7
+N  osPriorityAboveNormal   = 32,         ///< Priority: above normal
+N  osPriorityAboveNormal1  = 32+1,       ///< Priority: above normal + 1
+N  osPriorityAboveNormal2  = 32+2,       ///< Priority: above normal + 2
+N  osPriorityAboveNormal3  = 32+3,       ///< Priority: above normal + 3
+N  osPriorityAboveNormal4  = 32+4,       ///< Priority: above normal + 4
+N  osPriorityAboveNormal5  = 32+5,       ///< Priority: above normal + 5
+N  osPriorityAboveNormal6  = 32+6,       ///< Priority: above normal + 6
+N  osPriorityAboveNormal7  = 32+7,       ///< Priority: above normal + 7
+N  osPriorityHigh          = 40,         ///< Priority: high
+N  osPriorityHigh1         = 40+1,       ///< Priority: high + 1
+N  osPriorityHigh2         = 40+2,       ///< Priority: high + 2
+N  osPriorityHigh3         = 40+3,       ///< Priority: high + 3
+N  osPriorityHigh4         = 40+4,       ///< Priority: high + 4
+N  osPriorityHigh5         = 40+5,       ///< Priority: high + 5
+N  osPriorityHigh6         = 40+6,       ///< Priority: high + 6
+N  osPriorityHigh7         = 40+7,       ///< Priority: high + 7
+N  osPriorityRealtime      = 48,         ///< Priority: realtime
+N  osPriorityRealtime1     = 48+1,       ///< Priority: realtime + 1
+N  osPriorityRealtime2     = 48+2,       ///< Priority: realtime + 2
+N  osPriorityRealtime3     = 48+3,       ///< Priority: realtime + 3
+N  osPriorityRealtime4     = 48+4,       ///< Priority: realtime + 4
+N  osPriorityRealtime5     = 48+5,       ///< Priority: realtime + 5
+N  osPriorityRealtime6     = 48+6,       ///< Priority: realtime + 6
+N  osPriorityRealtime7     = 48+7,       ///< Priority: realtime + 7
+N  osPriorityISR           = 56,         ///< Reserved for ISR deferred thread.
+N  osPriorityError         = -1,         ///< System cannot determine priority or illegal priority.
+N  osPriorityReserved      = 0x7FFFFFFF  ///< Prevents enum down-size compiler optimization.
+N} osPriority_t;
+N 
+N/// Entry point of a thread.
+Ntypedef void (*osThreadFunc_t) (void *argument);
+N 
+N/// Timer callback function.
+Ntypedef void (*osTimerFunc_t) (void *argument);
+N 
+N/// Timer type.
+Ntypedef enum {
+N  osTimerOnce               = 0,          ///< One-shot timer.
+N  osTimerPeriodic           = 1           ///< Repeating timer.
+N} osTimerType_t;
+N 
+N// Timeout value.
+N#define osWaitForever         0xFFFFFFFFU ///< Wait forever timeout value.
+N 
+N// Flags options (\ref osThreadFlagsWait and \ref osEventFlagsWait).
+N#define osFlagsWaitAny        0x00000000U ///< Wait for any flag (default).
+N#define osFlagsWaitAll        0x00000001U ///< Wait for all flags.
+N#define osFlagsNoClear        0x00000002U ///< Do not clear flags which have been specified to wait for.
+N 
+N// Flags errors (returned by osThreadFlagsXxxx and osEventFlagsXxxx).
+N#define osFlagsError          0x80000000U ///< Error indicator.
+N#define osFlagsErrorUnknown   0xFFFFFFFFU ///< osError (-1).
+N#define osFlagsErrorTimeout   0xFFFFFFFEU ///< osErrorTimeout (-2).
+N#define osFlagsErrorResource  0xFFFFFFFDU ///< osErrorResource (-3).
+N#define osFlagsErrorParameter 0xFFFFFFFCU ///< osErrorParameter (-4).
+N#define osFlagsErrorISR       0xFFFFFFFAU ///< osErrorISR (-6).
+N 
+N// Thread attributes (attr_bits in \ref osThreadAttr_t).
+N#define osThreadDetached      0x00000000U ///< Thread created in detached mode (default)
+N#define osThreadJoinable      0x00000001U ///< Thread created in joinable mode
+N 
+N// Mutex attributes (attr_bits in \ref osMutexAttr_t).
+N#define osMutexRecursive      0x00000001U ///< Recursive mutex.
+N#define osMutexPrioInherit    0x00000002U ///< Priority inherit protocol.
+N#define osMutexRobust         0x00000008U ///< Robust mutex.
+N 
+N/// Status code values returned by CMSIS-RTOS functions.
+Ntypedef enum {
+N  osOK                      =  0,         ///< Operation completed successfully.
+N  osError                   = -1,         ///< Unspecified RTOS error: run-time error but no other error message fits.
+N  osErrorTimeout            = -2,         ///< Operation not completed within the timeout period.
+N  osErrorResource           = -3,         ///< Resource not available.
+N  osErrorParameter          = -4,         ///< Parameter error.
+N  osErrorNoMemory           = -5,         ///< System is out of memory: it was impossible to allocate or reserve memory for the operation.
+N  osErrorISR                = -6,         ///< Not allowed in ISR context: the function cannot be called from interrupt service routines.
+N  osStatusReserved          = 0x7FFFFFFF  ///< Prevents enum down-size compiler optimization.
+N} osStatus_t;
+N 
+N 
+N/// \details Thread ID identifies the thread.
+Ntypedef void *osThreadId_t;
+N 
+N/// \details Timer ID identifies the timer.
+Ntypedef void *osTimerId_t;
+N 
+N/// \details Event Flags ID identifies the event flags.
+Ntypedef void *osEventFlagsId_t;
+N 
+N/// \details Mutex ID identifies the mutex.
+Ntypedef void *osMutexId_t;
+N 
+N/// \details Semaphore ID identifies the semaphore.
+Ntypedef void *osSemaphoreId_t;
+N 
+N/// \details Memory Pool ID identifies the memory pool.
+Ntypedef void *osMemoryPoolId_t;
+N 
+N/// \details Message Queue ID identifies the message queue.
+Ntypedef void *osMessageQueueId_t;
+N 
+N 
+N#ifndef TZ_MODULEID_T
+N#define TZ_MODULEID_T
+N/// \details Data type that identifies secure software modules called by a process.
+Ntypedef uint32_t TZ_ModuleId_t;
+N#endif
+N 
+N 
+N/// Attributes structure for thread.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the thread
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N  void                   *stack_mem;    ///< memory for stack
+N  uint32_t                stack_size;   ///< size of stack
+N  osPriority_t              priority;   ///< initial thread priority (default: osPriorityNormal)
+N  TZ_ModuleId_t            tz_module;   ///< TrustZone module identifier
+N  uint32_t                  reserved;   ///< reserved (must be 0)
+N} osThreadAttr_t;
+N 
+N/// Attributes structure for timer.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the timer
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N} osTimerAttr_t;
+N 
+N/// Attributes structure for event flags.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the event flags
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N} osEventFlagsAttr_t;
+N 
+N/// Attributes structure for mutex.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the mutex
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N} osMutexAttr_t;
+N 
+N/// Attributes structure for semaphore.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the semaphore
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N} osSemaphoreAttr_t;
+N 
+N/// Attributes structure for memory pool.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the memory pool
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N  void                      *mp_mem;    ///< memory for data storage
+N  uint32_t                   mp_size;   ///< size of provided memory for data storage 
+N} osMemoryPoolAttr_t;
+N 
+N/// Attributes structure for message queue.
+Ntypedef struct {
+N  const char                   *name;   ///< name of the message queue
+N  uint32_t                 attr_bits;   ///< attribute bits
+N  void                      *cb_mem;    ///< memory for control block
+N  uint32_t                   cb_size;   ///< size of provided memory for control block
+N  void                      *mq_mem;    ///< memory for data storage
+N  uint32_t                   mq_size;   ///< size of provided memory for data storage 
+N} osMessageQueueAttr_t;
+N 
+N 
+N//  ==== Kernel Management Functions ====
+N 
+N/// Initialize the RTOS Kernel.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osKernelInitialize (void);
+N 
+N///  Get RTOS Kernel Information.
+N/// \param[out]    version       pointer to buffer for retrieving version information.
+N/// \param[out]    id_buf        pointer to buffer for retrieving kernel identification string.
+N/// \param[in]     id_size       size of buffer for kernel identification string.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osKernelGetInfo (osVersion_t *version, char *id_buf, uint32_t id_size);
+N 
+N/// Get the current RTOS Kernel state.
+N/// \return current RTOS Kernel state.
+NosKernelState_t osKernelGetState (void);
+N 
+N/// Start the RTOS Kernel scheduler.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osKernelStart (void);
+N 
+N/// Lock the RTOS Kernel scheduler.
+N/// \return previous lock state (1 - locked, 0 - not locked, error code if negative).
+Nint32_t osKernelLock (void);
+N 
+N/// Unlock the RTOS Kernel scheduler.
+N/// \return previous lock state (1 - locked, 0 - not locked, error code if negative).
+Nint32_t osKernelUnlock (void);
+N 
+N/// Restore the RTOS Kernel scheduler lock state.
+N/// \param[in]     lock          lock state obtained by \ref osKernelLock or \ref osKernelUnlock.
+N/// \return new lock state (1 - locked, 0 - not locked, error code if negative).
+Nint32_t osKernelRestoreLock (int32_t lock);
+N 
+N/// Suspend the RTOS Kernel scheduler.
+N/// \return time in ticks, for how long the system can sleep or power-down.
+Nuint32_t osKernelSuspend (void);
+N 
+N/// Resume the RTOS Kernel scheduler.
+N/// \param[in]     sleep_ticks   time in ticks for how long the system was in sleep or power-down mode.
+Nvoid osKernelResume (uint32_t sleep_ticks);
+N 
+N/// Get the RTOS kernel tick count.
+N/// \return RTOS kernel current tick count.
+Nuint32_t osKernelGetTickCount (void);
+N 
+N/// Get the RTOS kernel tick frequency.
+N/// \return frequency of the kernel tick in hertz, i.e. kernel ticks per second.
+Nuint32_t osKernelGetTickFreq (void);
+N 
+N/// Get the RTOS kernel system timer count.
+N/// \return RTOS kernel current system timer count as 32-bit value.
+Nuint32_t osKernelGetSysTimerCount (void);
+N 
+N/// Get the RTOS kernel system timer frequency.
+N/// \return frequency of the system timer in hertz, i.e. timer ticks per second.
+Nuint32_t osKernelGetSysTimerFreq (void);
+N 
+N 
+N//  ==== Thread Management Functions ====
+N 
+N/// Create a thread and add it to Active Threads.
+N/// \param[in]     func          thread function.
+N/// \param[in]     argument      pointer that is passed to the thread function as start argument.
+N/// \param[in]     attr          thread attributes; NULL: default values.
+N/// \return thread ID for reference by other functions or NULL in case of error.
+NosThreadId_t osThreadNew (osThreadFunc_t func, void *argument, const osThreadAttr_t *attr);
+N 
+N/// Get name of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return name as null-terminated string.
+Nconst char *osThreadGetName (osThreadId_t thread_id);
+N 
+N/// Return the thread ID of the current running thread.
+N/// \return thread ID for reference by other functions or NULL in case of error.
+NosThreadId_t osThreadGetId (void);
+N 
+N/// Get current thread state of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return current thread state of the specified thread.
+NosThreadState_t osThreadGetState (osThreadId_t thread_id);
+N 
+N/// Get stack size of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return stack size in bytes.
+Nuint32_t osThreadGetStackSize (osThreadId_t thread_id);
+N 
+N/// Get available stack space of a thread based on stack watermark recording during execution.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return remaining stack space in bytes.
+Nuint32_t osThreadGetStackSpace (osThreadId_t thread_id);
+N 
+N/// Change priority of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \param[in]     priority      new priority value for the thread function.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadSetPriority (osThreadId_t thread_id, osPriority_t priority);
+N 
+N/// Get current priority of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return current priority value of the specified thread.
+NosPriority_t osThreadGetPriority (osThreadId_t thread_id);
+N 
+N/// Pass control to next thread that is in state \b READY.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadYield (void);
+N 
+N/// Suspend execution of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadSuspend (osThreadId_t thread_id);
+N 
+N/// Resume execution of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadResume (osThreadId_t thread_id);
+N 
+N/// Detach a thread (thread storage can be reclaimed when thread terminates).
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadDetach (osThreadId_t thread_id);
+N 
+N/// Wait for specified thread to terminate.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadJoin (osThreadId_t thread_id);
+N 
+N/// Terminate execution of current running thread.
+N__NO_RETURN void osThreadExit (void);
+X__declspec(noreturn) void osThreadExit (void);
+N 
+N/// Terminate execution of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osThreadTerminate (osThreadId_t thread_id);
+N 
+N/// Get number of active threads.
+N/// \return number of active threads.
+Nuint32_t osThreadGetCount (void);
+N 
+N/// Enumerate active threads.
+N/// \param[out]    thread_array  pointer to array for retrieving thread IDs.
+N/// \param[in]     array_items   maximum number of items in array for retrieving thread IDs.
+N/// \return number of enumerated threads.
+Nuint32_t osThreadEnumerate (osThreadId_t *thread_array, uint32_t array_items);
+N 
+N 
+N//  ==== Thread Flags Functions ====
+N 
+N/// Set the specified Thread Flags of a thread.
+N/// \param[in]     thread_id     thread ID obtained by \ref osThreadNew or \ref osThreadGetId.
+N/// \param[in]     flags         specifies the flags of the thread that shall be set.
+N/// \return thread flags after setting or error code if highest bit set.
+Nuint32_t osThreadFlagsSet (osThreadId_t thread_id, uint32_t flags);
+N 
+N/// Clear the specified Thread Flags of current running thread.
+N/// \param[in]     flags         specifies the flags of the thread that shall be cleared.
+N/// \return thread flags before clearing or error code if highest bit set.
+Nuint32_t osThreadFlagsClear (uint32_t flags);
+N 
+N/// Get the current Thread Flags of current running thread.
+N/// \return current thread flags.
+Nuint32_t osThreadFlagsGet (void);
+N 
+N/// Wait for one or more Thread Flags of the current running thread to become signaled.
+N/// \param[in]     flags         specifies the flags to wait for.
+N/// \param[in]     options       specifies flags options (osFlagsXxxx).
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return thread flags before clearing or error code if highest bit set.
+Nuint32_t osThreadFlagsWait (uint32_t flags, uint32_t options, uint32_t timeout);
+N 
+N 
+N//  ==== Generic Wait Functions ====
+N 
+N/// Wait for Timeout (Time Delay).
+N/// \param[in]     ticks         \ref CMSIS_RTOS_TimeOutValue "time ticks" value
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osDelay (uint32_t ticks);
+N 
+N/// Wait until specified time.
+N/// \param[in]     ticks         absolute time in ticks
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osDelayUntil (uint32_t ticks);
+N 
+N 
+N//  ==== Timer Management Functions ====
+N 
+N/// Create and Initialize a timer.
+N/// \param[in]     func          function pointer to callback function.
+N/// \param[in]     type          \ref osTimerOnce for one-shot or \ref osTimerPeriodic for periodic behavior.
+N/// \param[in]     argument      argument to the timer callback function.
+N/// \param[in]     attr          timer attributes; NULL: default values.
+N/// \return timer ID for reference by other functions or NULL in case of error.
+NosTimerId_t osTimerNew (osTimerFunc_t func, osTimerType_t type, void *argument, const osTimerAttr_t *attr);
+N 
+N/// Get name of a timer.
+N/// \param[in]     timer_id      timer ID obtained by \ref osTimerNew.
+N/// \return name as null-terminated string.
+Nconst char *osTimerGetName (osTimerId_t timer_id);
+N 
+N/// Start or restart a timer.
+N/// \param[in]     timer_id      timer ID obtained by \ref osTimerNew.
+N/// \param[in]     ticks         \ref CMSIS_RTOS_TimeOutValue "time ticks" value of the timer.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osTimerStart (osTimerId_t timer_id, uint32_t ticks);
+N 
+N/// Stop a timer.
+N/// \param[in]     timer_id      timer ID obtained by \ref osTimerNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osTimerStop (osTimerId_t timer_id);
+N 
+N/// Check if a timer is running.
+N/// \param[in]     timer_id      timer ID obtained by \ref osTimerNew.
+N/// \return 0 not running, 1 running.
+Nuint32_t osTimerIsRunning (osTimerId_t timer_id);
+N 
+N/// Delete a timer.
+N/// \param[in]     timer_id      timer ID obtained by \ref osTimerNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osTimerDelete (osTimerId_t timer_id);
+N 
+N 
+N//  ==== Event Flags Management Functions ====
+N 
+N/// Create and Initialize an Event Flags object.
+N/// \param[in]     attr          event flags attributes; NULL: default values.
+N/// \return event flags ID for reference by other functions or NULL in case of error.
+NosEventFlagsId_t osEventFlagsNew (const osEventFlagsAttr_t *attr);
+N 
+N/// Get name of an Event Flags object.
+N/// \param[in]     ef_id         event flags ID obtained by \ref osEventFlagsNew.
+N/// \return name as null-terminated string.
+Nconst char *osEventFlagsGetName (osEventFlagsId_t ef_id);
+N 
+N/// Set the specified Event Flags.
+N/// \param[in]     ef_id         event flags ID obtained by \ref osEventFlagsNew.
+N/// \param[in]     flags         specifies the flags that shall be set.
+N/// \return event flags after setting or error code if highest bit set.
+Nuint32_t osEventFlagsSet (osEventFlagsId_t ef_id, uint32_t flags);
+N 
+N/// Clear the specified Event Flags.
+N/// \param[in]     ef_id         event flags ID obtained by \ref osEventFlagsNew.
+N/// \param[in]     flags         specifies the flags that shall be cleared.
+N/// \return event flags before clearing or error code if highest bit set.
+Nuint32_t osEventFlagsClear (osEventFlagsId_t ef_id, uint32_t flags);
+N 
+N/// Get the current Event Flags.
+N/// \param[in]     ef_id         event flags ID obtained by \ref osEventFlagsNew.
+N/// \return current event flags.
+Nuint32_t osEventFlagsGet (osEventFlagsId_t ef_id);
+N 
+N/// Wait for one or more Event Flags to become signaled.
+N/// \param[in]     ef_id         event flags ID obtained by \ref osEventFlagsNew.
+N/// \param[in]     flags         specifies the flags to wait for.
+N/// \param[in]     options       specifies flags options (osFlagsXxxx).
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return event flags before clearing or error code if highest bit set.
+Nuint32_t osEventFlagsWait (osEventFlagsId_t ef_id, uint32_t flags, uint32_t options, uint32_t timeout);
+N 
+N/// Delete an Event Flags object.
+N/// \param[in]     ef_id         event flags ID obtained by \ref osEventFlagsNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osEventFlagsDelete (osEventFlagsId_t ef_id);
+N 
+N 
+N//  ==== Mutex Management Functions ====
+N 
+N/// Create and Initialize a Mutex object.
+N/// \param[in]     attr          mutex attributes; NULL: default values.
+N/// \return mutex ID for reference by other functions or NULL in case of error.
+NosMutexId_t osMutexNew (const osMutexAttr_t *attr);
+N 
+N/// Get name of a Mutex object.
+N/// \param[in]     mutex_id      mutex ID obtained by \ref osMutexNew.
+N/// \return name as null-terminated string.
+Nconst char *osMutexGetName (osMutexId_t mutex_id);
+N 
+N/// Acquire a Mutex or timeout if it is locked.
+N/// \param[in]     mutex_id      mutex ID obtained by \ref osMutexNew.
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMutexAcquire (osMutexId_t mutex_id, uint32_t timeout);
+N 
+N/// Release a Mutex that was acquired by \ref osMutexAcquire.
+N/// \param[in]     mutex_id      mutex ID obtained by \ref osMutexNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMutexRelease (osMutexId_t mutex_id);
+N 
+N/// Get Thread which owns a Mutex object.
+N/// \param[in]     mutex_id      mutex ID obtained by \ref osMutexNew.
+N/// \return thread ID of owner thread or NULL when mutex was not acquired.
+NosThreadId_t osMutexGetOwner (osMutexId_t mutex_id);
+N 
+N/// Delete a Mutex object.
+N/// \param[in]     mutex_id      mutex ID obtained by \ref osMutexNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMutexDelete (osMutexId_t mutex_id);
+N 
+N 
+N//  ==== Semaphore Management Functions ====
+N 
+N/// Create and Initialize a Semaphore object.
+N/// \param[in]     max_count     maximum number of available tokens.
+N/// \param[in]     initial_count initial number of available tokens.
+N/// \param[in]     attr          semaphore attributes; NULL: default values.
+N/// \return semaphore ID for reference by other functions or NULL in case of error.
+NosSemaphoreId_t osSemaphoreNew (uint32_t max_count, uint32_t initial_count, const osSemaphoreAttr_t *attr);
+N 
+N/// Get name of a Semaphore object.
+N/// \param[in]     semaphore_id  semaphore ID obtained by \ref osSemaphoreNew.
+N/// \return name as null-terminated string.
+Nconst char *osSemaphoreGetName (osSemaphoreId_t semaphore_id);
+N 
+N/// Acquire a Semaphore token or timeout if no tokens are available.
+N/// \param[in]     semaphore_id  semaphore ID obtained by \ref osSemaphoreNew.
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osSemaphoreAcquire (osSemaphoreId_t semaphore_id, uint32_t timeout);
+N 
+N/// Release a Semaphore token up to the initial maximum count.
+N/// \param[in]     semaphore_id  semaphore ID obtained by \ref osSemaphoreNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osSemaphoreRelease (osSemaphoreId_t semaphore_id);
+N 
+N/// Get current Semaphore token count.
+N/// \param[in]     semaphore_id  semaphore ID obtained by \ref osSemaphoreNew.
+N/// \return number of tokens available.
+Nuint32_t osSemaphoreGetCount (osSemaphoreId_t semaphore_id);
+N 
+N/// Delete a Semaphore object.
+N/// \param[in]     semaphore_id  semaphore ID obtained by \ref osSemaphoreNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osSemaphoreDelete (osSemaphoreId_t semaphore_id);
+N 
+N 
+N//  ==== Memory Pool Management Functions ====
+N 
+N/// Create and Initialize a Memory Pool object.
+N/// \param[in]     block_count   maximum number of memory blocks in memory pool.
+N/// \param[in]     block_size    memory block size in bytes.
+N/// \param[in]     attr          memory pool attributes; NULL: default values.
+N/// \return memory pool ID for reference by other functions or NULL in case of error.
+NosMemoryPoolId_t osMemoryPoolNew (uint32_t block_count, uint32_t block_size, const osMemoryPoolAttr_t *attr);
+N 
+N/// Get name of a Memory Pool object.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \return name as null-terminated string.
+Nconst char *osMemoryPoolGetName (osMemoryPoolId_t mp_id);
+N 
+N/// Allocate a memory block from a Memory Pool.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return address of the allocated memory block or NULL in case of no memory is available.
+Nvoid *osMemoryPoolAlloc (osMemoryPoolId_t mp_id, uint32_t timeout);
+N 
+N/// Return an allocated memory block back to a Memory Pool.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \param[in]     block         address of the allocated memory block to be returned to the memory pool.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMemoryPoolFree (osMemoryPoolId_t mp_id, void *block);
+N 
+N/// Get maximum number of memory blocks in a Memory Pool.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \return maximum number of memory blocks.
+Nuint32_t osMemoryPoolGetCapacity (osMemoryPoolId_t mp_id);
+N 
+N/// Get memory block size in a Memory Pool.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \return memory block size in bytes.
+Nuint32_t osMemoryPoolGetBlockSize (osMemoryPoolId_t mp_id);
+N 
+N/// Get number of memory blocks used in a Memory Pool.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \return number of memory blocks used.
+Nuint32_t osMemoryPoolGetCount (osMemoryPoolId_t mp_id);
+N 
+N/// Get number of memory blocks available in a Memory Pool.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \return number of memory blocks available.
+Nuint32_t osMemoryPoolGetSpace (osMemoryPoolId_t mp_id);
+N 
+N/// Delete a Memory Pool object.
+N/// \param[in]     mp_id         memory pool ID obtained by \ref osMemoryPoolNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMemoryPoolDelete (osMemoryPoolId_t mp_id);
+N 
+N 
+N//  ==== Message Queue Management Functions ====
+N 
+N/// Create and Initialize a Message Queue object.
+N/// \param[in]     msg_count     maximum number of messages in queue.
+N/// \param[in]     msg_size      maximum message size in bytes.
+N/// \param[in]     attr          message queue attributes; NULL: default values.
+N/// \return message queue ID for reference by other functions or NULL in case of error.
+NosMessageQueueId_t osMessageQueueNew (uint32_t msg_count, uint32_t msg_size, const osMessageQueueAttr_t *attr);
+N 
+N/// Get name of a Message Queue object.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return name as null-terminated string.
+Nconst char *osMessageQueueGetName (osMessageQueueId_t mq_id);
+N 
+N/// Put a Message into a Queue or timeout if Queue is full.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \param[in]     msg_ptr       pointer to buffer with message to put into a queue.
+N/// \param[in]     msg_prio      message priority.
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMessageQueuePut (osMessageQueueId_t mq_id, const void *msg_ptr, uint8_t msg_prio, uint32_t timeout);
+N 
+N/// Get a Message from a Queue or timeout if Queue is empty.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \param[out]    msg_ptr       pointer to buffer for message to get from a queue.
+N/// \param[out]    msg_prio      pointer to buffer for message priority or NULL.
+N/// \param[in]     timeout       \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMessageQueueGet (osMessageQueueId_t mq_id, void *msg_ptr, uint8_t *msg_prio, uint32_t timeout);
+N 
+N/// Get maximum number of messages in a Message Queue.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return maximum number of messages.
+Nuint32_t osMessageQueueGetCapacity (osMessageQueueId_t mq_id);
+N 
+N/// Get maximum message size in a Memory Pool.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return maximum message size in bytes.
+Nuint32_t osMessageQueueGetMsgSize (osMessageQueueId_t mq_id);
+N 
+N/// Get number of queued messages in a Message Queue.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return number of queued messages.
+Nuint32_t osMessageQueueGetCount (osMessageQueueId_t mq_id);
+N 
+N/// Get number of available slots for messages in a Message Queue.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return number of available slots for messages.
+Nuint32_t osMessageQueueGetSpace (osMessageQueueId_t mq_id);
+N 
+N/// Reset a Message Queue to initial empty state.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMessageQueueReset (osMessageQueueId_t mq_id);
+N 
+N/// Delete a Message Queue object.
+N/// \param[in]     mq_id         message queue ID obtained by \ref osMessageQueueNew.
+N/// \return status code that indicates the execution status of the function.
+NosStatus_t osMessageQueueDelete (osMessageQueueId_t mq_id);
+N 
+N 
+N#ifdef  __cplusplus
+S}
+N#endif
+N 
+N#endif  // CMSIS_OS2_H_
+L 23 "..\..\..\source\family\wiznet\target_reset_wiznet.c" 2
+N#include "swd_host.h"
+L 1 "..\..\..\source\daplink\interface\swd_host.h" 1
+N/**
+N * @file    swd_host.h
+N * @brief   Host driver for accessing the DAP
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2019, ARM Limited, All Rights Reserved
+N * Copyright 2019, Cypress Semiconductor Corporation 
+N * or a subsidiary of Cypress Semiconductor Corporation.
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef SWDHOST_CM_H
+N#define SWDHOST_CM_H
+N
+N#include "flash_blob.h"
+L 1 "..\..\..\source\hic_hal\flash_blob.h" 1
+N/**
+N * @file    flash_blob.h
+N * @brief
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2016, ARM Limited, All Rights Reserved
+N * Copyright 2019, Cypress Semiconductor Corporation 
+N * or a subsidiary of Cypress Semiconductor Corporation.
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef FLASH_BLOB_H
+N#define FLASH_BLOB_H
+N
+N#include <stdint.h>
+N
+N#ifdef __cplusplus
+Sextern "C" {
+N#endif
+N
+N// Flags for program_target
+Nenum { 
+N    kAlgoVerifyReturnsAddress = (1u << 0u),     /*!< Verify function returns address if bit set */
+N    kAlgoSingleInitType =       (1u << 1u),     /*!< The init function ignores the function code. */
+N    kAlgoSkipChipErase =        (1u << 2u),     /*!< Skip region when erase.act action triggers. */
+N};
+N
+Ntypedef struct __attribute__((__packed__)) {
+N    uint32_t breakpoint;
+N    uint32_t static_base;
+N    uint32_t stack_pointer;
+N} program_syscall_t;
+N
+Ntypedef struct __attribute__((__packed__)) {
+N    const uint32_t  init;
+N    const uint32_t  uninit;
+N    const uint32_t  erase_chip;
+N    const uint32_t  erase_sector;
+N    const uint32_t  program_page;
+N    const uint32_t  verify;
+N    const program_syscall_t sys_call_s;
+N    const uint32_t  program_buffer;
+N    const uint32_t  algo_start;
+N    const uint32_t  algo_size;
+N    const uint32_t *algo_blob;
+N    const uint32_t  program_buffer_size;
+N    const uint32_t  algo_flags;         /*!< Combination of kAlgoVerifyReturnsAddress, kAlgoSingleInitType and kAlgoSkipChipErase*/
+N} program_target_t;
+N
+Ntypedef struct __attribute__((__packed__)) {
+N    const uint32_t start;
+N    const uint32_t size;
+N} sector_info_t;
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif
+L 28 "..\..\..\source\daplink\interface\swd_host.h" 2
+N#include "target_family.h"
+L 1 "..\..\..\source\target\target_family.h" 1
+N/**
+N * @file    target_family.h
+N * @brief
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2018-2019, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef TARGET_FAMILY_H
+N#define TARGET_FAMILY_H
+N
+N#include <stdint.h>
+N#include <string.h>
+L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\string.h" 1
+N/* string.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.11 */
+N/* Copyright (C) Codemist Ltd., 1988-1993.                        */
+N/* Copyright 1991-1993 ARM Limited. All rights reserved.          */
+N/* version 0.04 */
+N
+N/*
+N * RCS $Revision$
+N * Checkin $Date$
+N */
+N
+N/*
+N * string.h declares one type and several functions, and defines one macro
+N * useful for manipulating character arrays and other objects treated as
+N * character arrays. Various methods are used for determining the lengths of
+N * the arrays, but in all cases a char * or void * argument points to the
+N * initial (lowest addresses) character of the array. If an array is written
+N * beyond the end of an object, the behaviour is undefined.
+N */
+N
+N#ifndef __string_h
+N#define __string_h
+N#define __ARMCLIB_VERSION 5060044
+N
+N#define _ARMABI __declspec(__nothrow)
+N
+N  #ifndef __STRING_DECLS
+N  #define __STRING_DECLS
+N
+N    #undef __CLIBNS
+N
+N    #ifdef __cplusplus
+S        namespace std {
+S        #define __CLIBNS std::
+S        extern "C" {
+N    #else
+N      #define __CLIBNS
+N    #endif  /* __cplusplus */
+N
+N#if defined(__cplusplus) || !defined(__STRICT_ANSI__)
+X#if 0L || !0L
+N /* unconditional in C++ and non-strict C for consistency of debug info */
+N  #if __sizeof_ptr == 8
+X  #if 4 == 8
+S    typedef unsigned long size_t;   /* see <stddef.h> */
+N  #else
+N    typedef unsigned int size_t;   /* see <stddef.h> */
+N  #endif
+N#elif !defined(__size_t)
+X#elif !0L
+S  #define __size_t 1
+S  #if __sizeof_ptr == 8
+S    typedef unsigned long size_t;   /* see <stddef.h> */
+S  #else
+S    typedef unsigned int size_t;   /* see <stddef.h> */
+S  #endif
+N#endif
+N
+N#undef NULL
+N#define NULL 0                   /* see <stddef.h> */
+N
+Nextern _ARMABI void *memcpy(void * __restrict /*s1*/,
+Xextern __declspec(__nothrow) void *memcpy(void * __restrict  ,
+N                    const void * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * copies n characters from the object pointed to by s2 into the object
+N    * pointed to by s1. If copying takes place between objects that overlap,
+N    * the behaviour is undefined.
+N    * Returns: the value of s1.
+N    */
+Nextern _ARMABI void *memmove(void * /*s1*/,
+Xextern __declspec(__nothrow) void *memmove(void *  ,
+N                    const void * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * copies n characters from the object pointed to by s2 into the object
+N    * pointed to by s1. Copying takes place as if the n characters from the
+N    * object pointed to by s2 are first copied into a temporary array of n
+N    * characters that does not overlap the objects pointed to by s1 and s2,
+N    * and then the n characters from the temporary array are copied into the
+N    * object pointed to by s1.
+N    * Returns: the value of s1.
+N    */
+Nextern _ARMABI char *strcpy(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) char *strcpy(char * __restrict  , const char * __restrict  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * copies the string pointed to by s2 (including the terminating nul
+N    * character) into the array pointed to by s1. If copying takes place
+N    * between objects that overlap, the behaviour is undefined.
+N    * Returns: the value of s1.
+N    */
+Nextern _ARMABI char *strncpy(char * __restrict /*s1*/, const char * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) char *strncpy(char * __restrict  , const char * __restrict  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * copies not more than n characters (characters that follow a null
+N    * character are not copied) from the array pointed to by s2 into the array
+N    * pointed to by s1. If copying takes place between objects that overlap,
+N    * the behaviour is undefined.
+N    * Returns: the value of s1.
+N    */
+N
+Nextern _ARMABI char *strcat(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) char *strcat(char * __restrict  , const char * __restrict  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * appends a copy of the string pointed to by s2 (including the terminating
+N    * null character) to the end of the string pointed to by s1. The initial
+N    * character of s2 overwrites the null character at the end of s1.
+N    * Returns: the value of s1.
+N    */
+Nextern _ARMABI char *strncat(char * __restrict /*s1*/, const char * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) char *strncat(char * __restrict  , const char * __restrict  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * appends not more than n characters (a null character and characters that
+N    * follow it are not appended) from the array pointed to by s2 to the end of
+N    * the string pointed to by s1. The initial character of s2 overwrites the
+N    * null character at the end of s1. A terminating null character is always
+N    * appended to the result.
+N    * Returns: the value of s1.
+N    */
+N
+N/*
+N * The sign of a nonzero value returned by the comparison functions is
+N * determined by the sign of the difference between the values of the first
+N * pair of characters (both interpreted as unsigned char) that differ in the
+N * objects being compared.
+N */
+N
+Nextern _ARMABI int memcmp(const void * /*s1*/, const void * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) int memcmp(const void *  , const void *  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * compares the first n characters of the object pointed to by s1 to the
+N    * first n characters of the object pointed to by s2.
+N    * Returns: an integer greater than, equal to, or less than zero, according
+N    *          as the object pointed to by s1 is greater than, equal to, or
+N    *          less than the object pointed to by s2.
+N    */
+Nextern _ARMABI int strcmp(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) int strcmp(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * compares the string pointed to by s1 to the string pointed to by s2.
+N    * Returns: an integer greater than, equal to, or less than zero, according
+N    *          as the string pointed to by s1 is greater than, equal to, or
+N    *          less than the string pointed to by s2.
+N    */
+Nextern _ARMABI int strncmp(const char * /*s1*/, const char * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) int strncmp(const char *  , const char *  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * compares not more than n characters (characters that follow a null
+N    * character are not compared) from the array pointed to by s1 to the array
+N    * pointed to by s2.
+N    * Returns: an integer greater than, equal to, or less than zero, according
+N    *          as the string pointed to by s1 is greater than, equal to, or
+N    *          less than the string pointed to by s2.
+N    */
+Nextern _ARMABI int strcasecmp(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) int strcasecmp(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * compares the string pointed to by s1 to the string pointed to by s2,
+N    * case-insensitively as defined by the current locale.
+N    * Returns: an integer greater than, equal to, or less than zero, according
+N    *          as the string pointed to by s1 is greater than, equal to, or
+N    *          less than the string pointed to by s2.
+N    */
+Nextern _ARMABI int strncasecmp(const char * /*s1*/, const char * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) int strncasecmp(const char *  , const char *  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * compares not more than n characters (characters that follow a null
+N    * character are not compared) from the array pointed to by s1 to the array
+N    * pointed to by s2, case-insensitively as defined by the current locale.
+N    * Returns: an integer greater than, equal to, or less than zero, according
+N    *          as the string pointed to by s1 is greater than, equal to, or
+N    *          less than the string pointed to by s2.
+N    */
+Nextern _ARMABI int strcoll(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) int strcoll(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * compares the string pointed to by s1 to the string pointed to by s2, both
+N    * interpreted as appropriate to the LC_COLLATE category of the current
+N    * locale.
+N    * Returns: an integer greater than, equal to, or less than zero, according
+N    *          as the string pointed to by s1 is greater than, equal to, or
+N    *          less than the string pointed to by s2 when both are interpreted
+N    *          as appropriate to the current locale.
+N    */
+N
+Nextern _ARMABI size_t strxfrm(char * __restrict /*s1*/, const char * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(2)));
+Xextern __declspec(__nothrow) size_t strxfrm(char * __restrict  , const char * __restrict  , size_t  ) __attribute__((__nonnull__(2)));
+N   /*
+N    * transforms the string pointed to by s2 and places the resulting string
+N    * into the array pointed to by s1. The transformation function is such that
+N    * if the strcmp function is applied to two transformed strings, it returns
+N    * a value greater than, equal to or less than zero, corresponding to the
+N    * result of the strcoll function applied to the same two original strings.
+N    * No more than n characters are placed into the resulting array pointed to
+N    * by s1, including the terminating null character. If n is zero, s1 is
+N    * permitted to be a null pointer. If copying takes place between objects
+N    * that overlap, the behaviour is undefined.
+N    * Returns: The length of the transformed string is returned (not including
+N    *          the terminating null character). If the value returned is n or
+N    *          more, the contents of the array pointed to by s1 are
+N    *          indeterminate.
+N    */
+N
+N
+N#ifdef __cplusplus
+Sextern _ARMABI const void *memchr(const void * /*s*/, int /*c*/, size_t /*n*/) __attribute__((__nonnull__(1)));
+Sextern "C++" void *memchr(void * __s, int __c, size_t __n) __attribute__((__nonnull__(1)));
+Sextern "C++" inline void *memchr(void * __s, int __c, size_t __n)
+S    { return const_cast<void *>(memchr(const_cast<const void *>(__s), __c, __n)); }
+N#else
+Nextern _ARMABI void *memchr(const void * /*s*/, int /*c*/, size_t /*n*/) __attribute__((__nonnull__(1)));
+Xextern __declspec(__nothrow) void *memchr(const void *  , int  , size_t  ) __attribute__((__nonnull__(1)));
+N#endif
+N   /*
+N    * locates the first occurence of c (converted to an unsigned char) in the
+N    * initial n characters (each interpreted as unsigned char) of the object
+N    * pointed to by s.
+N    * Returns: a pointer to the located character, or a null pointer if the
+N    *          character does not occur in the object.
+N    */
+N
+N#ifdef __cplusplus
+Sextern _ARMABI const char *strchr(const char * /*s*/, int /*c*/) __attribute__((__nonnull__(1)));
+Sextern "C++" char *strchr(char * __s, int __c) __attribute__((__nonnull__(1)));
+Sextern "C++" inline char *strchr(char * __s, int __c)
+S    { return const_cast<char *>(strchr(const_cast<const char *>(__s), __c)); }
+N#else
+Nextern _ARMABI char *strchr(const char * /*s*/, int /*c*/) __attribute__((__nonnull__(1)));
+Xextern __declspec(__nothrow) char *strchr(const char *  , int  ) __attribute__((__nonnull__(1)));
+N#endif
+N   /*
+N    * locates the first occurence of c (converted to an char) in the string
+N    * pointed to by s (including the terminating null character).
+N    * Returns: a pointer to the located character, or a null pointer if the
+N    *          character does not occur in the string.
+N    */
+N
+Nextern _ARMABI size_t strcspn(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) size_t strcspn(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * computes the length of the initial segment of the string pointed to by s1
+N    * which consists entirely of characters not from the string pointed to by
+N    * s2. The terminating null character is not considered part of s2.
+N    * Returns: the length of the segment.
+N    */
+N
+N#ifdef __cplusplus
+Sextern _ARMABI const char *strpbrk(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Sextern "C++" char *strpbrk(char * __s1, const char * __s2) __attribute__((__nonnull__(1,2)));
+Sextern "C++" inline char *strpbrk(char * __s1, const char * __s2)
+S    { return const_cast<char *>(strpbrk(const_cast<const char *>(__s1), __s2)); }
+N#else
+Nextern _ARMABI char *strpbrk(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) char *strpbrk(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N#endif
+N   /*
+N    * locates the first occurence in the string pointed to by s1 of any
+N    * character from the string pointed to by s2.
+N    * Returns: returns a pointer to the character, or a null pointer if no
+N    *          character form s2 occurs in s1.
+N    */
+N
+N#ifdef __cplusplus
+Sextern _ARMABI const char *strrchr(const char * /*s*/, int /*c*/) __attribute__((__nonnull__(1)));
+Sextern "C++" char *strrchr(char * __s, int __c) __attribute__((__nonnull__(1)));
+Sextern "C++" inline char *strrchr(char * __s, int __c)
+S    { return const_cast<char *>(strrchr(const_cast<const char *>(__s), __c)); }
+N#else
+Nextern _ARMABI char *strrchr(const char * /*s*/, int /*c*/) __attribute__((__nonnull__(1)));
+Xextern __declspec(__nothrow) char *strrchr(const char *  , int  ) __attribute__((__nonnull__(1)));
+N#endif
+N   /*
+N    * locates the last occurence of c (converted to a char) in the string
+N    * pointed to by s. The terminating null character is considered part of
+N    * the string.
+N    * Returns: returns a pointer to the character, or a null pointer if c does
+N    *          not occur in the string.
+N    */
+N
+Nextern _ARMABI size_t strspn(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) size_t strspn(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * computes the length of the initial segment of the string pointed to by s1
+N    * which consists entirely of characters from the string pointed to by S2
+N    * Returns: the length of the segment.
+N    */
+N
+N#ifdef __cplusplus
+Sextern _ARMABI const char *strstr(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Sextern "C++" char *strstr(char * __s1, const char * __s2) __attribute__((__nonnull__(1,2)));
+Sextern "C++" inline char *strstr(char * __s1, const char * __s2)
+S    { return const_cast<char *>(strstr(const_cast<const char *>(__s1), __s2)); }
+N#else
+Nextern _ARMABI char *strstr(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) char *strstr(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
+N#endif
+N   /*
+N    * locates the first occurence in the string pointed to by s1 of the
+N    * sequence of characters (excluding the terminating null character) in the
+N    * string pointed to by s2.
+N    * Returns: a pointer to the located string, or a null pointer if the string
+N    *          is not found.
+N    */
+N
+Nextern _ARMABI char *strtok(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(2)));
+Xextern __declspec(__nothrow) char *strtok(char * __restrict  , const char * __restrict  ) __attribute__((__nonnull__(2)));
+Nextern _ARMABI char *_strtok_r(char * /*s1*/, const char * /*s2*/, char ** /*ptr*/) __attribute__((__nonnull__(2,3)));
+Xextern __declspec(__nothrow) char *_strtok_r(char *  , const char *  , char **  ) __attribute__((__nonnull__(2,3)));
+N#ifndef __STRICT_ANSI__
+Nextern _ARMABI char *strtok_r(char * /*s1*/, const char * /*s2*/, char ** /*ptr*/) __attribute__((__nonnull__(2,3)));
+Xextern __declspec(__nothrow) char *strtok_r(char *  , const char *  , char **  ) __attribute__((__nonnull__(2,3)));
+N#endif
+N   /*
+N    * A sequence of calls to the strtok function breaks the string pointed to
+N    * by s1 into a sequence of tokens, each of which is delimited by a
+N    * character from the string pointed to by s2. The first call in the
+N    * sequence has s1 as its first argument, and is followed by calls with a
+N    * null pointer as their first argument. The separator string pointed to by
+N    * s2 may be different from call to call.
+N    * The first call in the sequence searches for the first character that is
+N    * not contained in the current separator string s2. If no such character
+N    * is found, then there are no tokens in s1 and the strtok function returns
+N    * a null pointer. If such a character is found, it is the start of the
+N    * first token.
+N    * The strtok function then searches from there for a character that is
+N    * contained in the current separator string. If no such character is found,
+N    * the current token extends to the end of the string pointed to by s1, and
+N    * subsequent searches for a token will fail. If such a character is found,
+N    * it is overwritten by a null character, which terminates the current
+N    * token. The strtok function saves a pointer to the following character,
+N    * from which the next search for a token will start.
+N    * Each subsequent call, with a null pointer as the value for the first
+N    * argument, starts searching from the saved pointer and behaves as
+N    * described above.
+N    * Returns: pointer to the first character of a token, or a null pointer if
+N    *          there is no token.
+N    *
+N    * strtok_r() is a common extension which works exactly like
+N    * strtok(), but instead of storing its state in a hidden
+N    * library variable, requires the user to pass in a pointer to a
+N    * char * variable which will be used instead. Any sequence of
+N    * calls to strtok_r() passing the same char ** pointer should
+N    * behave exactly like the corresponding sequence of calls to
+N    * strtok(). This means that strtok_r() can safely be used in
+N    * multi-threaded programs, and also that you can tokenise two
+N    * strings in parallel.
+N    */
+N
+Nextern _ARMABI void *memset(void * /*s*/, int /*c*/, size_t /*n*/) __attribute__((__nonnull__(1)));
+Xextern __declspec(__nothrow) void *memset(void *  , int  , size_t  ) __attribute__((__nonnull__(1)));
+N   /*
+N    * copies the value of c (converted to an unsigned char) into each of the
+N    * first n charactes of the object pointed to by s.
+N    * Returns: the value of s.
+N    */
+Nextern _ARMABI char *strerror(int /*errnum*/);
+Xextern __declspec(__nothrow) char *strerror(int  );
+N   /*
+N    * maps the error number in errnum to an error message string.
+N    * Returns: a pointer to the string, the contents of which are
+N    *          implementation-defined. The array pointed to shall not be
+N    *          modified by the program, but may be overwritten by a
+N    *          subsequent call to the strerror function.
+N    */
+Nextern _ARMABI size_t strlen(const char * /*s*/) __attribute__((__nonnull__(1)));
+Xextern __declspec(__nothrow) size_t strlen(const char *  ) __attribute__((__nonnull__(1)));
+N   /*
+N    * computes the length of the string pointed to by s.
+N    * Returns: the number of characters that precede the terminating null
+N    *          character.
+N    */
+N
+Nextern _ARMABI size_t strlcpy(char * /*dst*/, const char * /*src*/, size_t /*len*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) size_t strlcpy(char *  , const char *  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * copies the string src into the string dst, using no more than
+N    * len bytes of dst. Always null-terminates dst _within the
+N    * length len (i.e. will copy at most len-1 bytes of string plus
+N    * a NUL), unless len is actually zero.
+N    * 
+N    * Return value is the length of the string that _would_ have
+N    * been written, i.e. the length of src. Thus, the operation
+N    * succeeded without truncation if and only if ret < len;
+N    * otherwise, the value in ret tells you how big to make dst if
+N    * you decide to reallocate it. (That value does _not_ include
+N    * the NUL.)
+N    * 
+N    * This is a BSD-derived library extension, which we are
+N    * permitted to declare in a standard header because ISO defines
+N    * function names beginning with 'str' as reserved for future
+N    * expansion of <string.h>.
+N    */
+N
+Nextern _ARMABI size_t strlcat(char * /*dst*/, const char * /*src*/, size_t /*len*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) size_t strlcat(char *  , const char *  , size_t  ) __attribute__((__nonnull__(1,2)));
+N   /*
+N    * concatenates the string src to the string dst, using no more
+N    * than len bytes of dst. Always null-terminates dst _within the
+N    * length len (i.e. will copy at most len-1 bytes of string plus
+N    * a NUL), unless len is actually zero.
+N    * 
+N    * Return value is the length of the string that _would_ have
+N    * been written, i.e. the length of src plus the original length
+N    * of dst. Thus, the operation succeeded without truncation if
+N    * and only if ret < len; otherwise, the value in ret tells you
+N    * how big to make dst if you decide to reallocate it. (That
+N    * value does _not_ include the NUL.)
+N    * 
+N    * If no NUL is encountered within the first len bytes of dst,
+N    * then the length of dst is considered to have been equal to
+N    * len for the purposes of the return value (as if there were a
+N    * NUL at dst[len]). Thus, the return value in this case is len
+N    * + strlen(src).
+N    * 
+N    * This is a BSD-derived library extension, which we are
+N    * permitted to declare in a standard header because ISO defines
+N    * function names beginning with 'str' as reserved for future
+N    * expansion of <string.h>.
+N    */
+N
+Nextern _ARMABI void _membitcpybl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitcpybl(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitcpybb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitcpybb(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitcpyhl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitcpyhl(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitcpyhb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitcpyhb(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitcpywl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitcpywl(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitcpywb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitcpywb(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitmovebl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitmovebl(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitmovebb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitmovebb(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitmovehl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitmovehl(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitmovehb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitmovehb(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitmovewl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitmovewl(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+Nextern _ARMABI void _membitmovewb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+Xextern __declspec(__nothrow) void _membitmovewb(void *  , const void *  , int  , int  , size_t  ) __attribute__((__nonnull__(1,2)));
+N    /*
+N     * Copies or moves a piece of memory from one place to another,
+N     * with one-bit granularity. So you can start or finish a copy
+N     * part way through a byte, and you can copy between regions
+N     * with different alignment within a byte.
+N     * 
+N     * All these functions have the same prototype: two void *
+N     * pointers for destination and source, then two integers
+N     * giving the bit offset from those pointers, and finally the
+N     * number of bits to copy.
+N     * 
+N     * Just like memcpy and memmove, the "cpy" functions copy as
+N     * fast as they can in the assumption that the memory regions
+N     * do not overlap, while the "move" functions cope correctly
+N     * with overlap.
+N     *
+N     * Treating memory as a stream of individual bits requires
+N     * defining a convention about what order those bits are
+N     * considered to be arranged in. The above functions support
+N     * multiple conventions:
+N     * 
+N     *  - the "bl" functions consider the unit of memory to be the
+N     *    byte, and consider the bits within each byte to be
+N     *    arranged in little-endian fashion, so that the LSB comes
+N     *    first. (For example, membitcpybl(a,b,0,7,1) would copy
+N     *    the MSB of the byte at b to the LSB of the byte at a.)
+N     * 
+N     *  - the "bb" functions consider the unit of memory to be the
+N     *    byte, and consider the bits within each byte to be
+N     *    arranged in big-endian fashion, so that the MSB comes
+N     *    first.
+N     * 
+N     *  - the "hl" functions consider the unit of memory to be the
+N     *    16-bit halfword, and consider the bits within each word
+N     *    to be arranged in little-endian fashion.
+N     * 
+N     *  - the "hb" functions consider the unit of memory to be the
+N     *    16-bit halfword, and consider the bits within each word
+N     *    to be arranged in big-endian fashion.
+N     * 
+N     *  - the "wl" functions consider the unit of memory to be the
+N     *    32-bit word, and consider the bits within each word to be
+N     *    arranged in little-endian fashion.
+N     * 
+N     *  - the "wb" functions consider the unit of memory to be the
+N     *    32-bit word, and consider the bits within each word to be
+N     *    arranged in big-endian fashion.
+N     */
+N
+N    #ifdef __cplusplus
+S         }  /* extern "C" */
+S      }  /* namespace std */
+N    #endif /* __cplusplus */
+N  #endif /* __STRING_DECLS */
+N
+N  #ifdef __cplusplus
+S    #ifndef __STRING_NO_EXPORTS
+S      using ::std::size_t;
+S      using ::std::memcpy;
+S      using ::std::memmove;
+S      using ::std::strcpy;
+S      using ::std::strncpy;
+S      using ::std::strcat;
+S      using ::std::strncat;
+S      using ::std::memcmp;
+S      using ::std::strcmp;
+S      using ::std::strncmp;
+S      using ::std::strcasecmp;
+S      using ::std::strncasecmp;
+S      using ::std::strcoll;
+S      using ::std::strxfrm;
+S      using ::std::memchr;
+S      using ::std::strchr;
+S      using ::std::strcspn;
+S      using ::std::strpbrk;
+S      using ::std::strrchr;
+S      using ::std::strspn;
+S      using ::std::strstr;
+S      using ::std::strtok;
+S#ifndef __STRICT_ANSI__
+S      using ::std::strtok_r;
+S#endif
+S      using ::std::_strtok_r;
+S      using ::std::memset;
+S      using ::std::strerror;
+S      using ::std::strlen;
+S      using ::std::strlcpy;
+S      using ::std::strlcat;
+S      using ::std::_membitcpybl;
+S      using ::std::_membitcpybb;
+S      using ::std::_membitcpyhl;
+S      using ::std::_membitcpyhb;
+S      using ::std::_membitcpywl;
+S      using ::std::_membitcpywb;
+S      using ::std::_membitmovebl;
+S      using ::std::_membitmovebb;
+S      using ::std::_membitmovehl;
+S      using ::std::_membitmovehb;
+S      using ::std::_membitmovewl;
+S      using ::std::_membitmovewb;
+S    #endif /* __STRING_NO_EXPORTS */
+N  #endif /* __cplusplus */
+N
+N#endif
+N
+N/* end of string.h */
+N
+L 27 "..\..\..\source\target\target_family.h" 2
+N
+N//! @brief Creates a family ID from a vendor ID and family index within that vendor.
+N#define VENDOR_TO_FAMILY(vendor, family) ((vendor) << 8 | (family))
+N
+N//! @brief States into which the target can be placed.
+N//!
+N//! These enums are passed to target_set_state() and indicate the desired state into which
+N//! the target should be reset.
+Ntypedef enum _target_state {
+N    RESET_HOLD,              //!< Hold target in reset
+N    RESET_PROGRAM,           //!< Reset target and setup for flash programming
+N    RESET_RUN,               //!< Reset target and run normally
+N    NO_DEBUG,                //!< Disable debug on running target
+N    DEBUG,                   //!< Enable debug on running target
+N    HALT,                    //!< Halt the target without resetting it
+N    RUN,                     //!< Resume the target without resetting it
+N    POST_FLASH_RESET,        //!< Reset target after flash programming
+N    POWER_ON,                //!< Poweron the target
+N    SHUTDOWN,                //!< Poweroff the target
+N} target_state_t;
+N
+N//! @brief Options for reset.
+Ntypedef enum _reset_type {
+N    kHardwareReset = 1,
+N    kSoftwareReset,
+N} reset_type_t;
+N
+N//! @brief Unique IDs for vendors.
+N//!
+N//! The vendor IDs are the same as those used for the _DeviceVendorEnum_ defined for the PDSC file
+N//! format from CMSIS-Packs. See the [DeviceVendorEnum
+N//! documentation](https://arm-software.github.io/CMSIS_5/Pack/html/pdsc_family_pg.html#DeviceVendorEnum)
+N//! for the list of ID values.
+Nenum _vendor_ids {
+N    kStub_VendorID = 0,
+N    kNXP_VendorID = 11,
+N    kTI_VendorID = 16,
+N    kNordic_VendorID = 54,
+N    kToshiba_VendorID = 92,
+N    kRenesas_VendorID = 117,
+N    kWiznet_VendorID = 122,
+N    kRealtek_VendorID = 124,
+N    kAmbiq_VendorID = 120,
+N};
+N
+N//! @brief Unique IDs for device families supported by DAPLink.
+N//!
+N//! The values of these enums are created with the VENDOR_TO_FAMILY() macro. Vendor IDs come from
+N//! the #_vendor_ids enumeration. The family index for each ID is simply an integer that is unique
+N//! within the family.
+N//!
+N//! There are several "stub" families defined with a stub vendor. These families are meant to be
+N//! used for devices that do not require any customized behaviour in order to be successfully
+N//! controlled by DAPLink. The individual stub families provide some options for what reset type
+N//! should be used, either hardware or software.
+N//!
+N//! To add a new family, first determine if you can simply use one of the stub families. For many
+N//! devices, the stub families are sufficient and using them reduces complexity.
+N//!
+N//! If you do need a new family ID, first check if the vendor is present in #_vendor_ids. If not,
+N//! add the vendor ID to that enum (see its documentation for the source of vendor ID values).
+N//! Then pick a unique family index by adding 1 to the highest existing family index within that
+N//! vendor. For a family with a new vendor, the family index should be 1.
+Ntypedef enum _family_id {
+N    kStub_HWReset_FamilyID = VENDOR_TO_FAMILY(kStub_VendorID, 1),
+X    kStub_HWReset_FamilyID = ((kStub_VendorID) << 8 | (1)),
+N    kStub_SWVectReset_FamilyID = VENDOR_TO_FAMILY(kStub_VendorID, 2),
+X    kStub_SWVectReset_FamilyID = ((kStub_VendorID) << 8 | (2)),
+N    kStub_SWSysReset_FamilyID = VENDOR_TO_FAMILY(kStub_VendorID, 3),
+X    kStub_SWSysReset_FamilyID = ((kStub_VendorID) << 8 | (3)),
+N    kNXP_KinetisK_FamilyID = VENDOR_TO_FAMILY(kNXP_VendorID, 1),
+X    kNXP_KinetisK_FamilyID = ((kNXP_VendorID) << 8 | (1)),
+N    kNXP_KinetisL_FamilyID = VENDOR_TO_FAMILY(kNXP_VendorID, 2),
+X    kNXP_KinetisL_FamilyID = ((kNXP_VendorID) << 8 | (2)),
+N    kNXP_Mimxrt_FamilyID = VENDOR_TO_FAMILY(kNXP_VendorID, 3),
+X    kNXP_Mimxrt_FamilyID = ((kNXP_VendorID) << 8 | (3)),
+N    kNXP_RapidIot_FamilyID = VENDOR_TO_FAMILY(kNXP_VendorID, 4),
+X    kNXP_RapidIot_FamilyID = ((kNXP_VendorID) << 8 | (4)),
+N    kNXP_KinetisK32W_FamilyID = VENDOR_TO_FAMILY(kNXP_VendorID, 5),
+X    kNXP_KinetisK32W_FamilyID = ((kNXP_VendorID) << 8 | (5)),
+N    kNordic_Nrf51_FamilyID = VENDOR_TO_FAMILY(kNordic_VendorID, 1),
+X    kNordic_Nrf51_FamilyID = ((kNordic_VendorID) << 8 | (1)),
+N    kNordic_Nrf52_FamilyID = VENDOR_TO_FAMILY(kNordic_VendorID, 2),
+X    kNordic_Nrf52_FamilyID = ((kNordic_VendorID) << 8 | (2)),
+N    kRealtek_Rtl8195am_FamilyID = VENDOR_TO_FAMILY(kRealtek_VendorID, 1),
+X    kRealtek_Rtl8195am_FamilyID = ((kRealtek_VendorID) << 8 | (1)),
+N    kTI_Cc3220sf_FamilyID = VENDOR_TO_FAMILY(kTI_VendorID, 1),
+X    kTI_Cc3220sf_FamilyID = ((kTI_VendorID) << 8 | (1)),
+N    kToshiba_Tz_FamilyID = VENDOR_TO_FAMILY(kToshiba_VendorID, 1),
+X    kToshiba_Tz_FamilyID = ((kToshiba_VendorID) << 8 | (1)),
+N    kWiznet_W7500_FamilyID = VENDOR_TO_FAMILY(kWiznet_VendorID, 1),
+X    kWiznet_W7500_FamilyID = ((kWiznet_VendorID) << 8 | (1)),
+N    kRenesas_FamilyID = VENDOR_TO_FAMILY(kRenesas_VendorID, 1),
+X    kRenesas_FamilyID = ((kRenesas_VendorID) << 8 | (1)),
+N    kAmbiq_ama3b1kk_FamilyID = VENDOR_TO_FAMILY(kAmbiq_VendorID, 1),
+X    kAmbiq_ama3b1kk_FamilyID = ((kAmbiq_VendorID) << 8 | (1)),
+N} family_id_t;
+N
+N//! @brief Defines all characteristics of a device family.
+Ntypedef struct target_family_descriptor {
+N    uint16_t family_id;                         /*!< Use to select or identify target family from defined target family or custom ones */
+N    reset_type_t default_reset_type;            /*!< Target family can select predefined reset from  kHardwareReset and kSoftwareReset */
+N    uint32_t soft_reset_type;                   /*!< Families can override software reset type to VECTRESET or SYSRESETREQ */
+N    void (*target_before_init_debug)(void);     /*!< Target dependant function before debug initialization */
+N    void (*prerun_target_config)(void);         /*!< Target specific initialization */
+N    uint8_t (*target_unlock_sequence)(void);    /*!< Unlock targets that can enter lock state */
+N    uint8_t (*security_bits_set)(uint32_t addr, uint8_t *data, uint32_t size);  /*!< Check security bits in the programmable flash region */
+N    uint8_t (*target_set_state)(target_state_t state);      /*!< Families can customize target debug states */
+N    void (*swd_set_target_reset)(uint8_t asserted);         /*!< Families can customize how to send reset to the target */
+N    uint8_t (*validate_bin_nvic)(const uint8_t *buf);       /*!< Validate a bin file to be flash by drag and drop */
+N    uint8_t (*validate_hexfile)(const uint8_t *buf);        /*!< Validate a hex file to be flash by drag and drop */
+N    uint32_t apsel;                             /*!< APSEL for the family */
+N} target_family_descriptor_t;
+N
+N//! @brief The active family used by the board.
+N//!
+N//! This global is initialized by init_family() just after DAPLink boots. Normally it matches
+N//! the family specified by the #board_info_t::family_id field of #g_board_info.
+Nextern const target_family_descriptor_t *g_target_family;
+N
+N#ifdef __cplusplus
+Sextern "C" {
+N#endif
+N
+N//! @brief Initialize g_target_family.
+Nvoid init_family(void);
+N
+N//! @brief Reset the target into a new state.
+N//!
+N//! Used to prepare the target for some operation, or release it for user control.
+Nuint8_t target_set_state(target_state_t state);
+N
+N//! @brief Controls reset of the target.
+Nvoid swd_set_target_reset(uint8_t asserted);
+N
+N//! @brief Get the APSEL for the AHB-AP to use for controlling the target.
+Nuint32_t target_get_apsel(void);
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif
+L 29 "..\..\..\source\daplink\interface\swd_host.h" 2
+N#ifdef TARGET_MCU_CORTEX_A
+S#include "debug_ca.h"
+N#else
+N#include "debug_cm.h"
+L 1 "..\..\..\source\daplink\cmsis-dap\debug_cm.h" 1
+N/**
+N * @file    debug_cm.h
+N * @brief   Access to ARM DAP (Cortex-M) using CMSIS-DAP protocol
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2016, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef DEBUG_CM_H
+N#define DEBUG_CM_H
+N
+N#include "DAP.h"
+L 1 "..\..\..\source\daplink\cmsis-dap\DAP.h" 1
+N/*
+N * Copyright (c) 2013-2020 ARM Limited. All rights reserved.
+N * Copyright 2019, Cypress Semiconductor Corporation
+N * or a subsidiary of Cypress Semiconductor Corporation.
+N *
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the License); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N *
+N * ----------------------------------------------------------------------
+N *
+N * $Date:        26. November 2019
+N * $Revision:    V2.0.0
+N *
+N * Project:      CMSIS-DAP Include
+N * Title:        DAP.h Definitions
+N *
+N *---------------------------------------------------------------------------*/
+N
+N#ifndef __DAP_H__
+N#define __DAP_H__
+N
+N
+N// DAP Firmware Version
+N#ifdef  DAP_FW_V1
+S#define DAP_FW_VER                      "1.2.0"
+N#else
+N#define DAP_FW_VER                      "2.0.0"
+N#endif
+N
+N// DAP Command IDs
+N#define ID_DAP_Info                     0x00U
+N#define ID_DAP_HostStatus               0x01U
+N#define ID_DAP_Connect                  0x02U
+N#define ID_DAP_Disconnect               0x03U
+N#define ID_DAP_TransferConfigure        0x04U
+N#define ID_DAP_Transfer                 0x05U
+N#define ID_DAP_TransferBlock            0x06U
+N#define ID_DAP_TransferAbort            0x07U
+N#define ID_DAP_WriteABORT               0x08U
+N#define ID_DAP_Delay                    0x09U
+N#define ID_DAP_ResetTarget              0x0AU
+N#define ID_DAP_SWJ_Pins                 0x10U
+N#define ID_DAP_SWJ_Clock                0x11U
+N#define ID_DAP_SWJ_Sequence             0x12U
+N#define ID_DAP_SWD_Configure            0x13U
+N#define ID_DAP_SWD_Sequence             0x1DU
+N#define ID_DAP_JTAG_Sequence            0x14U
+N#define ID_DAP_JTAG_Configure           0x15U
+N#define ID_DAP_JTAG_IDCODE              0x16U
+N#define ID_DAP_SWO_Transport            0x17U
+N#define ID_DAP_SWO_Mode                 0x18U
+N#define ID_DAP_SWO_Baudrate             0x19U
+N#define ID_DAP_SWO_Control              0x1AU
+N#define ID_DAP_SWO_Status               0x1BU
+N#define ID_DAP_SWO_ExtendedStatus       0x1EU
+N#define ID_DAP_SWO_Data                 0x1CU
+N
+N#define ID_DAP_QueueCommands            0x7EU
+N#define ID_DAP_ExecuteCommands          0x7FU
+N
+N// DAP Vendor Command IDs
+N#define ID_DAP_Vendor0                  0x80U
+N#define ID_DAP_Vendor1                  0x81U
+N#define ID_DAP_Vendor2                  0x82U
+N#define ID_DAP_Vendor3                  0x83U
+N#define ID_DAP_Vendor4                  0x84U
+N#define ID_DAP_Vendor5                  0x85U
+N#define ID_DAP_Vendor6                  0x86U
+N#define ID_DAP_Vendor7                  0x87U
+N#define ID_DAP_Vendor8                  0x88U
+N#define ID_DAP_Vendor9                  0x89U
+N#define ID_DAP_Vendor10                 0x8AU
+N#define ID_DAP_Vendor11                 0x8BU
+N#define ID_DAP_Vendor12                 0x8CU
+N#define ID_DAP_Vendor13                 0x8DU
+N#define ID_DAP_Vendor14                 0x8EU
+N#define ID_DAP_Vendor15                 0x8FU
+N#define ID_DAP_Vendor16                 0x90U
+N#define ID_DAP_Vendor17                 0x91U
+N#define ID_DAP_Vendor18                 0x92U
+N#define ID_DAP_Vendor19                 0x93U
+N#define ID_DAP_Vendor20                 0x94U
+N#define ID_DAP_Vendor21                 0x95U
+N#define ID_DAP_Vendor22                 0x96U
+N#define ID_DAP_Vendor23                 0x97U
+N#define ID_DAP_Vendor24                 0x98U
+N#define ID_DAP_Vendor25                 0x99U
+N#define ID_DAP_Vendor26                 0x9AU
+N#define ID_DAP_Vendor27                 0x9BU
+N#define ID_DAP_Vendor28                 0x9CU
+N#define ID_DAP_Vendor29                 0x9DU
+N#define ID_DAP_Vendor30                 0x9EU
+N#define ID_DAP_Vendor31                 0x9FU
+N
+N// DAP Extended range of Vendor Command IDs
+N
+N#define ID_DAP_VendorExFirst            0xA0U
+N#define ID_DAP_VendorExLast             0xFEU
+N
+N#define ID_DAP_Invalid                  0xFFU
+N
+N// DAP Status Code
+N#define DAP_OK                          0U
+N#define DAP_ERROR                       0xFFU
+N
+N// DAP ID
+N#define DAP_ID_VENDOR                   1U
+N#define DAP_ID_PRODUCT                  2U
+N#define DAP_ID_SER_NUM                  3U
+N#define DAP_ID_CMSIS_DAP_VER            4U
+N#define DAP_ID_FW_VER                   4U      // Deprecated alias of DAP_ID_CMSIS_DAP_VER for backwards compatibility.
+N#define DAP_ID_DEVICE_VENDOR            5U
+N#define DAP_ID_DEVICE_NAME              6U
+N#define DAP_ID_PRODUCT_FW_VER           7U
+N#define DAP_ID_CAPABILITIES             0xF0U
+N#define DAP_ID_TIMESTAMP_CLOCK          0xF1U
+N#define DAP_ID_SWO_BUFFER_SIZE          0xFDU
+N#define DAP_ID_PACKET_COUNT             0xFEU
+N#define DAP_ID_PACKET_SIZE              0xFFU
+N
+N// DAP Host Status
+N#define DAP_DEBUGGER_CONNECTED          0U
+N#define DAP_TARGET_RUNNING              1U
+N
+N// DAP Port
+N#define DAP_PORT_AUTODETECT             0U      // Autodetect Port
+N#define DAP_PORT_DISABLED               0U      // Port Disabled (I/O pins in High-Z)
+N#define DAP_PORT_SWD                    1U      // SWD Port (SWCLK, SWDIO) + nRESET
+N#define DAP_PORT_JTAG                   2U      // JTAG Port (TCK, TMS, TDI, TDO, nTRST) + nRESET
+N
+N// DAP SWJ Pins
+N#define DAP_SWJ_SWCLK_TCK               0       // SWCLK/TCK
+N#define DAP_SWJ_SWDIO_TMS               1       // SWDIO/TMS
+N#define DAP_SWJ_TDI                     2       // TDI
+N#define DAP_SWJ_TDO                     3       // TDO
+N#define DAP_SWJ_nTRST                   5       // nTRST
+N#define DAP_SWJ_nRESET                  7       // nRESET
+N
+N// DAP Transfer Request
+N#define DAP_TRANSFER_APnDP              (1U<<0)
+N#define DAP_TRANSFER_RnW                (1U<<1)
+N#define DAP_TRANSFER_A2                 (1U<<2)
+N#define DAP_TRANSFER_A3                 (1U<<3)
+N#define DAP_TRANSFER_MATCH_VALUE        (1U<<4)
+N#define DAP_TRANSFER_MATCH_MASK         (1U<<5)
+N#define DAP_TRANSFER_TIMESTAMP          (1U<<7)
+N
+N// DAP Transfer Response
+N#define DAP_TRANSFER_OK                 (1U<<0)
+N#define DAP_TRANSFER_WAIT               (1U<<1)
+N#define DAP_TRANSFER_FAULT              (1U<<2)
+N#define DAP_TRANSFER_ERROR              (1U<<3)
+N#define DAP_TRANSFER_MISMATCH           (1U<<4)
+N
+N// DAP SWO Trace Mode
+N#define DAP_SWO_OFF                     0U
+N#define DAP_SWO_UART                    1U
+N#define DAP_SWO_MANCHESTER              2U
+N
+N// DAP SWO Trace Status
+N#define DAP_SWO_CAPTURE_ACTIVE          (1U<<0)
+N#define DAP_SWO_CAPTURE_PAUSED          (1U<<1)
+N#define DAP_SWO_STREAM_ERROR            (1U<<6)
+N#define DAP_SWO_BUFFER_OVERRUN          (1U<<7)
+N
+N
+N// Debug Port Register Addresses
+N#define DP_IDCODE                       0x00U   // IDCODE Register (SW Read only)
+N#define DP_ABORT                        0x00U   // Abort Register (SW Write only)
+N#define DP_CTRL_STAT                    0x04U   // Control & Status
+N#define DP_WCR                          0x04U   // Wire Control Register (SW Only)
+N#define DP_SELECT                       0x08U   // Select Register (JTAG R/W & SW W)
+N#define DP_RESEND                       0x08U   // Resend (SW Read Only)
+N#define DP_RDBUFF                       0x0CU   // Read Buffer (Read Only)
+N
+N// JTAG IR Codes
+N#define JTAG_ABORT                      0x08U
+N#define JTAG_DPACC                      0x0AU
+N#define JTAG_APACC                      0x0BU
+N#define JTAG_IDCODE                     0x0EU
+N#define JTAG_BYPASS                     0x0FU
+N
+N// JTAG Sequence Info
+N#define JTAG_SEQUENCE_TCK               0x3FU   // TCK count
+N#define JTAG_SEQUENCE_TMS               0x40U   // TMS value
+N#define JTAG_SEQUENCE_TDO               0x80U   // TDO capture
+N
+N// SWD Sequence Info
+N#define SWD_SEQUENCE_CLK                0x3FU   // SWCLK count
+N#define SWD_SEQUENCE_DIN                0x80U   // SWDIO capture
+N
+N
+N#include <stddef.h>
+N#include <stdint.h>
+N#include "cmsis_compiler.h"
+L 1 "..\..\..\source\cmsis-core\cmsis_compiler.h" 1
+N/**************************************************************************//**
+N * @file     cmsis_compiler.h
+N * @brief    CMSIS compiler generic header file
+N * @version  V5.1.0
+N * @date     09. October 2018
+N ******************************************************************************/
+N/*
+N * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
+N *
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the License); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef __CMSIS_COMPILER_H
+N#define __CMSIS_COMPILER_H
+N
+N#include <stdint.h>
+N
+N/*
+N * Arm Compiler 4/5
+N */
+N#if   defined ( __CC_ARM )
+X#if   1L
+N  #include "cmsis_armcc.h"
+L 1 "..\..\..\source\cmsis-core\cmsis_armcc.h" 1
+N/**************************************************************************//**
+N * @file     cmsis_armcc.h
+N * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
+N * @version  V5.1.1
+N * @date     30. July 2019
+N ******************************************************************************/
+N/*
+N * Copyright (c) 2009-2019 Arm Limited. All rights reserved.
+N *
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the License); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef __CMSIS_ARMCC_H
+N#define __CMSIS_ARMCC_H
+N
+N
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 400677)
+X#if 1L && (5060960 < 400677)
+S  #error "Please use Arm Compiler Toolchain V4.0.677 or later!"
+N#endif
+N
+N/* CMSIS compiler control architecture macros */
+N#if ((defined (__TARGET_ARCH_6_M  ) && (__TARGET_ARCH_6_M   == 1)) || \
+N     (defined (__TARGET_ARCH_6S_M ) && (__TARGET_ARCH_6S_M  == 1))   )
+X#if ((0L && (__TARGET_ARCH_6_M   == 1)) ||      (0L && (__TARGET_ARCH_6S_M  == 1))   )
+S  #define __ARM_ARCH_6M__           1
+N#endif
+N
+N#if (defined (__TARGET_ARCH_7_M ) && (__TARGET_ARCH_7_M  == 1))
+X#if (1L && (1  == 1))
+N  #define __ARM_ARCH_7M__           1
+N#endif
+N
+N#if (defined (__TARGET_ARCH_7E_M) && (__TARGET_ARCH_7E_M == 1))
+X#if (0L && (__TARGET_ARCH_7E_M == 1))
+S  #define __ARM_ARCH_7EM__          1
+N#endif
+N
+N  /* __ARM_ARCH_8M_BASE__  not applicable */
+N  /* __ARM_ARCH_8M_MAIN__  not applicable */
+N
+N/* CMSIS compiler control DSP macros */
+N#if ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
+X#if ((0L && (__ARM_ARCH_7EM__ == 1))     )
+S  #define __ARM_FEATURE_DSP         1
+N#endif
+N
+N/* CMSIS compiler specific defines */
+N#ifndef   __ASM
+N  #define __ASM                                  __asm
+N#endif
+N#ifndef   __INLINE
+N  #define __INLINE                               __inline
+N#endif
+N#ifndef   __STATIC_INLINE
+N  #define __STATIC_INLINE                        static __inline
+N#endif
+N#ifndef   __STATIC_FORCEINLINE                 
+N  #define __STATIC_FORCEINLINE                   static __forceinline
+N#endif           
+N#ifndef   __NO_RETURN
+S  #define __NO_RETURN                            __declspec(noreturn)
+N#endif
+N#ifndef   __USED
+N  #define __USED                                 __attribute__((used))
+N#endif
+N#ifndef   __WEAK
+N  #define __WEAK                                 __attribute__((weak))
+N#endif
+N#ifndef   __PACKED
+N  #define __PACKED                               __attribute__((packed))
+N#endif
+N#ifndef   __PACKED_STRUCT
+N  #define __PACKED_STRUCT                        __packed struct
+N#endif
+N#ifndef   __PACKED_UNION
+N  #define __PACKED_UNION                         __packed union
+N#endif
+N#ifndef   __UNALIGNED_UINT32        /* deprecated */
+N  #define __UNALIGNED_UINT32(x)                  (*((__packed uint32_t *)(x)))
+N#endif
+N#ifndef   __UNALIGNED_UINT16_WRITE
+N  #define __UNALIGNED_UINT16_WRITE(addr, val)    ((*((__packed uint16_t *)(addr))) = (val))
+N#endif
+N#ifndef   __UNALIGNED_UINT16_READ
+N  #define __UNALIGNED_UINT16_READ(addr)          (*((const __packed uint16_t *)(addr)))
+N#endif
+N#ifndef   __UNALIGNED_UINT32_WRITE
+N  #define __UNALIGNED_UINT32_WRITE(addr, val)    ((*((__packed uint32_t *)(addr))) = (val))
+N#endif
+N#ifndef   __UNALIGNED_UINT32_READ
+N  #define __UNALIGNED_UINT32_READ(addr)          (*((const __packed uint32_t *)(addr)))
+N#endif
+N#ifndef   __ALIGNED
+N  #define __ALIGNED(x)                           __attribute__((aligned(x)))
+N#endif
+N#ifndef   __RESTRICT
+N  #define __RESTRICT                             __restrict
+N#endif
+N#ifndef   __COMPILER_BARRIER
+N  #define __COMPILER_BARRIER()                   __memory_changed()
+N#endif
+N
+N/* #########################  Startup and Lowlevel Init  ######################## */
+N
+N#ifndef __PROGRAM_START
+N#define __PROGRAM_START           __main
+N#endif
+N
+N#ifndef __INITIAL_SP
+N#define __INITIAL_SP              Image$$ARM_LIB_STACK$$ZI$$Limit
+N#endif
+N
+N#ifndef __STACK_LIMIT
+N#define __STACK_LIMIT             Image$$ARM_LIB_STACK$$ZI$$Base
+N#endif
+N
+N#ifndef __VECTOR_TABLE
+N#define __VECTOR_TABLE            __Vectors
+N#endif
+N
+N#ifndef __VECTOR_TABLE_ATTRIBUTE
+N#define __VECTOR_TABLE_ATTRIBUTE  __attribute((used, section("RESET")))
+N#endif
+N
+N/* ###########################  Core Function Access  ########################### */
+N/** \ingroup  CMSIS_Core_FunctionInterface
+N    \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+N  @{
+N */
+N
+N/**
+N  \brief   Enable IRQ Interrupts
+N  \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+N           Can only be executed in Privileged modes.
+N */
+N/* intrinsic void __enable_irq();     */
+N
+N
+N/**
+N  \brief   Disable IRQ Interrupts
+N  \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+N           Can only be executed in Privileged modes.
+N */
+N/* intrinsic void __disable_irq();    */
+N
+N/**
+N  \brief   Get Control Register
+N  \details Returns the content of the Control Register.
+N  \return               Control Register value
+N */
+N__STATIC_INLINE uint32_t __get_CONTROL(void)
+Xstatic __inline uint32_t __get_CONTROL(void)
+N{
+N  register uint32_t __regControl         __ASM("control");
+X  register uint32_t __regControl         __asm("control");
+N  return(__regControl);
+N}
+N
+N
+N/**
+N  \brief   Set Control Register
+N  \details Writes the given value to the Control Register.
+N  \param [in]    control  Control Register value to set
+N */
+N__STATIC_INLINE void __set_CONTROL(uint32_t control)
+Xstatic __inline void __set_CONTROL(uint32_t control)
+N{
+N  register uint32_t __regControl         __ASM("control");
+X  register uint32_t __regControl         __asm("control");
+N  __regControl = control;
+N}
+N
+N
+N/**
+N  \brief   Get IPSR Register
+N  \details Returns the content of the IPSR Register.
+N  \return               IPSR Register value
+N */
+N__STATIC_INLINE uint32_t __get_IPSR(void)
+Xstatic __inline uint32_t __get_IPSR(void)
+N{
+N  register uint32_t __regIPSR          __ASM("ipsr");
+X  register uint32_t __regIPSR          __asm("ipsr");
+N  return(__regIPSR);
+N}
+N
+N
+N/**
+N  \brief   Get APSR Register
+N  \details Returns the content of the APSR Register.
+N  \return               APSR Register value
+N */
+N__STATIC_INLINE uint32_t __get_APSR(void)
+Xstatic __inline uint32_t __get_APSR(void)
+N{
+N  register uint32_t __regAPSR          __ASM("apsr");
+X  register uint32_t __regAPSR          __asm("apsr");
+N  return(__regAPSR);
+N}
+N
+N
+N/**
+N  \brief   Get xPSR Register
+N  \details Returns the content of the xPSR Register.
+N  \return               xPSR Register value
+N */
+N__STATIC_INLINE uint32_t __get_xPSR(void)
+Xstatic __inline uint32_t __get_xPSR(void)
+N{
+N  register uint32_t __regXPSR          __ASM("xpsr");
+X  register uint32_t __regXPSR          __asm("xpsr");
+N  return(__regXPSR);
+N}
+N
+N
+N/**
+N  \brief   Get Process Stack Pointer
+N  \details Returns the current value of the Process Stack Pointer (PSP).
+N  \return               PSP Register value
+N */
+N__STATIC_INLINE uint32_t __get_PSP(void)
+Xstatic __inline uint32_t __get_PSP(void)
+N{
+N  register uint32_t __regProcessStackPointer  __ASM("psp");
+X  register uint32_t __regProcessStackPointer  __asm("psp");
+N  return(__regProcessStackPointer);
+N}
+N
+N
+N/**
+N  \brief   Set Process Stack Pointer
+N  \details Assigns the given value to the Process Stack Pointer (PSP).
+N  \param [in]    topOfProcStack  Process Stack Pointer value to set
+N */
+N__STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+Xstatic __inline void __set_PSP(uint32_t topOfProcStack)
+N{
+N  register uint32_t __regProcessStackPointer  __ASM("psp");
+X  register uint32_t __regProcessStackPointer  __asm("psp");
+N  __regProcessStackPointer = topOfProcStack;
+N}
+N
+N
+N/**
+N  \brief   Get Main Stack Pointer
+N  \details Returns the current value of the Main Stack Pointer (MSP).
+N  \return               MSP Register value
+N */
+N__STATIC_INLINE uint32_t __get_MSP(void)
+Xstatic __inline uint32_t __get_MSP(void)
+N{
+N  register uint32_t __regMainStackPointer     __ASM("msp");
+X  register uint32_t __regMainStackPointer     __asm("msp");
+N  return(__regMainStackPointer);
+N}
+N
+N
+N/**
+N  \brief   Set Main Stack Pointer
+N  \details Assigns the given value to the Main Stack Pointer (MSP).
+N  \param [in]    topOfMainStack  Main Stack Pointer value to set
+N */
+N__STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+Xstatic __inline void __set_MSP(uint32_t topOfMainStack)
+N{
+N  register uint32_t __regMainStackPointer     __ASM("msp");
+X  register uint32_t __regMainStackPointer     __asm("msp");
+N  __regMainStackPointer = topOfMainStack;
+N}
+N
+N
+N/**
+N  \brief   Get Priority Mask
+N  \details Returns the current state of the priority mask bit from the Priority Mask Register.
+N  \return               Priority Mask value
+N */
+N__STATIC_INLINE uint32_t __get_PRIMASK(void)
+Xstatic __inline uint32_t __get_PRIMASK(void)
+N{
+N  register uint32_t __regPriMask         __ASM("primask");
+X  register uint32_t __regPriMask         __asm("primask");
+N  return(__regPriMask);
+N}
+N
+N
+N/**
+N  \brief   Set Priority Mask
+N  \details Assigns the given value to the Priority Mask Register.
+N  \param [in]    priMask  Priority Mask
+N */
+N__STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
+Xstatic __inline void __set_PRIMASK(uint32_t priMask)
+N{
+N  register uint32_t __regPriMask         __ASM("primask");
+X  register uint32_t __regPriMask         __asm("primask");
+N  __regPriMask = (priMask);
+N}
+N
+N
+N#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+N     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
+X#if ((1L && (1  == 1)) ||      (0L && (__ARM_ARCH_7EM__ == 1))     )
+N
+N/**
+N  \brief   Enable FIQ
+N  \details Enables FIQ interrupts by clearing the F-bit in the CPSR.
+N           Can only be executed in Privileged modes.
+N */
+N#define __enable_fault_irq                __enable_fiq
+N
+N
+N/**
+N  \brief   Disable FIQ
+N  \details Disables FIQ interrupts by setting the F-bit in the CPSR.
+N           Can only be executed in Privileged modes.
+N */
+N#define __disable_fault_irq               __disable_fiq
+N
+N
+N/**
+N  \brief   Get Base Priority
+N  \details Returns the current value of the Base Priority register.
+N  \return               Base Priority register value
+N */
+N__STATIC_INLINE uint32_t  __get_BASEPRI(void)
+Xstatic __inline uint32_t  __get_BASEPRI(void)
+N{
+N  register uint32_t __regBasePri         __ASM("basepri");
+X  register uint32_t __regBasePri         __asm("basepri");
+N  return(__regBasePri);
+N}
+N
+N
+N/**
+N  \brief   Set Base Priority
+N  \details Assigns the given value to the Base Priority register.
+N  \param [in]    basePri  Base Priority value to set
+N */
+N__STATIC_INLINE void __set_BASEPRI(uint32_t basePri)
+Xstatic __inline void __set_BASEPRI(uint32_t basePri)
+N{
+N  register uint32_t __regBasePri         __ASM("basepri");
+X  register uint32_t __regBasePri         __asm("basepri");
+N  __regBasePri = (basePri & 0xFFU);
+N}
+N
+N
+N/**
+N  \brief   Set Base Priority with condition
+N  \details Assigns the given value to the Base Priority register only if BASEPRI masking is disabled,
+N           or the new value increases the BASEPRI priority level.
+N  \param [in]    basePri  Base Priority value to set
+N */
+N__STATIC_INLINE void __set_BASEPRI_MAX(uint32_t basePri)
+Xstatic __inline void __set_BASEPRI_MAX(uint32_t basePri)
+N{
+N  register uint32_t __regBasePriMax      __ASM("basepri_max");
+X  register uint32_t __regBasePriMax      __asm("basepri_max");
+N  __regBasePriMax = (basePri & 0xFFU);
+N}
+N
+N
+N/**
+N  \brief   Get Fault Mask
+N  \details Returns the current value of the Fault Mask register.
+N  \return               Fault Mask register value
+N */
+N__STATIC_INLINE uint32_t __get_FAULTMASK(void)
+Xstatic __inline uint32_t __get_FAULTMASK(void)
+N{
+N  register uint32_t __regFaultMask       __ASM("faultmask");
+X  register uint32_t __regFaultMask       __asm("faultmask");
+N  return(__regFaultMask);
+N}
+N
+N
+N/**
+N  \brief   Set Fault Mask
+N  \details Assigns the given value to the Fault Mask register.
+N  \param [in]    faultMask  Fault Mask value to set
+N */
+N__STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask)
+Xstatic __inline void __set_FAULTMASK(uint32_t faultMask)
+N{
+N  register uint32_t __regFaultMask       __ASM("faultmask");
+X  register uint32_t __regFaultMask       __asm("faultmask");
+N  __regFaultMask = (faultMask & (uint32_t)1U);
+N}
+N
+N#endif /* ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+N           (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
+X#endif  
+N
+N
+N/**
+N  \brief   Get FPSCR
+N  \details Returns the current value of the Floating Point Status/Control register.
+N  \return               Floating Point Status/Control register value
+N */
+N__STATIC_INLINE uint32_t __get_FPSCR(void)
+Xstatic __inline uint32_t __get_FPSCR(void)
+N{
+N#if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
+N     (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+X#if ((0L && (__FPU_PRESENT == 1U)) &&      (0L && (__FPU_USED    == 1U))     )
+S  register uint32_t __regfpscr         __ASM("fpscr");
+S  return(__regfpscr);
+N#else
+N   return(0U);
+N#endif
+N}
+N
+N
+N/**
+N  \brief   Set FPSCR
+N  \details Assigns the given value to the Floating Point Status/Control register.
+N  \param [in]    fpscr  Floating Point Status/Control value to set
+N */
+N__STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
+Xstatic __inline void __set_FPSCR(uint32_t fpscr)
+N{
+N#if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
+N     (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+X#if ((0L && (__FPU_PRESENT == 1U)) &&      (0L && (__FPU_USED    == 1U))     )
+S  register uint32_t __regfpscr         __ASM("fpscr");
+S  __regfpscr = (fpscr);
+N#else
+N  (void)fpscr;
+N#endif
+N}
+N
+N
+N/*@} end of CMSIS_Core_RegAccFunctions */
+N
+N
+N/* ##########################  Core Instruction Access  ######################### */
+N/** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
+N  Access to dedicated instructions
+N  @{
+N*/
+N
+N/**
+N  \brief   No Operation
+N  \details No Operation does nothing. This instruction can be used for code alignment purposes.
+N */
+N#define __NOP                             __nop
+N
+N
+N/**
+N  \brief   Wait For Interrupt
+N  \details Wait For Interrupt is a hint instruction that suspends execution until one of a number of events occurs.
+N */
+N#define __WFI                             __wfi
+N
+N
+N/**
+N  \brief   Wait For Event
+N  \details Wait For Event is a hint instruction that permits the processor to enter
+N           a low-power state until one of a number of events occurs.
+N */
+N#define __WFE                             __wfe
+N
+N
+N/**
+N  \brief   Send Event
+N  \details Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+N */
+N#define __SEV                             __sev
+N
+N
+N/**
+N  \brief   Instruction Synchronization Barrier
+N  \details Instruction Synchronization Barrier flushes the pipeline in the processor,
+N           so that all instructions following the ISB are fetched from cache or memory,
+N           after the instruction has been completed.
+N */
+N#define __ISB()                           __isb(0xF)
+N
+N/**
+N  \brief   Data Synchronization Barrier
+N  \details Acts as a special kind of Data Memory Barrier.
+N           It completes when all explicit memory accesses before this instruction complete.
+N */
+N#define __DSB()                           __dsb(0xF)
+N
+N/**
+N  \brief   Data Memory Barrier
+N  \details Ensures the apparent order of the explicit memory operations before
+N           and after the instruction, without ensuring their completion.
+N */
+N#define __DMB()                           __dmb(0xF)
+N
+N                  
+N/**
+N  \brief   Reverse byte order (32 bit)
+N  \details Reverses the byte order in unsigned integer value. For example, 0x12345678 becomes 0x78563412.
+N  \param [in]    value  Value to reverse
+N  \return               Reversed value
+N */
+N#define __REV                             __rev
+N
+N
+N/**
+N  \brief   Reverse byte order (16 bit)
+N  \details Reverses the byte order within each halfword of a word. For example, 0x12345678 becomes 0x34127856.
+N  \param [in]    value  Value to reverse
+N  \return               Reversed value
+N */
+N#ifndef __NO_EMBEDDED_ASM
+N__attribute__((section(".rev16_text"))) __STATIC_INLINE __ASM uint32_t __REV16(uint32_t value)
+X__attribute__((section(".rev16_text"))) static __inline __asm uint32_t __REV16(uint32_t value)
+N{
+N  rev16 r0, r0
+N  bx lr
+N}
+N#endif
+N
+N
+N/**
+N  \brief   Reverse byte order (16 bit)
+N  \details Reverses the byte order in a 16-bit value and returns the signed 16-bit result. For example, 0x0080 becomes 0x8000.
+N  \param [in]    value  Value to reverse
+N  \return               Reversed value
+N */
+N#ifndef __NO_EMBEDDED_ASM
+N__attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int16_t __REVSH(int16_t value)
+X__attribute__((section(".revsh_text"))) static __inline __asm int16_t __REVSH(int16_t value)
+N{
+N  revsh r0, r0
+N  bx lr
+N}
+N#endif
+N
+N
+N/**
+N  \brief   Rotate Right in unsigned value (32 bit)
+N  \details Rotate Right (immediate) provides the value of the contents of a register rotated by a variable number of bits.
+N  \param [in]    op1  Value to rotate
+N  \param [in]    op2  Number of Bits to rotate
+N  \return               Rotated value
+N */
+N#define __ROR                             __ror
+N
+N
+N/**
+N  \brief   Breakpoint
+N  \details Causes the processor to enter Debug state.
+N           Debug tools can use this to investigate system state when the instruction at a particular address is reached.
+N  \param [in]    value  is ignored by the processor.
+N                 If required, a debugger can use it to store additional information about the breakpoint.
+N */
+N#define __BKPT(value)                       __breakpoint(value)
+N
+N
+N/**
+N  \brief   Reverse bit order of value
+N  \details Reverses the bit order of the given value.
+N  \param [in]    value  Value to reverse
+N  \return               Reversed value
+N */
+N#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+N     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
+X#if ((1L && (1  == 1)) ||      (0L && (__ARM_ARCH_7EM__ == 1))     )
+N  #define __RBIT                          __rbit
+N#else
+S__attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
+S{
+S  uint32_t result;
+S  uint32_t s = (4U /*sizeof(v)*/ * 8U) - 1U; /* extra shift needed at end */
+S
+S  result = value;                      /* r will be reversed bits of v; first get LSB of v */
+S  for (value >>= 1U; value != 0U; value >>= 1U)
+S  {
+S    result <<= 1U;
+S    result |= value & 1U;
+S    s--;
+S  }
+S  result <<= s;                        /* shift when v's highest bits are zero */
+S  return result;
+S}
+N#endif
+N
+N
+N/**
+N  \brief   Count leading zeros
+N  \details Counts the number of leading zeros of a data value.
+N  \param [in]  value  Value to count the leading zeros
+N  \return             number of leading zeros in value
+N */
+N#define __CLZ                             __clz
+N
+N
+N#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+N     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
+X#if ((1L && (1  == 1)) ||      (0L && (__ARM_ARCH_7EM__ == 1))     )
+N
+N/**
+N  \brief   LDR Exclusive (8 bit)
+N  \details Executes a exclusive LDR instruction for 8 bit value.
+N  \param [in]    ptr  Pointer to data
+N  \return             value of type uint8_t at (*ptr)
+N */
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
+X#if 1L && (5060960 < 5060020)
+S  #define __LDREXB(ptr)                                                        ((uint8_t ) __ldrex(ptr))
+N#else
+N  #define __LDREXB(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint8_t ) __ldrex(ptr))  _Pragma("pop")
+N#endif
+N
+N
+N/**
+N  \brief   LDR Exclusive (16 bit)
+N  \details Executes a exclusive LDR instruction for 16 bit values.
+N  \param [in]    ptr  Pointer to data
+N  \return        value of type uint16_t at (*ptr)
+N */
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
+X#if 1L && (5060960 < 5060020)
+S  #define __LDREXH(ptr)                                                        ((uint16_t) __ldrex(ptr))
+N#else
+N  #define __LDREXH(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint16_t) __ldrex(ptr))  _Pragma("pop")
+N#endif
+N
+N
+N/**
+N  \brief   LDR Exclusive (32 bit)
+N  \details Executes a exclusive LDR instruction for 32 bit values.
+N  \param [in]    ptr  Pointer to data
+N  \return        value of type uint32_t at (*ptr)
+N */
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
+X#if 1L && (5060960 < 5060020)
+S  #define __LDREXW(ptr)                                                        ((uint32_t ) __ldrex(ptr))
+N#else
+N  #define __LDREXW(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint32_t ) __ldrex(ptr))  _Pragma("pop")
+N#endif
+N
+N
+N/**
+N  \brief   STR Exclusive (8 bit)
+N  \details Executes a exclusive STR instruction for 8 bit values.
+N  \param [in]  value  Value to store
+N  \param [in]    ptr  Pointer to location
+N  \return          0  Function succeeded
+N  \return          1  Function failed
+N */
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
+X#if 1L && (5060960 < 5060020)
+S  #define __STREXB(value, ptr)                                                 __strex(value, ptr)
+N#else
+N  #define __STREXB(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
+N#endif
+N
+N
+N/**
+N  \brief   STR Exclusive (16 bit)
+N  \details Executes a exclusive STR instruction for 16 bit values.
+N  \param [in]  value  Value to store
+N  \param [in]    ptr  Pointer to location
+N  \return          0  Function succeeded
+N  \return          1  Function failed
+N */
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
+X#if 1L && (5060960 < 5060020)
+S  #define __STREXH(value, ptr)                                                 __strex(value, ptr)
+N#else
+N  #define __STREXH(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
+N#endif
+N
+N
+N/**
+N  \brief   STR Exclusive (32 bit)
+N  \details Executes a exclusive STR instruction for 32 bit values.
+N  \param [in]  value  Value to store
+N  \param [in]    ptr  Pointer to location
+N  \return          0  Function succeeded
+N  \return          1  Function failed
+N */
+N#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
+X#if 1L && (5060960 < 5060020)
+S  #define __STREXW(value, ptr)                                                 __strex(value, ptr)
+N#else
+N  #define __STREXW(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
+N#endif
+N
+N
+N/**
+N  \brief   Remove the exclusive lock
+N  \details Removes the exclusive lock which is created by LDREX.
+N */
+N#define __CLREX                           __clrex
+N
+N
+N/**
+N  \brief   Signed Saturate
+N  \details Saturates a signed value.
+N  \param [in]  value  Value to be saturated
+N  \param [in]    sat  Bit position to saturate to (1..32)
+N  \return             Saturated value
+N */
+N#define __SSAT                            __ssat
+N
+N
+N/**
+N  \brief   Unsigned Saturate
+N  \details Saturates an unsigned value.
+N  \param [in]  value  Value to be saturated
+N  \param [in]    sat  Bit position to saturate to (0..31)
+N  \return             Saturated value
+N */
+N#define __USAT                            __usat
+N
+N
+N/**
+N  \brief   Rotate Right with Extend (32 bit)
+N  \details Moves each bit of a bitstring right by one bit.
+N           The carry input is shifted in at the left end of the bitstring.
+N  \param [in]    value  Value to rotate
+N  \return               Rotated value
+N */
+N#ifndef __NO_EMBEDDED_ASM
+N__attribute__((section(".rrx_text"))) __STATIC_INLINE __ASM uint32_t __RRX(uint32_t value)
+X__attribute__((section(".rrx_text"))) static __inline __asm uint32_t __RRX(uint32_t value)
+N{
+N  rrx r0, r0
+N  bx lr
+N}
+N#endif
+N
+N
+N/**
+N  \brief   LDRT Unprivileged (8 bit)
+N  \details Executes a Unprivileged LDRT instruction for 8 bit value.
+N  \param [in]    ptr  Pointer to data
+N  \return             value of type uint8_t at (*ptr)
+N */
+N#define __LDRBT(ptr)                      ((uint8_t )  __ldrt(ptr))
+N
+N
+N/**
+N  \brief   LDRT Unprivileged (16 bit)
+N  \details Executes a Unprivileged LDRT instruction for 16 bit values.
+N  \param [in]    ptr  Pointer to data
+N  \return        value of type uint16_t at (*ptr)
+N */
+N#define __LDRHT(ptr)                      ((uint16_t)  __ldrt(ptr))
+N
+N
+N/**
+N  \brief   LDRT Unprivileged (32 bit)
+N  \details Executes a Unprivileged LDRT instruction for 32 bit values.
+N  \param [in]    ptr  Pointer to data
+N  \return        value of type uint32_t at (*ptr)
+N */
+N#define __LDRT(ptr)                       ((uint32_t ) __ldrt(ptr))
+N
+N
+N/**
+N  \brief   STRT Unprivileged (8 bit)
+N  \details Executes a Unprivileged STRT instruction for 8 bit values.
+N  \param [in]  value  Value to store
+N  \param [in]    ptr  Pointer to location
+N */
+N#define __STRBT(value, ptr)               __strt(value, ptr)
+N
+N
+N/**
+N  \brief   STRT Unprivileged (16 bit)
+N  \details Executes a Unprivileged STRT instruction for 16 bit values.
+N  \param [in]  value  Value to store
+N  \param [in]    ptr  Pointer to location
+N */
+N#define __STRHT(value, ptr)               __strt(value, ptr)
+N
+N
+N/**
+N  \brief   STRT Unprivileged (32 bit)
+N  \details Executes a Unprivileged STRT instruction for 32 bit values.
+N  \param [in]  value  Value to store
+N  \param [in]    ptr  Pointer to location
+N */
+N#define __STRT(value, ptr)                __strt(value, ptr)
+N
+N#else  /* ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+N           (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
+X#else   
+S
+S/**
+S  \brief   Signed Saturate
+S  \details Saturates a signed value.
+S  \param [in]  value  Value to be saturated
+S  \param [in]    sat  Bit position to saturate to (1..32)
+S  \return             Saturated value
+S */
+S__attribute__((always_inline)) __STATIC_INLINE int32_t __SSAT(int32_t val, uint32_t sat)
+S{
+S  if ((sat >= 1U) && (sat <= 32U))
+S  {
+S    const int32_t max = (int32_t)((1U << (sat - 1U)) - 1U);
+S    const int32_t min = -1 - max ;
+S    if (val > max)
+S    {
+S      return max;
+S    }
+S    else if (val < min)
+S    {
+S      return min;
+S    }
+S  }
+S  return val;
+S}
+S
+S/**
+S  \brief   Unsigned Saturate
+S  \details Saturates an unsigned value.
+S  \param [in]  value  Value to be saturated
+S  \param [in]    sat  Bit position to saturate to (0..31)
+S  \return             Saturated value
+S */
+S__attribute__((always_inline)) __STATIC_INLINE uint32_t __USAT(int32_t val, uint32_t sat)
+S{
+S  if (sat <= 31U)
+S  {
+S    const uint32_t max = ((1U << sat) - 1U);
+S    if (val > (int32_t)max)
+S    {
+S      return max;
+S    }
+S    else if (val < 0)
+S    {
+S      return 0U;
+S    }
+S  }
+S  return (uint32_t)val;
+S}
+S
+N#endif /* ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+N           (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
+X#endif  
+N
+N/*@}*/ /* end of group CMSIS_Core_InstructionInterface */
+N
+N
+N/* ###################  Compiler specific Intrinsics  ########################### */
+N/** \defgroup CMSIS_SIMD_intrinsics CMSIS SIMD Intrinsics
+N  Access to dedicated SIMD instructions
+N  @{
+N*/
+N
+N#if ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
+X#if ((0L && (__ARM_ARCH_7EM__ == 1))     )
+S
+S#define __SADD8                           __sadd8
+S#define __QADD8                           __qadd8
+S#define __SHADD8                          __shadd8
+S#define __UADD8                           __uadd8
+S#define __UQADD8                          __uqadd8
+S#define __UHADD8                          __uhadd8
+S#define __SSUB8                           __ssub8
+S#define __QSUB8                           __qsub8
+S#define __SHSUB8                          __shsub8
+S#define __USUB8                           __usub8
+S#define __UQSUB8                          __uqsub8
+S#define __UHSUB8                          __uhsub8
+S#define __SADD16                          __sadd16
+S#define __QADD16                          __qadd16
+S#define __SHADD16                         __shadd16
+S#define __UADD16                          __uadd16
+S#define __UQADD16                         __uqadd16
+S#define __UHADD16                         __uhadd16
+S#define __SSUB16                          __ssub16
+S#define __QSUB16                          __qsub16
+S#define __SHSUB16                         __shsub16
+S#define __USUB16                          __usub16
+S#define __UQSUB16                         __uqsub16
+S#define __UHSUB16                         __uhsub16
+S#define __SASX                            __sasx
+S#define __QASX                            __qasx
+S#define __SHASX                           __shasx
+S#define __UASX                            __uasx
+S#define __UQASX                           __uqasx
+S#define __UHASX                           __uhasx
+S#define __SSAX                            __ssax
+S#define __QSAX                            __qsax
+S#define __SHSAX                           __shsax
+S#define __USAX                            __usax
+S#define __UQSAX                           __uqsax
+S#define __UHSAX                           __uhsax
+S#define __USAD8                           __usad8
+S#define __USADA8                          __usada8
+S#define __SSAT16                          __ssat16
+S#define __USAT16                          __usat16
+S#define __UXTB16                          __uxtb16
+S#define __UXTAB16                         __uxtab16
+S#define __SXTB16                          __sxtb16
+S#define __SXTAB16                         __sxtab16
+S#define __SMUAD                           __smuad
+S#define __SMUADX                          __smuadx
+S#define __SMLAD                           __smlad
+S#define __SMLADX                          __smladx
+S#define __SMLALD                          __smlald
+S#define __SMLALDX                         __smlaldx
+S#define __SMUSD                           __smusd
+S#define __SMUSDX                          __smusdx
+S#define __SMLSD                           __smlsd
+S#define __SMLSDX                          __smlsdx
+S#define __SMLSLD                          __smlsld
+S#define __SMLSLDX                         __smlsldx
+S#define __SEL                             __sel
+S#define __QADD                            __qadd
+S#define __QSUB                            __qsub
+S
+S#define __PKHBT(ARG1,ARG2,ARG3)          ( ((((uint32_t)(ARG1))          ) & 0x0000FFFFUL) |  \
+S                                           ((((uint32_t)(ARG2)) << (ARG3)) & 0xFFFF0000UL)  )
+X#define __PKHBT(ARG1,ARG2,ARG3)          ( ((((uint32_t)(ARG1))          ) & 0x0000FFFFUL) |                                             ((((uint32_t)(ARG2)) << (ARG3)) & 0xFFFF0000UL)  )
+S
+S#define __PKHTB(ARG1,ARG2,ARG3)          ( ((((uint32_t)(ARG1))          ) & 0xFFFF0000UL) |  \
+S                                           ((((uint32_t)(ARG2)) >> (ARG3)) & 0x0000FFFFUL)  )
+X#define __PKHTB(ARG1,ARG2,ARG3)          ( ((((uint32_t)(ARG1))          ) & 0xFFFF0000UL) |                                             ((((uint32_t)(ARG2)) >> (ARG3)) & 0x0000FFFFUL)  )
+S
+S#define __SMMLA(ARG1,ARG2,ARG3)          ( (int32_t)((((int64_t)(ARG1) * (ARG2)) + \
+S                                                      ((int64_t)(ARG3) << 32U)     ) >> 32U))
+X#define __SMMLA(ARG1,ARG2,ARG3)          ( (int32_t)((((int64_t)(ARG1) * (ARG2)) +                                                       ((int64_t)(ARG3) << 32U)     ) >> 32U))
+S
+N#endif /* ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
+N/*@} end of group CMSIS_SIMD_intrinsics */
+N
+N
+N#endif /* __CMSIS_ARMCC_H */
+L 35 "..\..\..\source\cmsis-core\cmsis_compiler.h" 2
+N
+N
+N/*
+N * Arm Compiler 6.6 LTM (armclang)
+N */
+N#elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050) && (__ARMCC_VERSION < 6100100)
+X#elif 1L && (5060960 >= 6010050) && (5060960 < 6100100)
+S  #include "cmsis_armclang_ltm.h"
+S
+S  /*
+S * Arm Compiler above 6.10.1 (armclang)
+S */
+S#elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6100100)
+S  #include "cmsis_armclang.h"
+S
+S
+S/*
+S * GNU Compiler
+S */
+S#elif defined ( __GNUC__ )
+S  #include "cmsis_gcc.h"
+S
+S
+S/*
+S * IAR Compiler
+S */
+S#elif defined ( __ICCARM__ )
+S  #include <cmsis_iccarm.h>
+S
+S
+S/*
+S * TI Arm Compiler
+S */
+S#elif defined ( __TI_ARM__ )
+S  #include <cmsis_ccs.h>
+S
+S  #ifndef   __ASM
+S    #define __ASM                                  __asm
+S  #endif
+S  #ifndef   __INLINE
+S    #define __INLINE                               inline
+S  #endif
+S  #ifndef   __STATIC_INLINE
+S    #define __STATIC_INLINE                        static inline
+S  #endif
+S  #ifndef   __STATIC_FORCEINLINE
+S    #define __STATIC_FORCEINLINE                   __STATIC_INLINE
+S  #endif
+S  #ifndef   __NO_RETURN
+S    #define __NO_RETURN                            __attribute__((noreturn))
+S  #endif
+S  #ifndef   __USED
+S    #define __USED                                 __attribute__((used))
+S  #endif
+S  #ifndef   __WEAK
+S    #define __WEAK                                 __attribute__((weak))
+S  #endif
+S  #ifndef   __PACKED
+S    #define __PACKED                               __attribute__((packed))
+S  #endif
+S  #ifndef   __PACKED_STRUCT
+S    #define __PACKED_STRUCT                        struct __attribute__((packed))
+S  #endif
+S  #ifndef   __PACKED_UNION
+S    #define __PACKED_UNION                         union __attribute__((packed))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32        /* deprecated */
+S    struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+S    #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+S  #endif
+S  #ifndef   __UNALIGNED_UINT16_WRITE
+S    __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+S    #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void*)(addr))->v) = (val))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT16_READ
+S    __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+S    #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(addr))->v)
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32_WRITE
+S    __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+S    #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))->v) = (val))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32_READ
+S    __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+S    #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(addr))->v)
+S  #endif
+S  #ifndef   __ALIGNED
+S    #define __ALIGNED(x)                           __attribute__((aligned(x)))
+S  #endif
+S  #ifndef   __RESTRICT
+S    #define __RESTRICT                             __restrict
+S  #endif
+S  #ifndef   __COMPILER_BARRIER
+S    #warning No compiler specific solution for __COMPILER_BARRIER. __COMPILER_BARRIER is ignored.
+S    #define __COMPILER_BARRIER()                   (void)0
+S  #endif
+S
+S
+S/*
+S * TASKING Compiler
+S */
+S#elif defined ( __TASKING__ )
+S  /*
+S   * The CMSIS functions have been implemented as intrinsics in the compiler.
+S   * Please use "carm -?i" to get an up to date list of all intrinsics,
+S   * Including the CMSIS ones.
+S   */
+S
+S  #ifndef   __ASM
+S    #define __ASM                                  __asm
+S  #endif
+S  #ifndef   __INLINE
+S    #define __INLINE                               inline
+S  #endif
+S  #ifndef   __STATIC_INLINE
+S    #define __STATIC_INLINE                        static inline
+S  #endif
+S  #ifndef   __STATIC_FORCEINLINE
+S    #define __STATIC_FORCEINLINE                   __STATIC_INLINE
+S  #endif
+S  #ifndef   __NO_RETURN
+S    #define __NO_RETURN                            __attribute__((noreturn))
+S  #endif
+S  #ifndef   __USED
+S    #define __USED                                 __attribute__((used))
+S  #endif
+S  #ifndef   __WEAK
+S    #define __WEAK                                 __attribute__((weak))
+S  #endif
+S  #ifndef   __PACKED
+S    #define __PACKED                               __packed__
+S  #endif
+S  #ifndef   __PACKED_STRUCT
+S    #define __PACKED_STRUCT                        struct __packed__
+S  #endif
+S  #ifndef   __PACKED_UNION
+S    #define __PACKED_UNION                         union __packed__
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32        /* deprecated */
+S    struct __packed__ T_UINT32 { uint32_t v; };
+S    #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+S  #endif
+S  #ifndef   __UNALIGNED_UINT16_WRITE
+S    __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+S    #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))->v) = (val))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT16_READ
+S    __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+S    #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(addr))->v)
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32_WRITE
+S    __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+S    #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))->v) = (val))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32_READ
+S    __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+S    #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(addr))->v)
+S  #endif
+S  #ifndef   __ALIGNED
+S    #define __ALIGNED(x)              __align(x)
+S  #endif
+S  #ifndef   __RESTRICT
+S    #warning No compiler specific solution for __RESTRICT. __RESTRICT is ignored.
+S    #define __RESTRICT
+S  #endif
+S  #ifndef   __COMPILER_BARRIER
+S    #warning No compiler specific solution for __COMPILER_BARRIER. __COMPILER_BARRIER is ignored.
+S    #define __COMPILER_BARRIER()                   (void)0
+S  #endif
+S
+S
+S/*
+S * COSMIC Compiler
+S */
+S#elif defined ( __CSMC__ )
+S   #include <cmsis_csm.h>
+S
+S #ifndef   __ASM
+S    #define __ASM                                  _asm
+S  #endif
+S  #ifndef   __INLINE
+S    #define __INLINE                               inline
+S  #endif
+S  #ifndef   __STATIC_INLINE
+S    #define __STATIC_INLINE                        static inline
+S  #endif
+S  #ifndef   __STATIC_FORCEINLINE
+S    #define __STATIC_FORCEINLINE                   __STATIC_INLINE
+S  #endif
+S  #ifndef   __NO_RETURN
+S    // NO RETURN is automatically detected hence no warning here
+S    #define __NO_RETURN
+S  #endif
+S  #ifndef   __USED
+S    #warning No compiler specific solution for __USED. __USED is ignored.
+S    #define __USED
+S  #endif
+S  #ifndef   __WEAK
+S    #define __WEAK                                 __weak
+S  #endif
+S  #ifndef   __PACKED
+S    #define __PACKED                               @packed
+S  #endif
+S  #ifndef   __PACKED_STRUCT
+S    #define __PACKED_STRUCT                        @packed struct
+S  #endif
+S  #ifndef   __PACKED_UNION
+S    #define __PACKED_UNION                         @packed union
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32        /* deprecated */
+S    @packed struct T_UINT32 { uint32_t v; };
+S    #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+S  #endif
+S  #ifndef   __UNALIGNED_UINT16_WRITE
+S    __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+S    #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))->v) = (val))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT16_READ
+S    __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+S    #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(addr))->v)
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32_WRITE
+S    __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+S    #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))->v) = (val))
+S  #endif
+S  #ifndef   __UNALIGNED_UINT32_READ
+S    __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+S    #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(addr))->v)
+S  #endif
+S  #ifndef   __ALIGNED
+S    #warning No compiler specific solution for __ALIGNED. __ALIGNED is ignored.
+S    #define __ALIGNED(x)
+S  #endif
+S  #ifndef   __RESTRICT
+S    #warning No compiler specific solution for __RESTRICT. __RESTRICT is ignored.
+S    #define __RESTRICT
+S  #endif
+S  #ifndef   __COMPILER_BARRIER
+S    #warning No compiler specific solution for __COMPILER_BARRIER. __COMPILER_BARRIER is ignored.
+S    #define __COMPILER_BARRIER()                   (void)0
+S  #endif
+S
+S
+S#else
+S  #error Unknown compiler.
+N#endif
+N
+N
+N#endif /* __CMSIS_COMPILER_H */
+N
+L 207 "..\..\..\source\daplink\cmsis-dap\DAP.h" 2
+N
+N// DAP Data structure
+Ntypedef struct {
+N  uint8_t     debug_port;                       // Debug Port
+N  uint8_t     fast_clock;                       // Fast Clock Flag
+N  uint8_t     padding[2];
+N  uint32_t   clock_delay;                       // Clock Delay
+N  uint32_t     timestamp;                       // Last captured Timestamp
+N  struct {                                      // Transfer Configuration
+N    uint8_t   idle_cycles;                      // Idle cycles after transfer
+N    uint8_t    padding[3];
+N    uint16_t  retry_count;                      // Number of retries after WAIT response
+N    uint16_t  match_retry;                      // Number of retries if read value does not match
+N    uint32_t  match_mask;                       // Match Mask
+N  } transfer;
+N#if (DAP_SWD != 0)
+S  struct {                                      // SWD Configuration
+S    uint8_t    turnaround;                      // Turnaround period
+S    uint8_t    data_phase;                      // Always generate Data Phase
+S  } swd_conf;
+N#endif
+N#if (DAP_JTAG != 0)
+S  struct {                                      // JTAG Device Chain
+S    uint8_t   count;                            // Number of devices
+S    uint8_t   index;                            // Device index (device at TDO has index 0)
+S#if (DAP_JTAG_DEV_CNT != 0)
+S    uint8_t   ir_length[DAP_JTAG_DEV_CNT];      // IR Length in bits
+S    uint16_t  ir_before[DAP_JTAG_DEV_CNT];      // Bits before IR
+S    uint16_t  ir_after [DAP_JTAG_DEV_CNT];      // Bits after IR
+S#endif
+S  } jtag_dev;
+N#endif
+N} DAP_Data_t;
+N
+Nextern          DAP_Data_t DAP_Data;            // DAP Data
+Nextern volatile uint8_t    DAP_TransferAbort;   // Transfer Abort Flag
+N
+N
+N#ifdef  __cplusplus
+Sextern "C"
+S{
+N#endif
+N
+N// Functions
+Nextern void     SWJ_Sequence    (uint32_t count, const uint8_t *data);
+Nextern void     SWD_Sequence    (uint32_t info,  const uint8_t *swdo, uint8_t *swdi);
+Nextern void     JTAG_Sequence   (uint32_t info,  const uint8_t *tdi,  uint8_t *tdo);
+Nextern void     JTAG_IR         (uint32_t ir);
+Nextern uint32_t JTAG_ReadIDCode (void);
+Nextern void     JTAG_WriteAbort (uint32_t data);
+Nextern uint8_t  JTAG_Transfer   (uint32_t request, uint32_t *data);
+Nextern uint8_t  SWD_Transfer    (uint32_t request, uint32_t *data);
+N
+Nextern void     Delayms         (uint32_t delay);
+N
+Nextern uint32_t SWO_Transport      (const uint8_t *request, uint8_t *response);
+Nextern uint32_t SWO_Mode           (const uint8_t *request, uint8_t *response);
+Nextern uint32_t SWO_Baudrate       (const uint8_t *request, uint8_t *response);
+Nextern uint32_t SWO_Control        (const uint8_t *request, uint8_t *response);
+Nextern uint32_t SWO_Status                                 (uint8_t *response);
+Nextern uint32_t SWO_ExtendedStatus (const uint8_t *request, uint8_t *response);
+Nextern uint32_t SWO_Data           (const uint8_t *request, uint8_t *response);
+N
+Nextern void     SWO_QueueTransfer    (uint8_t *buf, uint32_t num);
+Nextern void     SWO_AbortTransfer    (void);
+Nextern void     SWO_TransferComplete (void);
+N
+Nextern uint32_t UART_SWO_Mode     (uint32_t enable);
+Nextern uint32_t UART_SWO_Baudrate (uint32_t baudrate);
+Nextern uint32_t UART_SWO_Control  (uint32_t active);
+Nextern void     UART_SWO_Capture  (uint8_t *buf, uint32_t num);
+Nextern uint32_t UART_SWO_GetCount (void);
+N
+Nextern uint32_t Manchester_SWO_Mode     (uint32_t enable);
+Nextern uint32_t Manchester_SWO_Baudrate (uint32_t baudrate);
+Nextern uint32_t Manchester_SWO_Control  (uint32_t active);
+Nextern void     Manchester_SWO_Capture  (uint8_t *buf, uint32_t num);
+Nextern uint32_t Manchester_SWO_GetCount (void);
+N
+Nextern uint32_t DAP_ProcessVendorCommand (const uint8_t *request, uint8_t *response);
+Nextern uint32_t DAP_ProcessCommand       (const uint8_t *request, uint8_t *response);
+Nextern uint32_t DAP_ExecuteCommand       (const uint8_t *request, uint8_t *response);
+N
+Nextern void     DAP_Setup (void);
+N
+N// Configurable delay for clock generation
+N#ifndef DELAY_SLOW_CYCLES
+N#define DELAY_SLOW_CYCLES       3U      // Number of cycles for one iteration
+N#endif
+N#if defined(__CC_ARM)
+X#if 1L
+N__STATIC_FORCEINLINE void PIN_DELAY_SLOW (uint32_t delay) {
+Xstatic __forceinline void PIN_DELAY_SLOW (uint32_t delay) {
+N  uint32_t count = delay;
+N  while (--count);
+N}
+N#else
+S__STATIC_FORCEINLINE void PIN_DELAY_SLOW (uint32_t delay) {
+S  __ASM volatile (
+S  ".syntax unified\n"
+S  "0:\n\t"
+S    "subs %0,%0,#1\n\t"
+S    "bne  0b\n"
+S  : "+l" (delay) : : "cc"
+S  );
+S}
+N#endif
+N
+N// Fixed delay for fast clock generation
+N#ifndef DELAY_FAST_CYCLES
+N#define DELAY_FAST_CYCLES       0U      // Number of cycles: 0..3
+N#endif
+N__STATIC_FORCEINLINE void PIN_DELAY_FAST (void) {
+Xstatic __forceinline void PIN_DELAY_FAST (void) {
+N#if (DELAY_FAST_CYCLES >= 1U)
+X#if (0U >= 1U)
+S  __NOP();
+N#endif
+N#if (DELAY_FAST_CYCLES >= 2U)
+X#if (0U >= 2U)
+S  __NOP();
+N#endif
+N#if (DELAY_FAST_CYCLES >= 3U)
+X#if (0U >= 3U)
+S  __NOP();
+N#endif
+N}
+N
+N#ifdef  __cplusplus
+S}
+N#endif
+N
+N
+N#endif  /* __DAP_H__ */
+L 26 "..\..\..\source\daplink\cmsis-dap\debug_cm.h" 2
+N
+N// SWD register access
+N#define SWD_REG_AP        (1)
+N#define SWD_REG_DP        (0)
+N#define SWD_REG_R         (1<<1)
+N#define SWD_REG_W         (0<<1)
+N#define SWD_REG_ADR(a)    (a & 0x0c)
+N
+N// Abort Register definitions
+N#define DAPABORT       0x00000001  // DAP Abort
+N#define STKCMPCLR      0x00000002  // Clear STICKYCMP Flag (SW Only)
+N#define STKERRCLR      0x00000004  // Clear STICKYERR Flag (SW Only)
+N#define WDERRCLR       0x00000008  // Clear WDATAERR Flag (SW Only)
+N#define ORUNERRCLR     0x00000010  // Clear STICKYORUN Flag (SW Only)
+N
+N// Debug Control and Status definitions
+N#define ORUNDETECT     0x00000001  // Overrun Detect
+N#define STICKYORUN     0x00000002  // Sticky Overrun
+N#define TRNMODE        0x0000000C  // Transfer Mode Mask
+N#define TRNNORMAL      0x00000000  // Transfer Mode: Normal
+N#define TRNVERIFY      0x00000004  // Transfer Mode: Pushed Verify
+N#define TRNCOMPARE     0x00000008  // Transfer Mode: Pushed Compare
+N#define STICKYCMP      0x00000010  // Sticky Compare
+N#define STICKYERR      0x00000020  // Sticky Error
+N#define READOK         0x00000040  // Read OK (SW Only)
+N#define WDATAERR       0x00000080  // Write Data Error (SW Only)
+N#define MASKLANE       0x00000F00  // Mask Lane Mask
+N#define MASKLANE0      0x00000100  // Mask Lane 0
+N#define MASKLANE1      0x00000200  // Mask Lane 1
+N#define MASKLANE2      0x00000400  // Mask Lane 2
+N#define MASKLANE3      0x00000800  // Mask Lane 3
+N#define TRNCNT         0x001FF000  // Transaction Counter Mask
+N#define CDBGRSTREQ     0x04000000  // Debug Reset Request
+N#define CDBGRSTACK     0x08000000  // Debug Reset Acknowledge
+N#define CDBGPWRUPREQ   0x10000000  // Debug Power-up Request
+N#define CDBGPWRUPACK   0x20000000  // Debug Power-up Acknowledge
+N#define CSYSPWRUPREQ   0x40000000  // System Power-up Request
+N#define CSYSPWRUPACK   0x80000000  // System Power-up Acknowledge
+N
+N// Debug Select Register definitions
+N#define CTRLSEL        0x00000001  // CTRLSEL (SW Only)
+N#define APBANKSEL      0x000000F0  // APBANKSEL Mask
+N#define APSEL          0xFF000000  // APSEL Mask
+N
+N// Access Port Register Addresses
+N#define AP_CSW         0x00        // Control and Status Word
+N#define AP_TAR         0x04        // Transfer Address
+N#define AP_DRW         0x0C        // Data Read/Write
+N#define AP_BD0         0x10        // Banked Data 0
+N#define AP_BD1         0x14        // Banked Data 1
+N#define AP_BD2         0x18        // Banked Data 2
+N#define AP_BD3         0x1C        // Banked Data 3
+N#define AP_ROM         0xF8        // Debug ROM Address
+N#define AP_IDR         0xFC        // Identification Register
+N
+N// AP Control and Status Word definitions
+N#define CSW_SIZE       0x00000007  // Access Size: Selection Mask
+N#define CSW_SIZE8      0x00000000  // Access Size: 8-bit
+N#define CSW_SIZE16     0x00000001  // Access Size: 16-bit
+N#define CSW_SIZE32     0x00000002  // Access Size: 32-bit
+N#define CSW_ADDRINC    0x00000030  // Auto Address Increment Mask
+N#define CSW_NADDRINC   0x00000000  // No Address Increment
+N#define CSW_SADDRINC   0x00000010  // Single Address Increment
+N#define CSW_PADDRINC   0x00000020  // Packed Address Increment
+N#define CSW_DBGSTAT    0x00000040  // Debug Status
+N#define CSW_TINPROG    0x00000080  // Transfer in progress
+N#define CSW_HPROT      0x02000000  // User/Privilege Control
+N#define CSW_MSTRTYPE   0x20000000  // Master Type Mask
+N#define CSW_MSTRCORE   0x00000000  // Master Type: Core
+N#define CSW_MSTRDBG    0x20000000  // Master Type: Debug
+N#define CSW_RESERVED   0x01000000  // Reserved Value
+N
+N// Core Debug Register Address Offsets
+N#define DBG_OFS        0x0DF0      // Debug Register Offset inside NVIC
+N#define DBG_HCSR_OFS   0x00        // Debug Halting Control & Status Register
+N#define DBG_CRSR_OFS   0x04        // Debug Core Register Selector Register
+N#define DBG_CRDR_OFS   0x08        // Debug Core Register Data Register
+N#define DBG_EMCR_OFS   0x0C        // Debug Exception & Monitor Control Register
+N
+N// Core Debug Register Addresses
+N#define DBG_HCSR       (DBG_Addr + DBG_HCSR_OFS)
+N#define DBG_CRSR       (DBG_Addr + DBG_CRSR_OFS)
+N#define DBG_CRDR       (DBG_Addr + DBG_CRDR_OFS)
+N#define DBG_EMCR       (DBG_Addr + DBG_EMCR_OFS)
+N
+N// Debug Halting Control and Status Register definitions
+N#define C_DEBUGEN      0x00000001  // Debug Enable
+N#define C_HALT         0x00000002  // Halt
+N#define C_STEP         0x00000004  // Step
+N#define C_MASKINTS     0x00000008  // Mask Interrupts
+N#define C_SNAPSTALL    0x00000020  // Snap Stall
+N#define S_REGRDY       0x00010000  // Register R/W Ready Flag
+N#define S_HALT         0x00020000  // Halt Flag
+N#define S_SLEEP        0x00040000  // Sleep Flag
+N#define S_LOCKUP       0x00080000  // Lockup Flag
+N#define S_RETIRE_ST    0x01000000  // Sticky Retire Flag
+N#define S_RESET_ST     0x02000000  // Sticky Reset Flag
+N#define DBGKEY         0xA05F0000  // Debug Key
+N
+N// Debug Exception and Monitor Control Register definitions
+N#define VC_CORERESET   0x00000001  // Reset Vector Catch
+N#define VC_MMERR       0x00000010  // Debug Trap on MMU Fault
+N#define VC_NOCPERR     0x00000020  // Debug Trap on No Coprocessor Fault
+N#define VC_CHKERR      0x00000040  // Debug Trap on Checking Error Fault
+N#define VC_STATERR     0x00000080  // Debug Trap on State Error Fault
+N#define VC_BUSERR      0x00000100  // Debug Trap on Bus Error Fault
+N#define VC_INTERR      0x00000200  // Debug Trap on Interrupt Error Fault
+N#define VC_HARDERR     0x00000400  // Debug Trap on Hard Fault
+N#define MON_EN         0x00010000  // Monitor Enable
+N#define MON_PEND       0x00020000  // Monitor Pend
+N#define MON_STEP       0x00040000  // Monitor Step
+N#define MON_REQ        0x00080000  // Monitor Request
+N#define TRCENA         0x01000000  // Trace Enable (DWT, ITM, ETM, TPIU)
+N
+N// NVIC: Interrupt Controller Type Register
+N#define NVIC_ICT       (NVIC_Addr + 0x0004)
+N#define INTLINESNUM    0x0000001F  // Interrupt Line Numbers
+N
+N// NVIC: CPUID Base Register
+N#define NVIC_CPUID     (NVIC_Addr + 0x0D00)
+N#define CPUID_PARTNO   0x0000FFF0  // Part Number Mask
+N#define CPUID_REVISION 0x0000000F  // Revision Mask
+N#define CPUID_VARIANT  0x00F00000  // Variant Mask
+N
+N// NVIC: Application Interrupt/Reset Control Register
+N#define NVIC_AIRCR     (NVIC_Addr + 0x0D0C)
+N#define VECTRESET      0x00000001  // Reset Cortex-M (except Debug)
+N#define VECTCLRACTIVE  0x00000002  // Clear Active Vector Bit
+N#define SYSRESETREQ    0x00000004  // Reset System (except Debug)
+N#define VECTKEY        0x05FA0000  // Write Key
+N
+N// NVIC: Debug Fault Status Register
+N#define NVIC_DFSR      (NVIC_Addr + 0x0D30)
+N#define HALTED         0x00000001  // Halt Flag
+N#define BKPT           0x00000002  // BKPT Flag
+N#define DWTTRAP        0x00000004  // DWT Match
+N#define VCATCH         0x00000008  // Vector Catch Flag
+N#define EXTERNAL       0x00000010  // External Debug Request
+N
+N// Data Watchpoint and Trace unit
+N#define DWT_PCSR       0xe000101c  // DWT PC Sampling Register
+N
+N#endif
+L 33 "..\..\..\source\daplink\interface\swd_host.h" 2
+N#endif
+N
+N#ifdef __cplusplus
+Sextern "C" {
+N#endif
+N
+Ntypedef enum {
+N    CONNECT_NORMAL,
+N    CONNECT_UNDER_RESET,
+N} SWD_CONNECT_TYPE;
+N
+Ntypedef enum {
+N    FLASHALGO_RETURN_BOOL,
+N    FLASHALGO_RETURN_POINTER
+N} flash_algo_return_t;
+N
+Nuint8_t swd_init(void);
+Nuint8_t swd_off(void);
+Nuint8_t swd_init_debug(void);
+Nuint8_t swd_clear_errors(void);
+Nuint8_t swd_read_dp(uint8_t adr, uint32_t *val);
+Nuint8_t swd_write_dp(uint8_t adr, uint32_t val);
+Nuint8_t swd_read_ap(uint32_t adr, uint32_t *val);
+Nuint8_t swd_write_ap(uint32_t adr, uint32_t val);
+Nuint8_t swd_read_word(uint32_t addr, uint32_t *val);
+Nuint8_t swd_write_word(uint32_t addr, uint32_t val);
+Nuint8_t swd_read_byte(uint32_t addr, uint8_t *val);
+Nuint8_t swd_write_byte(uint32_t addr, uint8_t val);
+Nuint8_t swd_read_memory(uint32_t address, uint8_t *data, uint32_t size);
+Nuint8_t swd_write_memory(uint32_t address, uint8_t *data, uint32_t size);
+Nuint8_t swd_read_core_register(uint32_t n, uint32_t *val);
+Nuint8_t swd_write_core_register(uint32_t n, uint32_t val);
+Nuint8_t swd_flash_syscall_exec(const program_syscall_t *sysCallParam, uint32_t entry, uint32_t arg1, uint32_t arg2, uint32_t arg3, uint32_t arg4, flash_algo_return_t return_type);
+Nuint8_t swd_set_target_state_hw(target_state_t state);
+Nuint8_t swd_set_target_state_sw(target_state_t state);
+Nuint8_t swd_transfer_retry(uint32_t req, uint32_t *data);
+Nvoid int2array(uint8_t *res, uint32_t data, uint8_t len);
+Nvoid swd_set_reset_connect(SWD_CONNECT_TYPE type);
+Nvoid swd_set_soft_reset(uint32_t soft_reset_type);
+Nuint8_t JTAG2SWD(void);
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif
+L 24 "..\..\..\source\family\wiznet\target_reset_wiznet.c" 2
+N#include "target_family.h"
+N#include "target_board.h"
+L 1 "..\..\..\source\target\target_board.h" 1
+N/**
+N * @file    target_board.h
+N * @brief
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2018-2019, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef TARGET_BOARD_H
+N#define TARGET_BOARD_H
+N
+N#include <stdint.h>
+N#include "target_config.h"
+L 1 "..\..\..\source\target\target_config.h" 1
+N/**
+N * @file    target_config.h
+N * @brief
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2019, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef TARGET_CONFIG_H
+N#define TARGET_CONFIG_H
+N
+N#include <stddef.h>
+N#include <stdint.h>
+N
+N#include "flash_blob.h"
+N#include "util.h"
+L 1 "..\..\..\source\daplink\util.h" 1
+N/**
+N * @file    util.h
+N * @brief   useful things
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2020, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef UTIL_H
+N#define UTIL_H
+N
+N#include <stdbool.h>
+L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stdbool.h" 1
+N/* stdbool.h: ISO/IEC 9899:1999 (C99), section 7.16 */
+N
+N/* Copyright (C) ARM Ltd., 2002
+N * All rights reserved
+N * RCS $Revision$
+N * Checkin $Date$
+N * Revising $Author: drodgman $
+N */
+N
+N#ifndef __bool_true_false_are_defined
+N#define __bool_true_false_are_defined 1
+N#define __ARMCLIB_VERSION 5060044
+N
+N  #ifndef __cplusplus /* In C++, 'bool', 'true' and 'false' and keywords */
+N    #define bool _Bool
+N    #define true 1
+N    #define false 0
+N  #else
+S    #ifdef __GNUC__
+S      /* GNU C++ supports direct inclusion of stdbool.h to provide C99
+S         compatibility by defining _Bool */
+S      #define _Bool bool
+S    #endif
+N  #endif
+N
+N#endif /* __bool_true_false_are_defined */
+N
+L 26 "..\..\..\source\daplink\util.h" 2
+N#include <stdint.h>
+N
+N// Protect commonly-defined macros with ifdefs, to prevent conflicts if redefined
+N// in imported sources (mostly vendor SDKs).
+N
+N#if !defined(ARRAY_SIZE)
+X#if !0L
+N//! @brief Get number of elements in the array.
+N#define ARRAY_SIZE(array) (sizeof(array) / sizeof(array[0]))
+N#endif
+N
+N#if !defined(MIN)
+X#if !0L
+N#define MIN(a,b)                        ((a) < (b) ? (a) : (b))
+N#endif
+N
+N#if !defined(MAX)
+X#if !0L
+N#define MAX(a,b)                        ((a) > (b) ? (a) : (b))
+N#endif
+N
+N#define MB(size)                        ((size) * 1024 * 1024)
+N
+N#define KB(size)                        ((size) * 1024)
+N
+N#define ROUND_UP(value, boundary)       ((value) + ((boundary) - (value)) % (boundary))
+N
+N#define ROUND_DOWN(value, boundary)     ((value) - ((value) % (boundary)))
+N
+N#ifdef __cplusplus
+Sextern "C" {
+N#endif
+N
+N// Write the value to the address specified and return the size
+Nuint32_t util_write_hex8(char *str, uint8_t value);
+Nuint32_t util_write_hex16(char *str, uint16_t value);
+Nuint32_t util_write_hex32(char *str, uint32_t value);
+Nuint32_t util_write_uint32(char *str, uint32_t value);
+Nuint32_t util_write_uint32(char *str, uint32_t value);
+Nuint32_t util_write_uint32_zp(char *str, uint32_t value, uint16_t total_size);
+Nuint32_t util_write_string(char *str, const char *data);
+N
+Nuint32_t util_div_round_up(uint32_t dividen, uint32_t divisor);
+Nuint32_t util_div_round_down(uint32_t dividen, uint32_t divisor);
+Nuint32_t util_div_round(uint32_t dividen, uint32_t divisor);
+N
+N#if !(defined(DAPLINK_NO_ASSERT_FILENAMES) && defined(DAPLINK_BL))
+X#if !(1L && 0L)
+N// With the filename enabled.
+N#define util_assert(expression) _util_assert((expression), __FILE__, __LINE__)
+N#else
+S// Filename disabled to save code size.
+S#define util_assert(expression) _util_assert((expression), "(file)", __LINE__)
+N#endif
+Nvoid _util_assert(bool expression, const char *filename, uint16_t line);
+Xvoid _util_assert(_Bool expression, const char *filename, uint16_t line);
+N
+Nvoid util_assert_clear(void);
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif
+L 30 "..\..\..\source\target\target_config.h" 2
+N
+N//! This can vary from target to target and should be in the structure or flash blob
+N#define TARGET_AUTO_INCREMENT_PAGE_SIZE    (1024)
+N
+N//! Additional flash and ram regions
+N#define MAX_REGIONS (10)
+N
+N//! @brief Option flags for memory regions.
+Nenum _region_flags {
+N    kRegionIsDefault = (1 << 0), /*!< Out of bounds regions will use the same flash algo if this is set */
+N    kRegionIsSecure  = (1 << 1), /*!< The region can only be accessed from the secure world. Only applies for TrustZone-enabled targets. */
+N};
+N
+N/*!
+N * @brief Details of a target flash or RAM memory region.
+N */
+Ntypedef struct __attribute__((__packed__)) region_info {
+N    uint32_t start;                 /*!< Region start address. */
+N    uint32_t end;                   /*!< Region end address. */
+N    uint32_t flags;                 /*!< Flags for this region from the #_region_flags enumeration. */
+N    uint32_t alias_index;           /*!< Use with flags; will point to a different index if there is an alias region */
+N    program_target_t *flash_algo;   /*!< A pointer to the flash algorithm structure */
+N} region_info_t;
+N
+N/*!
+N * @brief Information required to program target flash.
+N */
+Ntypedef struct __attribute__((__packed__)) target_cfg {
+N    uint32_t version;                           /*!< Target configuration version */
+N    const sector_info_t* sectors_info;          /*!< Sector start and length list */
+N    uint32_t sector_info_length;                /*!< Number of entries in the sectors_info array */
+N    region_info_t flash_regions[MAX_REGIONS];   /*!< Flash regions */
+X    region_info_t flash_regions[(10)];    
+N    region_info_t ram_regions[MAX_REGIONS];     /*!< RAM regions  */
+X    region_info_t ram_regions[(10)];      
+N    const char *rt_board_id;                    /*!< If assigned, this is a flexible board ID */
+N    uint16_t rt_family_id;                      /*!< If assigned, this is a flexible family ID */
+N    uint8_t erase_reset;                        /*!< Reset after performing an erase */
+N    uint8_t pad;
+N} target_cfg_t;
+N
+Nextern target_cfg_t target_device;
+N
+N
+N#endif
+L 27 "..\..\..\source\target\target_board.h" 2
+N#include "target_family.h"
+N#include "virtual_fs.h"
+L 1 "..\..\..\source\daplink\drag-n-drop\virtual_fs.h" 1
+N/**
+N * @file    virtual_fs.h
+N * @brief   FAT 12/16 filesystem handling
+N *
+N * DAPLink Interface Firmware
+N * Copyright (c) 2009-2016, ARM Limited, All Rights Reserved
+N * SPDX-License-Identifier: Apache-2.0
+N *
+N * Licensed under the Apache License, Version 2.0 (the "License"); you may
+N * not use this file except in compliance with the License.
+N * You may obtain a copy of the License at
+N *
+N * http://www.apache.org/licenses/LICENSE-2.0
+N *
+N * Unless required by applicable law or agreed to in writing, software
+N * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+N * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+N * See the License for the specific language governing permissions and
+N * limitations under the License.
+N */
+N
+N#ifndef VIRTUAL_FS_H
+N#define VIRTUAL_FS_H
+N
+N#include <stdint.h>
+N
+N#ifdef __cplusplus
+Sextern "C" {
+N#endif
+N
+N#define VFS_CLUSTER_SIZE        0x1000
+N#define VFS_SECTOR_SIZE         512
+N#define VFS_INVALID_SECTOR      0xFFFFFFFF
+N#define VFS_FILE_INVALID        0
+N#define VFS_MAX_FILES           16
+N
+Ntypedef char vfs_filename_t[11];
+N
+Ntypedef enum {
+N    VFS_FILE_ATTR_READ_ONLY     = (1 << 0),
+N    VFS_FILE_ATTR_HIDDEN        = (1 << 1),
+N    VFS_FILE_ATTR_SYSTEM        = (1 << 2),
+N    VFS_FILE_ATTR_VOLUME_LABEL  = (1 << 3),
+N    VFS_FILE_ATTR_SUB_DIR       = (1 << 4),
+N    VFS_FILE_ATTR_ARCHIVE       = (1 << 5),
+N} vfs_file_attr_bit_t;
+N
+Ntypedef enum {
+N    VFS_FILE_CREATED = 0,   /*!< A new file was created */
+N    VFS_FILE_DELETED,       /*!< An existing file was deleted */
+N    VFS_FILE_CHANGED,       /*!< Some attribute of the file changed.
+N                                  Note: when a file is deleted or
+N                                  created a file changed
+N                                  notification will also occur*/
+N} vfs_file_change_t;
+N
+Ntypedef void *vfs_file_t;
+Ntypedef uint32_t vfs_sector_t;
+N
+N// Callback for when data is written to a file on the virtual filesystem
+Ntypedef void (*vfs_write_cb_t)(uint32_t sector_offset, const uint8_t *data, uint32_t num_sectors);
+N// Callback for when data is ready from the virtual filesystem
+Ntypedef uint32_t (*vfs_read_cb_t)(uint32_t sector_offset, uint8_t *data, uint32_t num_sectors);
+N// Callback for when a file's attributes are changed on the virtual filesystem.  Note that the 'file' parameter
+N// can be saved and compared to other files to see if they are referencing the same object.  The
+N// same cannot be done with new_file_data since it points to a temporary buffer.
+Ntypedef void (*vfs_file_change_cb_t)(const vfs_filename_t filename, vfs_file_change_t change,
+N                                     vfs_file_t file, vfs_file_t new_file_data);
+N
+N// Initialize the filesystem with the given size and name
+Nvoid vfs_init(const vfs_filename_t drive_name, uint32_t disk_size);
+N
+N// Get the total size of the virtual filesystem
+Nuint32_t vfs_get_total_size(void);
+N
+N// Add a file to the virtual FS and return a handle to this file.
+N// This must be called before vfs_read or vfs_write are called.
+N// Adding a new file after vfs_read or vfs_write have been called results in undefined behavior.
+Nvfs_file_t vfs_create_file(const vfs_filename_t filename, vfs_read_cb_t read_cb, vfs_write_cb_t write_cb, uint32_t len);
+N
+N// Set the attributes of a file
+Nvoid vfs_file_set_attr(vfs_file_t file, vfs_file_attr_bit_t attr);
+N
+N// Get the starting sector of this file.
+N// NOTE - If the file size is 0 there is no starting
+N// sector so VFS_INVALID_SECTOR will be returned.
+Nvfs_sector_t vfs_file_get_start_sector(vfs_file_t file);
+N
+N// Get the size of the file.
+Nuint32_t vfs_file_get_size(vfs_file_t file);
+N
+N// Get the attributes of a file
+Nvfs_file_attr_bit_t vfs_file_get_attr(vfs_file_t file);
+N
+N// Set the callback when a file is created, deleted or has atributes changed.
+Nvoid vfs_set_file_change_callback(vfs_file_change_cb_t cb);
+N
+N// Read one or more sectors from the virtual filesystem
+Nvoid vfs_read(uint32_t sector, uint8_t *buf, uint32_t num_of_sectors);
+N
+N// Write one or more sectors to the virtual filesystem
+Nvoid vfs_write(uint32_t sector, const uint8_t *buf, uint32_t num_of_sectors);
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif
+L 29 "..\..\..\source\target\target_board.h" 2
+N
+N//! @brief Current board info version.
+N//!
+N//! - Version 1: Initial version.
+Nenum _board_info_version {
+N    kBoardInfoVersion = 1, //!< The current board info version.
+N};
+N
+N//! @brief Flags for board_info
+Nenum _board_info_flags {
+N	kEnablePageErase = (1 << 0),            /*!< Enable page programming and sector erase for drag and drop */
+N    kEnableUnderResetConnect = (1 << 1),    /*!< Enable under reset connection when enabling debug mode */
+N};
+N
+N/*!
+N * @brief Board customization info.
+N *
+N * Each board must have a unique 4-character Board ID. For Mbed OS targets, the Board ID is the same
+N * as the Mbed Platform ID. These IDs are nominally allocated by Arm in order to guarantee there are
+N * no conflicts between boards. Please see the DAPLink documentation for more.
+N *
+N * The family_id member tells DAPLink which device family the on-board target belongs to. This then
+N * determines certain behaviours, such as how to reset the target. Family IDs are defined in the
+N * #family_id_t enumeration.
+N *
+N * The board initialization function pointers allow the board to override the routines defined
+N * by the device family.
+N */
+Ntypedef struct __attribute__((__packed__)) board_info {
+N    uint16_t info_version;              /*!< Version number of the board info */ 
+N    uint16_t family_id;                 /*!< Use to select or identify target family from defined target family or custom ones */
+N    char board_id[5];                   /*!< 4-char board ID plus null terminator */
+N    uint8_t _padding[3];
+N    uint32_t flags;                     /*!< Flags from #_board_info_flags */
+N    target_cfg_t *target_cfg;           /*!< Specific chip configuration for the target and enables MSD when non-NULL */
+N
+N    //! @name MSD customization
+N    //@{
+N    vfs_filename_t daplink_url_name;    /*!< Customize the URL file name */
+N    vfs_filename_t daplink_drive_name;  /*!< Customize the MSD DAPLink drive name */
+N    char daplink_target_url[64];        /*!< Customize the target url in DETAILS.TXT */
+N    //@}
+N
+N    //! @name Board initialization customization
+N    //@{
+N    void (*prerun_board_config)(void);                      /*!< Specific board debug/ID related initialization */
+N    void (*swd_set_target_reset)(uint8_t asserted);         /*!< Boards can customize how to send reset to the target with precedence over target family */
+N    uint8_t (*target_set_state)(target_state_t state);  /*!< Boards can customize target debug states with precedence over target family */
+N    uint32_t soft_reset_type;                               /*!< Boards can override software reset type to VECTRESET or SYSRESETREQ */
+N    //@}
+N} board_info_t;
+N
+N//! @brief Information describing the board on which DAPLink is running.
+Nextern const board_info_t g_board_info;
+N
+N#ifdef __cplusplus
+Sextern "C" {
+N#endif
+N
+N//! @brief Returns the 4-char ID of the board used by the running firmware.
+N//!
+N//! For firmware with no board, the board ID is "0000".
+Nconst char * get_board_id(void);
+N
+N//! @brief Returns the family ID for the target associated with the board.
+N//!
+N//! The family ID will be 0 if there is no board.
+Nuint16_t get_family_id(void);
+N
+N//! @brief Whether the board has a valid flash algo.
+Nuint8_t flash_algo_valid(void);
+N
+N//! @brief Returns the MSD HTML help filename or a default.
+Nstatic inline const char * get_daplink_url_name ( void ) { return ((g_board_info.daplink_url_name[0] != 0) ? g_board_info.daplink_url_name : "MBED    HTM"); }
+N
+N//! @brief Returns the MSD volume name or a default.
+Nstatic inline const char * get_daplink_drive_name ( void ) { return ((g_board_info.daplink_drive_name[0] != 0) ? g_board_info.daplink_drive_name : "DAPLINK    "); }
+N
+N//! @brief Returns the target information URL or a default.
+Nstatic inline const char * get_daplink_target_url ( void ) { return ((g_board_info.daplink_target_url[0] != 0) ? g_board_info.daplink_target_url : "https://mbed.org/device/?code=@U?version=@V?target_id=@T"); }
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif
+L 26 "..\..\..\source\family\wiznet\target_reset_wiznet.c" 2
+N
+Nstatic uint8_t target_set_state_wiznet(target_state_t state) {
+N    uint8_t status;
+N
+N    if( state == RESET_RUN )
+N    {
+N        do
+N        {
+N            swd_set_target_reset(1);
+N            osDelay(2);
+N            swd_set_target_reset(0);
+N            osDelay(2);
+N        } while(!swd_init_debug());
+N
+N        swd_off();
+N        status = 1;
+N    }
+N    else
+N    {
+N        status = swd_set_target_state_sw(state);
+N    }
+N
+N    return status;
+N}
+N
+N
+Nconst target_family_descriptor_t g_wiznet_family = {
+N    .family_id = kWiznet_W7500_FamilyID,
+N    .target_set_state = target_set_state_wiznet,
+N};

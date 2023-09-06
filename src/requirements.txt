@@ -1,0 +1,14 @@
+project_generator==0.10.*
+mbed-ls==1.6.2
+pyserial
+pyOCD==0.28.*
+requests
+intelhex
+enum34
+pyusb
+mbed-cli==1.8.2
+bs4
+numpy
+pyelftools
+fuzzywuzzy
+jsonschema
