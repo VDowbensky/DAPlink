@@ -4,7 +4,7 @@ Full DAPlink:
 SWDIO_OUT    PB9
 SWDIO_IN     PB8
 SWCLK	     PB7		
-SWRST	     PB6
+SWRST	     PB0
 
 SWO
 
