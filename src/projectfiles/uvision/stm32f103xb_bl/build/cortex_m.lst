@@ -31670,8 +31670,8 @@ N#define POWER_EN_Bit                 5
 N
 N// nRESET OUT Pin
 N#define nRESET_PIN_PORT              GPIOB
-N#define nRESET_PIN                   GPIO_PIN_6
-N#define nRESET_PIN_Bit               6
+N#define nRESET_PIN                   GPIO_PIN_0 //GPIO_PIN_6
+N#define nRESET_PIN_Bit               0 //6
 N
 N//SWD
 N#define SWCLK_TCK_PIN_PORT           GPIOB

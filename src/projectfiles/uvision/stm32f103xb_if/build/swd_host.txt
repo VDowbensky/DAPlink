@@ -92,15 +92,15 @@
 000024  4620              MOV      r0,r4
 000026  f7fffffe          BL       pin_in_init
 00002a  6820              LDR      r0,[r4,#0]
-00002c  f0206070          BIC      r0,r0,#0xf000000
+00002c  f020000f          BIC      r0,r0,#0xf
 000030  6020              STR      r0,[r4,#0]
 000032  6820              LDR      r0,[r4,#0]
-000034  f04060e0          ORR      r0,r0,#0x7000000
+000034  f0400007          ORR      r0,r0,#7
 000038  6020              STR      r0,[r4,#0]
 ;;;245        // Set RESET HIGH
 ;;;246        pin_out_od_init(nRESET_PIN_PORT, nRESET_PIN_Bit);//TODO - fix reset logic
 ;;;247        nRESET_PIN_PORT->BSRR = nRESET_PIN;
-00003a  2040              MOVS     r0,#0x40
+00003a  2001              MOVS     r0,#1
 00003c  6028              STR      r0,[r5,#0]
 ;;;248    }
 00003e  bd70              POP      {r4-r6,pc}

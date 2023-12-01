@@ -350,24 +350,24 @@
 00002a  f810cb01          LDRB     r12,[r0],#1           ;1648
 00002e  2400              MOVS     r4,#0                 ;1648
 000030  23ff              MOVS     r3,#0xff              ;1648
-000032  4998              LDR      r1,|L3.660|
-000034  4a98              LDR      r2,|L3.664|
-000036  f8dfb264          LDR      r11,|L3.668|
-00003a  f8dfa264          LDR      r10,|L3.672|
+000032  4997              LDR      r1,|L3.656|
+000034  4a97              LDR      r2,|L3.660|
+000036  f8dfb260          LDR      r11,|L3.664|
+00003a  f8dfa260          LDR      r10,|L3.668|
 00003e  f04f0901          MOV      r9,#1                 ;1638
 000042  f44f5600          MOV      r6,#0x2000            ;1638
 000046  f04f1501          MOV      r5,#0x10001           ;1638
 00004a  f1bc0f1e          CMP      r12,#0x1e             ;1648
-00004e  d277              BCS      |L3.320|
+00004e  d276              BCS      |L3.318|
 000050  e8dff00c          TBB      [pc,r12]              ;1648
-000054  0f172650          DCB      0x0f,0x17,0x26,0x50
-000058  bbc8e376          DCB      0xbb,0xc8,0xe3,0x76
-00005c  f2647776          DCB      0xf2,0x64,0x77,0x76
-000060  76767676          DCB      0x76,0x76,0x76,0x76
-000064  7b7f8393          DCB      0x7b,0x7f,0x83,0x93
-000068  a0b6b976          DCB      0xa0,0xb6,0xb9,0x76
-00006c  76767676          DCB      0x76,0x76,0x76,0x76
-000070  769c              DCB      0x76,0x9c
+000054  0f17264f          DCB      0x0f,0x17,0x26,0x4f
+000058  bac7e275          DCB      0xba,0xc7,0xe2,0x75
+00005c  f1637675          DCB      0xf1,0x63,0x76,0x75
+000060  75757575          DCB      0x75,0x75,0x75,0x75
+000064  7a7e8292          DCB      0x7a,0x7e,0x82,0x92
+000068  9fb5b875          DCB      0x9f,0xb5,0xb8,0x75
+00006c  75757575          DCB      0x75,0x75,0x75,0x75
+000070  759b              DCB      0x75,0x9b
 000072  7800              LDRB     r0,[r0,#0]            ;1650
 000074  1c79              ADDS     r1,r7,#1              ;1650
 000076  f7fffffe          BL       DAP_Info
@@ -377,21 +377,21 @@
 000082  7802              LDRB     r2,[r0,#0]
 000084  b122              CBZ      r2,|L3.144|
 000086  2a01              CMP      r2,#1
-000088  d058              BEQ      |L3.316|
+000088  d057              BEQ      |L3.314|
 00008a  703b              STRB     r3,[r7,#0]
                   |L3.140|
 00008c  4608              MOV      r0,r1
-00008e  e0e8              B        |L3.610|
+00008e  e0e7              B        |L3.608|
                   |L3.144|
 000090  7840              LDRB     r0,[r0,#1]
 000092  07c2              LSLS     r2,r0,#31
-000094  4883              LDR      r0,|L3.676|
+000094  4882              LDR      r0,|L3.672|
 000096  d001              BEQ      |L3.156|
 000098  6146              STR      r6,[r0,#0x14]
-00009a  e04f              B        |L3.316|
+00009a  e04e              B        |L3.314|
                   |L3.156|
 00009c  6106              STR      r6,[r0,#0x10]
-00009e  e04d              B        |L3.316|
+00009e  e04c              B        |L3.314|
 0000a0  7804              LDRB     r4,[r0,#0]
 0000a2  b12c              CBZ      r4,|L3.176|
 0000a4  2c01              CMP      r4,#1
@@ -401,7 +401,7 @@
 0000aa  703c              STRB     r4,[r7,#0]
                   |L3.172|
 0000ac  4628              MOV      r0,r5
-0000ae  e0d8              B        |L3.610|
+0000ae  e0d7              B        |L3.608|
                   |L3.176|
 0000b0  2401              MOVS     r4,#1
                   |L3.178|
@@ -409,7 +409,7 @@
 0000b6  210d              MOVS     r1,#0xd
 0000b8  4658              MOV      r0,r11
 0000ba  f7fffffe          BL       pin_out_init
-0000be  f8df81dc          LDR      r8,|L3.668|
+0000be  f8df81d8          LDR      r8,|L3.664|
 0000c2  f1080810          ADD      r8,r8,#0x10
 0000c6  f8c86000          STR      r6,[r8,#0]
 0000ca  210c              MOVS     r1,#0xc
@@ -421,223 +421,221 @@
 0000dc  210e              MOVS     r1,#0xe
 0000de  4658              MOV      r0,r11
 0000e0  f7fffffe          BL       pin_in_init
-0000e4  2106              MOVS     r1,#6
+0000e4  2100              MOVS     r1,#0
 0000e6  4658              MOV      r0,r11
 0000e8  f7fffffe          BL       pin_out_od_init
-0000ec  2040              MOVS     r0,#0x40
-0000ee  f8c80000          STR      r0,[r8,#0]
-0000f2  e7da              B        |L3.170|
-0000f4  7014              STRB     r4,[r2,#0]
-0000f6  2200              MOVS     r2,#0
-0000f8  210d              MOVS     r1,#0xd
-0000fa  465d              MOV      r5,r11
-0000fc  4658              MOV      r0,r11
-0000fe  f7fffffe          BL       pin_in_init
-000102  2200              MOVS     r2,#0
-000104  210c              MOVS     r1,#0xc
-000106  4628              MOV      r0,r5
-000108  f7fffffe          BL       pin_in_init
-00010c  2200              MOVS     r2,#0
-00010e  210e              MOVS     r1,#0xe
-000110  4628              MOV      r0,r5
-000112  f7fffffe          BL       pin_in_init
-000116  703c              STRB     r4,[r7,#0]
-000118  4648              MOV      r0,r9
-00011a  e0a2              B        |L3.610|
-00011c  7842              LDRB     r2,[r0,#1]            ;1663
-00011e  7800              LDRB     r0,[r0,#0]            ;1663
-000120  4b62              LDR      r3,|L3.684|
-000122  ea402202          ORR      r2,r0,r2,LSL #8       ;1663
-000126  4860              LDR      r0,|L3.680|
-000128  6800              LDR      r0,[r0,#0]            ;1663  ; SystemCoreClock
-00012a  fbb0f0f3          UDIV     r0,r0,r3              ;1663
-00012e  2303              MOVS     r3,#3                 ;1663
-000130  1c80              ADDS     r0,r0,#2              ;1663
-000132  fbb0f0f3          UDIV     r0,r0,r3              ;1663
-000136  4350              MULS     r0,r2,r0              ;1663
-                  |L3.312|
-000138  1e40              SUBS     r0,r0,#1              ;1663
-00013a  d1fd              BNE      |L3.312|
-                  |L3.316|
-00013c  703c              STRB     r4,[r7,#0]            ;1663
-00013e  e7a5              B        |L3.140|
-                  |L3.320|
-000140  e0a3              B        |L3.650|
-000142  707c              STRB     r4,[r7,#1]            ;1667
-000144  703c              STRB     r4,[r7,#0]            ;1667
-000146  2002              MOVS     r0,#2                 ;1667
-000148  e08b              B        |L3.610|
-00014a  4639              MOV      r1,r7                 ;1674
-00014c  f7fffffe          BL       DAP_SWJ_Pins
-000150  e087              B        |L3.610|
-000152  4639              MOV      r1,r7                 ;1677
-000154  f7fffffe          BL       DAP_SWJ_Clock
-000158  e083              B        |L3.610|
-00015a  f8105b01          LDRB     r5,[r0],#1            ;1678
-00015e  b90d              CBNZ     r5,|L3.356|
-000160  f44f7580          MOV      r5,#0x100             ;1678
-                  |L3.356|
-000164  4601              MOV      r1,r0                 ;1678
-000166  4628              MOV      r0,r5                 ;1678
-000168  f7fffffe          BL       SWJ_Sequence
-00016c  1ded              ADDS     r5,r5,#7              ;1678
-00016e  703c              STRB     r4,[r7,#0]            ;1678
-000170  08e8              LSRS     r0,r5,#3              ;1678
-                  |L3.370|
-000172  0400              LSLS     r0,r0,#16             ;1678
-000174  f1001001          ADD      r0,r0,#0x10001        ;1678
-000178  e073              B        |L3.610|
-00017a  7800              LDRB     r0,[r0,#0]            ;1678
-00017c  f0000103          AND      r1,r0,#3              ;1678
-000180  1c49              ADDS     r1,r1,#1              ;1678
-000182  7611              STRB     r1,[r2,#0x18]         ;1678
-000184  f3c00080          UBFX     r0,r0,#2,#1           ;1678
-000188  7650              STRB     r0,[r2,#0x19]         ;1678
-00018a  e78e              B        |L3.170|
-00018c  4639              MOV      r1,r7                 ;1687
-00018e  f7fffffe          BL       DAP_SWD_Sequence
-000192  e066              B        |L3.610|
-000194  703b              STRB     r3,[r7,#0]            ;1688
-000196  2201              MOVS     r2,#1                 ;1688
-000198  4614              MOV      r4,r2                 ;1688
-00019a  f8103b01          LDRB     r3,[r0],#1            ;1688
-00019e  e00a              B        |L3.438|
-                  |L3.416|
-0001a0  f8101b01          LDRB     r1,[r0],#1            ;1691
-0001a4  f011013f          ANDS     r1,r1,#0x3f           ;1691
-0001a8  d100              BNE      |L3.428|
-0001aa  2140              MOVS     r1,#0x40              ;1691
-                  |L3.428|
-0001ac  1dc9              ADDS     r1,r1,#7              ;1691
-0001ae  08c9              LSRS     r1,r1,#3              ;1691
-0001b0  440a              ADD      r2,r2,r1              ;1691
-0001b2  4408              ADD      r0,r0,r1              ;1691
-0001b4  1c52              ADDS     r2,r2,#1              ;1691
-                  |L3.438|
-0001b6  1e5b              SUBS     r3,r3,#1              ;1691
-0001b8  d2f2              BCS      |L3.416|
-0001ba  ea444002          ORR      r0,r4,r2,LSL #16      ;1691
-0001be  e050              B        |L3.610|
-0001c0  7800              LDRB     r0,[r0,#0]            ;1692
-0001c2  703b              STRB     r3,[r7,#0]            ;1692
-0001c4  e7d5              B        |L3.370|
-0001c6  703b              STRB     r3,[r7,#0]            ;1695
-0001c8  e770              B        |L3.172|
-0001ca  7801              LDRB     r1,[r0,#0]            ;1698
-0001cc  7311              STRB     r1,[r2,#0xc]          ;1698
-0001ce  7881              LDRB     r1,[r0,#2]            ;1698
-0001d0  7843              LDRB     r3,[r0,#1]            ;1698
-0001d2  ea432101          ORR      r1,r3,r1,LSL #8       ;1698
-0001d6  8211              STRH     r1,[r2,#0x10]         ;1698
-0001d8  7901              LDRB     r1,[r0,#4]            ;1698
-0001da  78c3              LDRB     r3,[r0,#3]            ;1698
-0001dc  ea432001          ORR      r0,r3,r1,LSL #8       ;1698
-0001e0  8250              STRH     r0,[r2,#0x12]         ;1698
-0001e2  e050              B        |L3.646|
-0001e4  7812              LDRB     r2,[r2,#0]            ;1702  ; DAP_Data
-0001e6  4639              MOV      r1,r7                 ;1704
-0001e8  2a01              CMP      r2,#1                 ;1704
-0001ea  d013              BEQ      |L3.532|
-0001ec  4605              MOV      r5,r0                 ;1704
-0001ee  1c40              ADDS     r0,r0,#1              ;1704
-0001f0  f8102b01          LDRB     r2,[r0],#1            ;1704
-0001f4  b142              CBZ      r2,|L3.520|
-                  |L3.502|
-0001f6  f8103b01          LDRB     r3,[r0],#1            ;1704
-0001fa  079e              LSLS     r6,r3,#30             ;1704
-0001fc  d501              BPL      |L3.514|
-0001fe  06db              LSLS     r3,r3,#27             ;1704
-000200  d500              BPL      |L3.516|
+0000ec  f8c89000          STR      r9,[r8,#0]
+0000f0  e7db              B        |L3.170|
+0000f2  7014              STRB     r4,[r2,#0]
+0000f4  2200              MOVS     r2,#0
+0000f6  210d              MOVS     r1,#0xd
+0000f8  465d              MOV      r5,r11
+0000fa  4658              MOV      r0,r11
+0000fc  f7fffffe          BL       pin_in_init
+000100  2200              MOVS     r2,#0
+000102  210c              MOVS     r1,#0xc
+000104  4628              MOV      r0,r5
+000106  f7fffffe          BL       pin_in_init
+00010a  2200              MOVS     r2,#0
+00010c  210e              MOVS     r1,#0xe
+00010e  4628              MOV      r0,r5
+000110  f7fffffe          BL       pin_in_init
+000114  703c              STRB     r4,[r7,#0]
+000116  4648              MOV      r0,r9
+000118  e0a2              B        |L3.608|
+00011a  7842              LDRB     r2,[r0,#1]            ;1663
+00011c  7800              LDRB     r0,[r0,#0]            ;1663
+00011e  4b62              LDR      r3,|L3.680|
+000120  ea402202          ORR      r2,r0,r2,LSL #8       ;1663
+000124  485f              LDR      r0,|L3.676|
+000126  6800              LDR      r0,[r0,#0]            ;1663  ; SystemCoreClock
+000128  fbb0f0f3          UDIV     r0,r0,r3              ;1663
+00012c  2303              MOVS     r3,#3                 ;1663
+00012e  1c80              ADDS     r0,r0,#2              ;1663
+000130  fbb0f0f3          UDIV     r0,r0,r3              ;1663
+000134  4350              MULS     r0,r2,r0              ;1663
+                  |L3.310|
+000136  1e40              SUBS     r0,r0,#1              ;1663
+000138  d1fd              BNE      |L3.310|
+                  |L3.314|
+00013a  703c              STRB     r4,[r7,#0]            ;1663
+00013c  e7a6              B        |L3.140|
+                  |L3.318|
+00013e  e0a3              B        |L3.648|
+000140  707c              STRB     r4,[r7,#1]            ;1667
+000142  703c              STRB     r4,[r7,#0]            ;1667
+000144  2002              MOVS     r0,#2                 ;1667
+000146  e08b              B        |L3.608|
+000148  4639              MOV      r1,r7                 ;1674
+00014a  f7fffffe          BL       DAP_SWJ_Pins
+00014e  e087              B        |L3.608|
+000150  4639              MOV      r1,r7                 ;1677
+000152  f7fffffe          BL       DAP_SWJ_Clock
+000156  e083              B        |L3.608|
+000158  f8105b01          LDRB     r5,[r0],#1            ;1678
+00015c  b90d              CBNZ     r5,|L3.354|
+00015e  f44f7580          MOV      r5,#0x100             ;1678
+                  |L3.354|
+000162  4601              MOV      r1,r0                 ;1678
+000164  4628              MOV      r0,r5                 ;1678
+000166  f7fffffe          BL       SWJ_Sequence
+00016a  1ded              ADDS     r5,r5,#7              ;1678
+00016c  703c              STRB     r4,[r7,#0]            ;1678
+00016e  08e8              LSRS     r0,r5,#3              ;1678
+                  |L3.368|
+000170  0400              LSLS     r0,r0,#16             ;1678
+000172  f1001001          ADD      r0,r0,#0x10001        ;1678
+000176  e073              B        |L3.608|
+000178  7800              LDRB     r0,[r0,#0]            ;1678
+00017a  f0000103          AND      r1,r0,#3              ;1678
+00017e  1c49              ADDS     r1,r1,#1              ;1678
+000180  7611              STRB     r1,[r2,#0x18]         ;1678
+000182  f3c00080          UBFX     r0,r0,#2,#1           ;1678
+000186  7650              STRB     r0,[r2,#0x19]         ;1678
+000188  e78f              B        |L3.170|
+00018a  4639              MOV      r1,r7                 ;1687
+00018c  f7fffffe          BL       DAP_SWD_Sequence
+000190  e066              B        |L3.608|
+000192  703b              STRB     r3,[r7,#0]            ;1688
+000194  2201              MOVS     r2,#1                 ;1688
+000196  4614              MOV      r4,r2                 ;1688
+000198  f8103b01          LDRB     r3,[r0],#1            ;1688
+00019c  e00a              B        |L3.436|
+                  |L3.414|
+00019e  f8101b01          LDRB     r1,[r0],#1            ;1691
+0001a2  f011013f          ANDS     r1,r1,#0x3f           ;1691
+0001a6  d100              BNE      |L3.426|
+0001a8  2140              MOVS     r1,#0x40              ;1691
+                  |L3.426|
+0001aa  1dc9              ADDS     r1,r1,#7              ;1691
+0001ac  08c9              LSRS     r1,r1,#3              ;1691
+0001ae  440a              ADD      r2,r2,r1              ;1691
+0001b0  4408              ADD      r0,r0,r1              ;1691
+0001b2  1c52              ADDS     r2,r2,#1              ;1691
+                  |L3.436|
+0001b4  1e5b              SUBS     r3,r3,#1              ;1691
+0001b6  d2f2              BCS      |L3.414|
+0001b8  ea444002          ORR      r0,r4,r2,LSL #16      ;1691
+0001bc  e050              B        |L3.608|
+0001be  7800              LDRB     r0,[r0,#0]            ;1692
+0001c0  703b              STRB     r3,[r7,#0]            ;1692
+0001c2  e7d5              B        |L3.368|
+0001c4  703b              STRB     r3,[r7,#0]            ;1695
+0001c6  e771              B        |L3.172|
+0001c8  7801              LDRB     r1,[r0,#0]            ;1698
+0001ca  7311              STRB     r1,[r2,#0xc]          ;1698
+0001cc  7881              LDRB     r1,[r0,#2]            ;1698
+0001ce  7843              LDRB     r3,[r0,#1]            ;1698
+0001d0  ea432101          ORR      r1,r3,r1,LSL #8       ;1698
+0001d4  8211              STRH     r1,[r2,#0x10]         ;1698
+0001d6  7901              LDRB     r1,[r0,#4]            ;1698
+0001d8  78c3              LDRB     r3,[r0,#3]            ;1698
+0001da  ea432001          ORR      r0,r3,r1,LSL #8       ;1698
+0001de  8250              STRH     r0,[r2,#0x12]         ;1698
+0001e0  e050              B        |L3.644|
+0001e2  7812              LDRB     r2,[r2,#0]            ;1702  ; DAP_Data
+0001e4  4639              MOV      r1,r7                 ;1704
+0001e6  2a01              CMP      r2,#1                 ;1704
+0001e8  d013              BEQ      |L3.530|
+0001ea  4605              MOV      r5,r0                 ;1704
+0001ec  1c40              ADDS     r0,r0,#1              ;1704
+0001ee  f8102b01          LDRB     r2,[r0],#1            ;1704
+0001f2  b142              CBZ      r2,|L3.518|
+                  |L3.500|
+0001f4  f8103b01          LDRB     r3,[r0],#1            ;1704
+0001f8  079e              LSLS     r6,r3,#30             ;1704
+0001fa  d501              BPL      |L3.512|
+0001fc  06db              LSLS     r3,r3,#27             ;1704
+0001fe  d500              BPL      |L3.514|
+                  |L3.512|
+000200  1d00              ADDS     r0,r0,#4              ;1704
                   |L3.514|
-000202  1d00              ADDS     r0,r0,#4              ;1704
-                  |L3.516|
-000204  1e52              SUBS     r2,r2,#1              ;1704
-000206  d1f6              BNE      |L3.502|
-                  |L3.520|
-000208  1b40              SUBS     r0,r0,r5              ;1704
-00020a  700c              STRB     r4,[r1,#0]            ;1704
-00020c  0400              LSLS     r0,r0,#16             ;1704
-00020e  707c              STRB     r4,[r7,#1]            ;1704
-000210  1c80              ADDS     r0,r0,#2              ;1704
-000212  e026              B        |L3.610|
-                  |L3.532|
-000214  f7fffffe          BL       DAP_SWD_Transfer
-000218  e023              B        |L3.610|
-00021a  4605              MOV      r5,r0                 ;1707
-00021c  7810              LDRB     r0,[r2,#0]            ;1707  ; DAP_Data
-00021e  4639              MOV      r1,r7                 ;1707
-000220  2801              CMP      r0,#1                 ;1707
-000222  d00a              BEQ      |L3.570|
-000224  700c              STRB     r4,[r1,#0]            ;1707
-000226  704c              STRB     r4,[r1,#1]            ;1707
-000228  70bc              STRB     r4,[r7,#2]            ;1707
-00022a  2103              MOVS     r1,#3                 ;1707
-                  |L3.556|
-00022c  78e8              LDRB     r0,[r5,#3]            ;1707
-00022e  0780              LSLS     r0,r0,#30             ;1707
-000230  d508              BPL      |L3.580|
-000232  f4412080          ORR      r0,r1,#0x40000        ;1707
-000236  e014              B        |L3.610|
-000238  e00e              B        |L3.600|
-                  |L3.570|
-00023a  4628              MOV      r0,r5                 ;1707
-00023c  f7fffffe          BL       DAP_SWD_TransferBlock
-000240  4601              MOV      r1,r0                 ;1707
-000242  e7f3              B        |L3.556|
-                  |L3.580|
-000244  78a8              LDRB     r0,[r5,#2]            ;1707
-000246  786a              LDRB     r2,[r5,#1]            ;1707
-000248  ea422000          ORR      r0,r2,r0,LSL #8       ;1707
-00024c  f44f2280          MOV      r2,#0x40000           ;1707
-000250  eb024080          ADD      r0,r2,r0,LSL #18      ;1707
-000254  4308              ORRS     r0,r0,r1              ;1707
-000256  e004              B        |L3.610|
-                  |L3.600|
-000258  7811              LDRB     r1,[r2,#0]            ;1707  ; DAP_Data
-00025a  2901              CMP      r1,#1                 ;1707
-00025c  d004              BEQ      |L3.616|
-00025e  703b              STRB     r3,[r7,#0]            ;1711
+000202  1e52              SUBS     r2,r2,#1              ;1704
+000204  d1f6              BNE      |L3.500|
+                  |L3.518|
+000206  1b40              SUBS     r0,r0,r5              ;1704
+000208  700c              STRB     r4,[r1,#0]            ;1704
+00020a  0400              LSLS     r0,r0,#16             ;1704
+00020c  707c              STRB     r4,[r7,#1]            ;1704
+00020e  1c80              ADDS     r0,r0,#2              ;1704
+000210  e026              B        |L3.608|
+                  |L3.530|
+000212  f7fffffe          BL       DAP_SWD_Transfer
+000216  e023              B        |L3.608|
+000218  4605              MOV      r5,r0                 ;1707
+00021a  7810              LDRB     r0,[r2,#0]            ;1707  ; DAP_Data
+00021c  4639              MOV      r1,r7                 ;1707
+00021e  2801              CMP      r0,#1                 ;1707
+000220  d00a              BEQ      |L3.568|
+000222  700c              STRB     r4,[r1,#0]            ;1707
+000224  704c              STRB     r4,[r1,#1]            ;1707
+000226  70bc              STRB     r4,[r7,#2]            ;1707
+000228  2103              MOVS     r1,#3                 ;1707
+                  |L3.554|
+00022a  78e8              LDRB     r0,[r5,#3]            ;1707
+00022c  0780              LSLS     r0,r0,#30             ;1707
+00022e  d508              BPL      |L3.578|
+000230  f4412080          ORR      r0,r1,#0x40000        ;1707
+000234  e014              B        |L3.608|
+000236  e00e              B        |L3.598|
+                  |L3.568|
+000238  4628              MOV      r0,r5                 ;1707
+00023a  f7fffffe          BL       DAP_SWD_TransferBlock
+00023e  4601              MOV      r1,r0                 ;1707
+000240  e7f3              B        |L3.554|
+                  |L3.578|
+000242  78a8              LDRB     r0,[r5,#2]            ;1707
+000244  786a              LDRB     r2,[r5,#1]            ;1707
+000246  ea422000          ORR      r0,r2,r0,LSL #8       ;1707
+00024a  f44f2280          MOV      r2,#0x40000           ;1707
+00024e  eb024080          ADD      r0,r2,r0,LSL #18      ;1707
+000252  4308              ORRS     r0,r0,r1              ;1707
+000254  e004              B        |L3.608|
+                  |L3.598|
+000256  7811              LDRB     r1,[r2,#0]            ;1707  ; DAP_Data
+000258  2901              CMP      r1,#1                 ;1707
+00025a  d004              BEQ      |L3.614|
+00025c  703b              STRB     r3,[r7,#0]            ;1711
+                  |L3.606|
+00025e  4650              MOV      r0,r10                ;1711
                   |L3.608|
-000260  4650              MOV      r0,r10                ;1711
-                  |L3.610|
-000262  f1001001          ADD      r0,r0,#0x10001        ;1711
-000266  e6d4              B        |L3.18|
-                  |L3.616|
-000268  7881              LDRB     r1,[r0,#2]
-00026a  7843              LDRB     r3,[r0,#1]
-00026c  78c2              LDRB     r2,[r0,#3]
-00026e  ea432101          ORR      r1,r3,r1,LSL #8
-000272  7900              LDRB     r0,[r0,#4]
-000274  f362411f          BFI      r1,r2,#16,#16
-000278  ea416000          ORR      r0,r1,r0,LSL #24
-00027c  9000              STR      r0,[sp,#0]
-00027e  4669              MOV      r1,sp
-000280  2000              MOVS     r0,#0
-000282  f7fffffe          BL       SWD_Transfer
-                  |L3.646|
-000286  703c              STRB     r4,[r7,#0]
-000288  e7ea              B        |L3.608|
-                  |L3.650|
-00028a  f8073c01          STRB     r3,[r7,#-1]           ;1739
-00028e  4628              MOV      r0,r5                 ;1740
-000290  e6bf              B        |L3.18|
+000260  f1001001          ADD      r0,r0,#0x10001        ;1711
+000264  e6d5              B        |L3.18|
+                  |L3.614|
+000266  7881              LDRB     r1,[r0,#2]
+000268  7843              LDRB     r3,[r0,#1]
+00026a  78c2              LDRB     r2,[r0,#3]
+00026c  ea432101          ORR      r1,r3,r1,LSL #8
+000270  7900              LDRB     r0,[r0,#4]
+000272  f362411f          BFI      r1,r2,#16,#16
+000276  ea416000          ORR      r0,r1,r0,LSL #24
+00027a  9000              STR      r0,[sp,#0]
+00027c  4669              MOV      r1,sp
+00027e  2000              MOVS     r0,#0
+000280  f7fffffe          BL       SWD_Transfer
+                  |L3.644|
+000284  703c              STRB     r4,[r7,#0]
+000286  e7ea              B        |L3.606|
+                  |L3.648|
+000288  f8073c01          STRB     r3,[r7,#-1]           ;1739
+00028c  4628              MOV      r0,r5                 ;1740
+00028e  e6c0              B        |L3.18|
 ;;;1745   
                           ENDP
 
-000292  0000              DCW      0x0000
-                  |L3.660|
+                  |L3.656|
                           DCD      0x00020001
-                  |L3.664|
+                  |L3.660|
                           DCD      ||.bss||
-                  |L3.668|
+                  |L3.664|
                           DCD      0x40010c00
-                  |L3.672|
+                  |L3.668|
                           DCD      0x00050001
-                  |L3.676|
+                  |L3.672|
                           DCD      0x40011000
-                  |L3.680|
+                  |L3.676|
                           DCD      SystemCoreClock
-                  |L3.684|
+                  |L3.680|
                           DCD      0x000f4240
 
                           AREA ||i.DAP_ProcessVendorCommand||, CODE, READONLY, ALIGN=1
@@ -737,11 +735,11 @@
 000068  f7fffffe          BL       pin_in_init
 ;;;521    
 ;;;522        pin_out_od_init(nRESET_PIN_PORT, nRESET_PIN_Bit);
-00006c  2106              MOVS     r1,#6
+00006c  2100              MOVS     r1,#0
 00006e  4630              MOV      r0,r6
 000070  f7fffffe          BL       pin_out_od_init
 ;;;523        nRESET_PIN_PORT->BSRR = nRESET_PIN;
-000074  2040              MOVS     r0,#0x40
+000074  2001              MOVS     r0,#1
 000076  6020              STR      r0,[r4,#0]
 ;;;524    
 ;;;525        pin_out_init(CONNECTED_LED_PORT, CONNECTED_LED_PIN_Bit);
@@ -1929,7 +1927,7 @@
 000014  7940              LDRB     r0,[r0,#5]
 000016  f362411f          BFI      r1,r2,#16,#16
 00001a  ea416600          ORR      r6,r1,r0,LSL #24
-00001e  4836              LDR      r0,|L11.248|
+00001e  4835              LDR      r0,|L11.244|
 ;;;283               (uint32_t)(*(request+3) <<  8) |
 ;;;284               (uint32_t)(*(request+4) << 16) |
 ;;;285               (uint32_t)(*(request+5) << 24);
@@ -1981,14 +1979,14 @@
 ;;;308        PIN_nRESET_OUT(value >> DAP_SWJ_nRESET);
 00004c  09ea              LSRS     r2,r5,#7
 00004e  07d3              LSLS     r3,r2,#31
-000050  f04f0240          MOV      r2,#0x40
+000050  f04f0201          MOV      r2,#1
 000054  d001              BEQ      |L11.90|
 000056  6002              STR      r2,[r0,#0]
 000058  e000              B        |L11.92|
                   |L11.90|
 00005a  600a              STR      r2,[r1,#0]
                   |L11.92|
-00005c  f8dfa098          LDR      r10,|L11.248|
+00005c  f8dfa094          LDR      r10,|L11.244|
 000060  f04f0900          MOV      r9,#0
 000064  f1aa0a04          SUB      r10,r10,#4
 000068  f1aa0804          SUB      r8,r10,#4
@@ -1998,7 +1996,7 @@
 00006c  b37e              CBZ      r6,|L11.206|
 ;;;312    #if (TIMESTAMP_CLOCK != 0U)
 ;;;313        if (wait > 3000000U) {
-00006e  4823              LDR      r0,|L11.252|
+00006e  4822              LDR      r0,|L11.248|
 000070  4286              CMP      r6,r0
 000072  d900              BLS      |L11.118|
 ;;;314          wait = 3000000U;
@@ -2066,7 +2064,7 @@
 0000b2  0620              LSLS     r0,r4,#24
 0000b4  d50b              BPL      |L11.206|
 0000b6  f8d80000          LDR      r0,[r8,#0]
-0000ba  f3c01080          UBFX     r0,r0,#6,#1
+0000ba  f0000001          AND      r0,r0,#1
 ;;;347            if ((value >> DAP_SWJ_nRESET) ^ PIN_nRESET_IN()) {
 0000be  ebb01fd5          CMP      r0,r5,LSR #7
 0000c2  d004              BEQ      |L11.206|
@@ -2090,8 +2088,7 @@
 ;;;354    
 ;;;355      value = (PIN_SWCLK_TCK_IN() << DAP_SWJ_SWCLK_TCK) |
 0000e2  ea410142          ORR      r1,r1,r2,LSL #1
-0000e6  0980              LSRS     r0,r0,#6
-0000e8  ea4110c0          ORR      r0,r1,r0,LSL #7
+0000e6  ea4110c0          ORR      r0,r1,r0,LSL #7
 ;;;356              (PIN_SWDIO_TMS_IN() << DAP_SWJ_SWDIO_TMS) |
 ;;;357              (PIN_TDI_IN()       << DAP_SWJ_TDI)       |
 ;;;358              (PIN_TDO_IN()       << DAP_SWJ_TDO)       |
@@ -2099,24 +2096,23 @@
 ;;;360              (PIN_nRESET_IN()    << DAP_SWJ_nRESET);
 ;;;361    
 ;;;362      *response = (uint8_t)value;
-0000ec  f88b0000          STRB     r0,[r11,#0]
+0000ea  f88b0000          STRB     r0,[r11,#0]
 ;;;363    #else
 ;;;364      *response = 0U;
 ;;;365    #endif
 ;;;366    
 ;;;367      return ((6U << 16) | 1U);
-0000f0  4803              LDR      r0,|L11.256|
+0000ee  4803              LDR      r0,|L11.252|
 ;;;368    }
-0000f2  e8bd9ff0          POP      {r4-r12,pc}
+0000f0  e8bd9ff0          POP      {r4-r12,pc}
 ;;;369    
                           ENDP
 
-0000f6  0000              DCW      0x0000
-                  |L11.248|
+                  |L11.244|
                           DCD      0x40010c10
-                  |L11.252|
+                  |L11.248|
                           DCD      0x002dc6c0
-                  |L11.256|
+                  |L11.252|
                           DCD      0x00060001
 
                           AREA ||i.DAP_Setup||, CODE, READONLY, ALIGN=2

@@ -52,8 +52,8 @@ COMPILER_ASSERT(DAPLINK_HIC_ID == DAPLINK_HIC_ID_STM32F103XB);
 
 // nRESET OUT Pin
 #define nRESET_PIN_PORT              GPIOB
-#define nRESET_PIN                   GPIO_PIN_6
-#define nRESET_PIN_Bit               6
+#define nRESET_PIN                   GPIO_PIN_0 //GPIO_PIN_6
+#define nRESET_PIN_Bit               0 //6
 
 //SWD
 #define SWCLK_TCK_PIN_PORT           GPIOB

@@ -83,7 +83,7 @@
 ;;;152            g_target_family->swd_set_target_reset(asserted);
 00000a  4708              BX       r1
                   |L2.12|
-00000c  2140              MOVS     r1,#0x40
+00000c  2101              MOVS     r1,#1
 ;;;153        }else {
 ;;;154            (asserted) ? PIN_nRESET_OUT(0) : PIN_nRESET_OUT(1);
 00000e  b108              CBZ      r0,|L2.20|
