@@ -52,7 +52,7 @@ Command Line: --debug --xref --cpreproc --diag_suppress=9931 --cpu=Cortex-M3 --
 apcs=interwork --no_unaligned_access --depend=.\build\svc_table.d -o.\build\svc
 _table.o -I.\RTE\_stm32f103xb_bl -IC:\Users\Admin\AppData\Local\Arm\Packs\ARM\C
 MSIS\5.9.0\CMSIS\Core\Include -IC:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM
-32F1xx_DFP\2.4.1\Device\Include --predefine="__UVISION_VERSION SETA 538" --pred
+32F1xx_DFP\2.4.0\Device\Include --predefine="__UVISION_VERSION SETA 538" --pred
 efine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_RTE_ SETA 
 1" --cpreproc_opts=-DDAPLINK_VERSION=256,-DMSC_ENDPOINT,-DDAPLINK_BL,-DDAPLINK_
 BUILD_KEY=0x9B939D93,-DDRAG_N_DROP_SUPPORT,-DOS_TICK=10000,-DINTERFACE_STM32F10

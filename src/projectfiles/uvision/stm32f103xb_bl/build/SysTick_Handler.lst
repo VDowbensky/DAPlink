@@ -114,7 +114,7 @@ N#endif
 N#endif
 N 
 N#include <stdint.h>
-L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stdint.h" 1
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h" 1
 N/* Copyright (C) ARM Ltd., 1999,2014 */
 N/* All rights reserved */
 N
@@ -446,7 +446,7 @@ N
 N/* end of stdint.h */
 L 65 "..\..\..\source\rtos_none\cmsis_os2.h" 2
 N#include <stddef.h>
-L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stddef.h" 1
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h" 1
 N/* stddef.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.1.4 */
 N
 N/* Copyright (C) ARM Ltd., 1999

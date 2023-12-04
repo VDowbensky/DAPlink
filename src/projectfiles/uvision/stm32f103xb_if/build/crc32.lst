@@ -47,7 +47,7 @@ N#ifndef _crc_h
 N#define _crc_h
 N
 N#include <stdint.h>
-L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stdint.h" 1
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h" 1
 N/* Copyright (C) ARM Ltd., 1999,2014 */
 N/* All rights reserved */
 N

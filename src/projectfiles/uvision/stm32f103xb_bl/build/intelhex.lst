@@ -21,7 +21,7 @@ N * limitations under the License.
 N */
 N
 N#include <string.h>
-L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\string.h" 1
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h" 1
 N/* string.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.11 */
 N/* Copyright (C) Codemist Ltd., 1988-1993.                        */
 N/* Copyright 1991-1993 ARM Limited. All rights reserved.          */
@@ -604,7 +604,7 @@ N *  @{
 N */
 N
 N#include <stdint.h>
-L 1 "C:\Keil_v535\ARM\ARMCC\Bin\..\include\stdint.h" 1
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h" 1
 N/* Copyright (C) ARM Ltd., 1999,2014 */
 N/* All rights reserved */
 N

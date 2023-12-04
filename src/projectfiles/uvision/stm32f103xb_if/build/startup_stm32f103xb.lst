@@ -526,7 +526,7 @@ ARM Macro Assembler    Page 9
 
 \build\startup_stm32f103xb.o -I.\RTE\_stm32f103xb_if -IC:\Users\Admin\AppData\L
 ocal\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Users\Admin\AppData\Loca
-l\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include --predefine="__UVISION_VERS
+l\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include --predefine="__UVISION_VERS
 ION SETA 538" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --pr
 edefine="_RTE_ SETA 1" --cpreproc_opts=-DDAPLINK_VERSION=256,-DHID_ENDPOINT,-DM
 SC_ENDPOINT,-DCDC_ENDPOINT,-DWEBUSB_INTERFACE,-DWINUSB_INTERFACE,-DDRAG_N_DROP_
