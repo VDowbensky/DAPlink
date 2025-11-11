@@ -1,18 +1,18 @@
 [General]
 algoId=0
-chipManufacturer=AT32
-chipModel=AT32F413CBT7
-chipSeries=AT32F41x Series
+chipManufacturer=STM32
+chipModel=STM32L433RBTx
+chipSeries=STM32L4 Series
 connType=0
 darkTheme=false
-lastDevice=CMSIS-DAP v2 Interface [3350353536457CB1]
+lastDevice=ARM-X CMSIS-DAP [002201110000]
 lastOpenFiles=@Invalid()
 progSpeed=3
 resetType=0
 swjType=1
 toolBar=true
 toolBarArea=4
-windowPos=@Point(478 246)
+windowPos=@Point(475 153)
 windowSize=@Size(1110 840)
 eraseType=0
 isProgram=true
@@ -20,7 +20,6 @@ isResetAndRun=false
 isSecure=false
 isUnsecure=false
 isVerify=true
-lastSavePath=D:/RFprojects/M6/M665/sniffer/MDK_V5/objects
 
 [Language]
 Language=en
